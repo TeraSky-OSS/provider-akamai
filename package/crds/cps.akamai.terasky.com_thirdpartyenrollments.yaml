@@ -1,0 +1,1075 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.14.0
+  name: thirdpartyenrollments.cps.akamai.terasky.com
+spec:
+  group: cps.akamai.terasky.com
+  names:
+    categories:
+    - crossplane
+    - managed
+    - akamai
+    kind: ThirdPartyEnrollment
+    listKind: ThirdPartyEnrollmentList
+    plural: thirdpartyenrollments
+    singular: thirdpartyenrollment
+  scope: Cluster
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .status.conditions[?(@.type=='Synced')].status
+      name: SYNCED
+      type: string
+    - jsonPath: .status.conditions[?(@.type=='Ready')].status
+      name: READY
+      type: string
+    - jsonPath: .metadata.annotations.crossplane\.io/external-name
+      name: EXTERNAL-NAME
+      type: string
+    - jsonPath: .metadata.creationTimestamp
+      name: AGE
+      type: date
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: ThirdPartyEnrollment is the Schema for the ThirdPartyEnrollments
+          API. <no value>
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: ThirdPartyEnrollmentSpec defines the desired state of ThirdPartyEnrollment
+            properties:
+              deletionPolicy:
+                default: Delete
+                description: |-
+                  DeletionPolicy specifies what will happen to the underlying external
+                  when this managed resource is deleted - either "Delete" or "Orphan" the
+                  external resource.
+                  This field is planned to be deprecated in favor of the ManagementPolicies
+                  field in a future release. Currently, both could be set independently and
+                  non-default values would be honored if the feature flag is enabled.
+                  See the design doc for more information: https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223
+                enum:
+                - Orphan
+                - Delete
+                type: string
+              forProvider:
+                properties:
+                  acknowledgePreVerificationWarnings:
+                    description: Whether acknowledge warnings before certificate verification
+                    type: boolean
+                  adminContact:
+                    description: Contact information for the certificate administrator
+                      to use at organization
+                    items:
+                      properties:
+                        addressLineOne:
+                          description: The address of the contact
+                          type: string
+                        addressLineTwo:
+                          description: The address of the contact
+                          type: string
+                        city:
+                          description: City of residence of the contact
+                          type: string
+                        countryCode:
+                          description: Country code of the contact
+                          type: string
+                        email:
+                          description: E-mail address of the contact
+                          type: string
+                        firstName:
+                          description: First name of the contact
+                          type: string
+                        lastName:
+                          description: Last name of the contact
+                          type: string
+                        organization:
+                          description: Organization where contact is hired
+                          type: string
+                        phone:
+                          description: Phone number of the contact
+                          type: string
+                        postalCode:
+                          description: Postal code of the contact
+                          type: string
+                        region:
+                          description: The region of the contact
+                          type: string
+                        title:
+                          description: Title of the the contact
+                          type: string
+                      type: object
+                    type: array
+                  allowDuplicateCommonName:
+                    description: Allow to duplicate common name
+                    type: boolean
+                  autoApproveWarnings:
+                    description: List of warnings to be automatically approved
+                    items:
+                      type: string
+                    type: array
+                    x-kubernetes-list-type: set
+                  certificateChainType:
+                    description: Certificate trust chain type
+                    type: string
+                  changeManagement:
+                    description: When set to false, the certificate will be deployed
+                      to both staging and production networks
+                    type: boolean
+                  commonName:
+                    description: Common name used for enrollment
+                    type: string
+                  contractId:
+                    description: Contract ID for which enrollment is retrieved
+                    type: string
+                  csr:
+                    description: Data used for generation of Certificate Signing Request
+                    items:
+                      properties:
+                        city:
+                          description: City where organization is located
+                          type: string
+                        countryCode:
+                          description: The code of the country where organization
+                            is located
+                          type: string
+                        organization:
+                          description: Name of organization used in all legal documents
+                          type: string
+                        organizationalUnit:
+                          description: Organizational unit of organization
+                          type: string
+                        preferredTrustChain:
+                          description: For the Let's Encrypt Domain Validated (DV)
+                            SAN certificates, the preferred trust chain will be included
+                            by CPS with the leaf certificate in the TLS handshake.
+                            If the field does not have a value, whichever trust chain
+                            Akamai chooses will be used by default
+                          type: string
+                        state:
+                          description: State or province of organization location
+                          type: string
+                      type: object
+                    type: array
+                  excludeSans:
+                    description: When true, SANs are excluded from the CSR
+                    type: boolean
+                  networkConfiguration:
+                    description: Settings containing network information and TLS metadata
+                      used by CPS
+                    items:
+                      properties:
+                        clientMutualAuthentication:
+                          description: The trust chain configuration used for client
+                            mutual authentication
+                          items:
+                            properties:
+                              ocspEnabled:
+                                description: Enable OCSP stapling
+                                type: boolean
+                              sendCaListToClient:
+                                description: Enable the server to send the certificate
+                                  authority (CA) list to the client
+                                type: boolean
+                              setId:
+                                description: The identifier of the set of trust chains,
+                                  created in the Trust Chain Manager
+                                type: string
+                            type: object
+                          type: array
+                        cloneDnsNames:
+                          description: Enable CPS to direct traffic using all the
+                            SANs listed in the SANs parameter when enrollment is created
+                          type: boolean
+                        disallowedTlsVersions:
+                          description: TLS versions which are disallowed
+                          items:
+                            type: string
+                          type: array
+                          x-kubernetes-list-type: set
+                        geography:
+                          description: Geography type used for enrollment
+                          type: string
+                        mustHaveCiphers:
+                          description: Mandatory Ciphers which are included for enrollment
+                          type: string
+                        ocspStapling:
+                          description: Enable OCSP stapling
+                          type: string
+                        preferredCiphers:
+                          description: Preferred Ciphers which are included for enrollment
+                          type: string
+                        quicEnabled:
+                          description: Enable QUIC protocol
+                          type: boolean
+                      type: object
+                    type: array
+                  organization:
+                    description: Organization information
+                    items:
+                      properties:
+                        addressLineOne:
+                          description: The address of organization
+                          type: string
+                        addressLineTwo:
+                          description: The address of organization
+                          type: string
+                        city:
+                          description: City of organization
+                          type: string
+                        countryCode:
+                          description: Country code of organization
+                          type: string
+                        name:
+                          description: Name of organization
+                          type: string
+                        phone:
+                          description: Phone number of organization
+                          type: string
+                        postalCode:
+                          description: Postal code of organization
+                          type: string
+                        region:
+                          description: The region of organization
+                          type: string
+                      type: object
+                    type: array
+                  sans:
+                    description: List of SANs
+                    items:
+                      type: string
+                    type: array
+                    x-kubernetes-list-type: set
+                  secureNetwork:
+                    description: Type of TLS deployment network
+                    type: string
+                  signatureAlgorithm:
+                    description: The SHA function
+                    type: string
+                  sniOnly:
+                    description: Whether Server Name Indication is used for enrollment
+                    type: boolean
+                  techContact:
+                    description: Contact information for an administrator at Akamai
+                    items:
+                      properties:
+                        addressLineOne:
+                          description: The address of the contact
+                          type: string
+                        addressLineTwo:
+                          description: The address of the contact
+                          type: string
+                        city:
+                          description: City of residence of the contact
+                          type: string
+                        countryCode:
+                          description: Country code of the contact
+                          type: string
+                        email:
+                          description: E-mail address of the contact
+                          type: string
+                        firstName:
+                          description: First name of the contact
+                          type: string
+                        lastName:
+                          description: Last name of the contact
+                          type: string
+                        organization:
+                          description: Organization where contact is hired
+                          type: string
+                        phone:
+                          description: Phone number of the contact
+                          type: string
+                        postalCode:
+                          description: Postal code of the contact
+                          type: string
+                        region:
+                          description: The region of the contact
+                          type: string
+                        title:
+                          description: Title of the the contact
+                          type: string
+                      type: object
+                    type: array
+                type: object
+              initProvider:
+                description: |-
+                  THIS IS A BETA FIELD. It will be honored
+                  unless the Management Policies feature flag is disabled.
+                  InitProvider holds the same fields as ForProvider, with the exception
+                  of Identifier and other resource reference fields. The fields that are
+                  in InitProvider are merged into ForProvider when the resource is created.
+                  The same fields are also added to the terraform ignore_changes hook, to
+                  avoid updating them after creation. This is useful for fields that are
+                  required on creation, but we do not desire to update them after creation,
+                  for example because of an external controller is managing them, like an
+                  autoscaler.
+                properties:
+                  acknowledgePreVerificationWarnings:
+                    description: Whether acknowledge warnings before certificate verification
+                    type: boolean
+                  adminContact:
+                    description: Contact information for the certificate administrator
+                      to use at organization
+                    items:
+                      properties:
+                        addressLineOne:
+                          description: The address of the contact
+                          type: string
+                        addressLineTwo:
+                          description: The address of the contact
+                          type: string
+                        city:
+                          description: City of residence of the contact
+                          type: string
+                        countryCode:
+                          description: Country code of the contact
+                          type: string
+                        email:
+                          description: E-mail address of the contact
+                          type: string
+                        firstName:
+                          description: First name of the contact
+                          type: string
+                        lastName:
+                          description: Last name of the contact
+                          type: string
+                        organization:
+                          description: Organization where contact is hired
+                          type: string
+                        phone:
+                          description: Phone number of the contact
+                          type: string
+                        postalCode:
+                          description: Postal code of the contact
+                          type: string
+                        region:
+                          description: The region of the contact
+                          type: string
+                        title:
+                          description: Title of the the contact
+                          type: string
+                      type: object
+                    type: array
+                  allowDuplicateCommonName:
+                    description: Allow to duplicate common name
+                    type: boolean
+                  autoApproveWarnings:
+                    description: List of warnings to be automatically approved
+                    items:
+                      type: string
+                    type: array
+                    x-kubernetes-list-type: set
+                  certificateChainType:
+                    description: Certificate trust chain type
+                    type: string
+                  changeManagement:
+                    description: When set to false, the certificate will be deployed
+                      to both staging and production networks
+                    type: boolean
+                  commonName:
+                    description: Common name used for enrollment
+                    type: string
+                  contractId:
+                    description: Contract ID for which enrollment is retrieved
+                    type: string
+                  csr:
+                    description: Data used for generation of Certificate Signing Request
+                    items:
+                      properties:
+                        city:
+                          description: City where organization is located
+                          type: string
+                        countryCode:
+                          description: The code of the country where organization
+                            is located
+                          type: string
+                        organization:
+                          description: Name of organization used in all legal documents
+                          type: string
+                        organizationalUnit:
+                          description: Organizational unit of organization
+                          type: string
+                        preferredTrustChain:
+                          description: For the Let's Encrypt Domain Validated (DV)
+                            SAN certificates, the preferred trust chain will be included
+                            by CPS with the leaf certificate in the TLS handshake.
+                            If the field does not have a value, whichever trust chain
+                            Akamai chooses will be used by default
+                          type: string
+                        state:
+                          description: State or province of organization location
+                          type: string
+                      type: object
+                    type: array
+                  excludeSans:
+                    description: When true, SANs are excluded from the CSR
+                    type: boolean
+                  networkConfiguration:
+                    description: Settings containing network information and TLS metadata
+                      used by CPS
+                    items:
+                      properties:
+                        clientMutualAuthentication:
+                          description: The trust chain configuration used for client
+                            mutual authentication
+                          items:
+                            properties:
+                              ocspEnabled:
+                                description: Enable OCSP stapling
+                                type: boolean
+                              sendCaListToClient:
+                                description: Enable the server to send the certificate
+                                  authority (CA) list to the client
+                                type: boolean
+                              setId:
+                                description: The identifier of the set of trust chains,
+                                  created in the Trust Chain Manager
+                                type: string
+                            type: object
+                          type: array
+                        cloneDnsNames:
+                          description: Enable CPS to direct traffic using all the
+                            SANs listed in the SANs parameter when enrollment is created
+                          type: boolean
+                        disallowedTlsVersions:
+                          description: TLS versions which are disallowed
+                          items:
+                            type: string
+                          type: array
+                          x-kubernetes-list-type: set
+                        geography:
+                          description: Geography type used for enrollment
+                          type: string
+                        mustHaveCiphers:
+                          description: Mandatory Ciphers which are included for enrollment
+                          type: string
+                        ocspStapling:
+                          description: Enable OCSP stapling
+                          type: string
+                        preferredCiphers:
+                          description: Preferred Ciphers which are included for enrollment
+                          type: string
+                        quicEnabled:
+                          description: Enable QUIC protocol
+                          type: boolean
+                      type: object
+                    type: array
+                  organization:
+                    description: Organization information
+                    items:
+                      properties:
+                        addressLineOne:
+                          description: The address of organization
+                          type: string
+                        addressLineTwo:
+                          description: The address of organization
+                          type: string
+                        city:
+                          description: City of organization
+                          type: string
+                        countryCode:
+                          description: Country code of organization
+                          type: string
+                        name:
+                          description: Name of organization
+                          type: string
+                        phone:
+                          description: Phone number of organization
+                          type: string
+                        postalCode:
+                          description: Postal code of organization
+                          type: string
+                        region:
+                          description: The region of organization
+                          type: string
+                      type: object
+                    type: array
+                  sans:
+                    description: List of SANs
+                    items:
+                      type: string
+                    type: array
+                    x-kubernetes-list-type: set
+                  secureNetwork:
+                    description: Type of TLS deployment network
+                    type: string
+                  signatureAlgorithm:
+                    description: The SHA function
+                    type: string
+                  sniOnly:
+                    description: Whether Server Name Indication is used for enrollment
+                    type: boolean
+                  techContact:
+                    description: Contact information for an administrator at Akamai
+                    items:
+                      properties:
+                        addressLineOne:
+                          description: The address of the contact
+                          type: string
+                        addressLineTwo:
+                          description: The address of the contact
+                          type: string
+                        city:
+                          description: City of residence of the contact
+                          type: string
+                        countryCode:
+                          description: Country code of the contact
+                          type: string
+                        email:
+                          description: E-mail address of the contact
+                          type: string
+                        firstName:
+                          description: First name of the contact
+                          type: string
+                        lastName:
+                          description: Last name of the contact
+                          type: string
+                        organization:
+                          description: Organization where contact is hired
+                          type: string
+                        phone:
+                          description: Phone number of the contact
+                          type: string
+                        postalCode:
+                          description: Postal code of the contact
+                          type: string
+                        region:
+                          description: The region of the contact
+                          type: string
+                        title:
+                          description: Title of the the contact
+                          type: string
+                      type: object
+                    type: array
+                type: object
+              managementPolicies:
+                default:
+                - '*'
+                description: |-
+                  THIS IS A BETA FIELD. It is on by default but can be opted out
+                  through a Crossplane feature flag.
+                  ManagementPolicies specify the array of actions Crossplane is allowed to
+                  take on the managed and external resources.
+                  This field is planned to replace the DeletionPolicy field in a future
+                  release. Currently, both could be set independently and non-default
+                  values would be honored if the feature flag is enabled. If both are
+                  custom, the DeletionPolicy field will be ignored.
+                  See the design doc for more information: https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223
+                  and this one: https://github.com/crossplane/crossplane/blob/444267e84783136daa93568b364a5f01228cacbe/design/one-pager-ignore-changes.md
+                items:
+                  description: |-
+                    A ManagementAction represents an action that the Crossplane controllers
+                    can take on an external resource.
+                  enum:
+                  - Observe
+                  - Create
+                  - Update
+                  - Delete
+                  - LateInitialize
+                  - '*'
+                  type: string
+                type: array
+              providerConfigRef:
+                default:
+                  name: default
+                description: |-
+                  ProviderConfigReference specifies how the provider that will be used to
+                  create, observe, update, and delete this managed resource should be
+                  configured.
+                properties:
+                  name:
+                    description: Name of the referenced object.
+                    type: string
+                  policy:
+                    description: Policies for referencing.
+                    properties:
+                      resolution:
+                        default: Required
+                        description: |-
+                          Resolution specifies whether resolution of this reference is required.
+                          The default is 'Required', which means the reconcile will fail if the
+                          reference cannot be resolved. 'Optional' means this reference will be
+                          a no-op if it cannot be resolved.
+                        enum:
+                        - Required
+                        - Optional
+                        type: string
+                      resolve:
+                        description: |-
+                          Resolve specifies when this reference should be resolved. The default
+                          is 'IfNotPresent', which will attempt to resolve the reference only when
+                          the corresponding field is not present. Use 'Always' to resolve the
+                          reference on every reconcile.
+                        enum:
+                        - Always
+                        - IfNotPresent
+                        type: string
+                    type: object
+                required:
+                - name
+                type: object
+              publishConnectionDetailsTo:
+                description: |-
+                  PublishConnectionDetailsTo specifies the connection secret config which
+                  contains a name, metadata and a reference to secret store config to
+                  which any connection details for this managed resource should be written.
+                  Connection details frequently include the endpoint, username,
+                  and password required to connect to the managed resource.
+                properties:
+                  configRef:
+                    default:
+                      name: default
+                    description: |-
+                      SecretStoreConfigRef specifies which secret store config should be used
+                      for this ConnectionSecret.
+                    properties:
+                      name:
+                        description: Name of the referenced object.
+                        type: string
+                      policy:
+                        description: Policies for referencing.
+                        properties:
+                          resolution:
+                            default: Required
+                            description: |-
+                              Resolution specifies whether resolution of this reference is required.
+                              The default is 'Required', which means the reconcile will fail if the
+                              reference cannot be resolved. 'Optional' means this reference will be
+                              a no-op if it cannot be resolved.
+                            enum:
+                            - Required
+                            - Optional
+                            type: string
+                          resolve:
+                            description: |-
+                              Resolve specifies when this reference should be resolved. The default
+                              is 'IfNotPresent', which will attempt to resolve the reference only when
+                              the corresponding field is not present. Use 'Always' to resolve the
+                              reference on every reconcile.
+                            enum:
+                            - Always
+                            - IfNotPresent
+                            type: string
+                        type: object
+                    required:
+                    - name
+                    type: object
+                  metadata:
+                    description: Metadata is the metadata for connection secret.
+                    properties:
+                      annotations:
+                        additionalProperties:
+                          type: string
+                        description: |-
+                          Annotations are the annotations to be added to connection secret.
+                          - For Kubernetes secrets, this will be used as "metadata.annotations".
+                          - It is up to Secret Store implementation for others store types.
+                        type: object
+                      labels:
+                        additionalProperties:
+                          type: string
+                        description: |-
+                          Labels are the labels/tags to be added to connection secret.
+                          - For Kubernetes secrets, this will be used as "metadata.labels".
+                          - It is up to Secret Store implementation for others store types.
+                        type: object
+                      type:
+                        description: |-
+                          Type is the SecretType for the connection secret.
+                          - Only valid for Kubernetes Secret Stores.
+                        type: string
+                    type: object
+                  name:
+                    description: Name is the name of the connection secret.
+                    type: string
+                required:
+                - name
+                type: object
+              writeConnectionSecretToRef:
+                description: |-
+                  WriteConnectionSecretToReference specifies the namespace and name of a
+                  Secret to which any connection details for this managed resource should
+                  be written. Connection details frequently include the endpoint, username,
+                  and password required to connect to the managed resource.
+                  This field is planned to be replaced in a future release in favor of
+                  PublishConnectionDetailsTo. Currently, both could be set independently
+                  and connection details would be published to both without affecting
+                  each other.
+                properties:
+                  name:
+                    description: Name of the secret.
+                    type: string
+                  namespace:
+                    description: Namespace of the secret.
+                    type: string
+                required:
+                - name
+                - namespace
+                type: object
+            required:
+            - forProvider
+            type: object
+            x-kubernetes-validations:
+            - message: spec.forProvider.adminContact is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.adminContact)
+                || (has(self.initProvider) && has(self.initProvider.adminContact))'
+            - message: spec.forProvider.commonName is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.commonName)
+                || (has(self.initProvider) && has(self.initProvider.commonName))'
+            - message: spec.forProvider.contractId is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.contractId)
+                || (has(self.initProvider) && has(self.initProvider.contractId))'
+            - message: spec.forProvider.csr is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.csr)
+                || (has(self.initProvider) && has(self.initProvider.csr))'
+            - message: spec.forProvider.networkConfiguration is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.networkConfiguration)
+                || (has(self.initProvider) && has(self.initProvider.networkConfiguration))'
+            - message: spec.forProvider.organization is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.organization)
+                || (has(self.initProvider) && has(self.initProvider.organization))'
+            - message: spec.forProvider.secureNetwork is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.secureNetwork)
+                || (has(self.initProvider) && has(self.initProvider.secureNetwork))'
+            - message: spec.forProvider.sniOnly is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.sniOnly)
+                || (has(self.initProvider) && has(self.initProvider.sniOnly))'
+            - message: spec.forProvider.techContact is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.techContact)
+                || (has(self.initProvider) && has(self.initProvider.techContact))'
+          status:
+            description: ThirdPartyEnrollmentStatus defines the observed state of
+              ThirdPartyEnrollment.
+            properties:
+              atProvider:
+                properties:
+                  acknowledgePreVerificationWarnings:
+                    description: Whether acknowledge warnings before certificate verification
+                    type: boolean
+                  adminContact:
+                    description: Contact information for the certificate administrator
+                      to use at organization
+                    items:
+                      properties:
+                        addressLineOne:
+                          description: The address of the contact
+                          type: string
+                        addressLineTwo:
+                          description: The address of the contact
+                          type: string
+                        city:
+                          description: City of residence of the contact
+                          type: string
+                        countryCode:
+                          description: Country code of the contact
+                          type: string
+                        email:
+                          description: E-mail address of the contact
+                          type: string
+                        firstName:
+                          description: First name of the contact
+                          type: string
+                        lastName:
+                          description: Last name of the contact
+                          type: string
+                        organization:
+                          description: Organization where contact is hired
+                          type: string
+                        phone:
+                          description: Phone number of the contact
+                          type: string
+                        postalCode:
+                          description: Postal code of the contact
+                          type: string
+                        region:
+                          description: The region of the contact
+                          type: string
+                        title:
+                          description: Title of the the contact
+                          type: string
+                      type: object
+                    type: array
+                  allowDuplicateCommonName:
+                    description: Allow to duplicate common name
+                    type: boolean
+                  autoApproveWarnings:
+                    description: List of warnings to be automatically approved
+                    items:
+                      type: string
+                    type: array
+                    x-kubernetes-list-type: set
+                  certificateChainType:
+                    description: Certificate trust chain type
+                    type: string
+                  changeManagement:
+                    description: When set to false, the certificate will be deployed
+                      to both staging and production networks
+                    type: boolean
+                  commonName:
+                    description: Common name used for enrollment
+                    type: string
+                  contractId:
+                    description: Contract ID for which enrollment is retrieved
+                    type: string
+                  csr:
+                    description: Data used for generation of Certificate Signing Request
+                    items:
+                      properties:
+                        city:
+                          description: City where organization is located
+                          type: string
+                        countryCode:
+                          description: The code of the country where organization
+                            is located
+                          type: string
+                        organization:
+                          description: Name of organization used in all legal documents
+                          type: string
+                        organizationalUnit:
+                          description: Organizational unit of organization
+                          type: string
+                        preferredTrustChain:
+                          description: For the Let's Encrypt Domain Validated (DV)
+                            SAN certificates, the preferred trust chain will be included
+                            by CPS with the leaf certificate in the TLS handshake.
+                            If the field does not have a value, whichever trust chain
+                            Akamai chooses will be used by default
+                          type: string
+                        state:
+                          description: State or province of organization location
+                          type: string
+                      type: object
+                    type: array
+                  excludeSans:
+                    description: When true, SANs are excluded from the CSR
+                    type: boolean
+                  id:
+                    type: string
+                  networkConfiguration:
+                    description: Settings containing network information and TLS metadata
+                      used by CPS
+                    items:
+                      properties:
+                        clientMutualAuthentication:
+                          description: The trust chain configuration used for client
+                            mutual authentication
+                          items:
+                            properties:
+                              ocspEnabled:
+                                description: Enable OCSP stapling
+                                type: boolean
+                              sendCaListToClient:
+                                description: Enable the server to send the certificate
+                                  authority (CA) list to the client
+                                type: boolean
+                              setId:
+                                description: The identifier of the set of trust chains,
+                                  created in the Trust Chain Manager
+                                type: string
+                            type: object
+                          type: array
+                        cloneDnsNames:
+                          description: Enable CPS to direct traffic using all the
+                            SANs listed in the SANs parameter when enrollment is created
+                          type: boolean
+                        disallowedTlsVersions:
+                          description: TLS versions which are disallowed
+                          items:
+                            type: string
+                          type: array
+                          x-kubernetes-list-type: set
+                        geography:
+                          description: Geography type used for enrollment
+                          type: string
+                        mustHaveCiphers:
+                          description: Mandatory Ciphers which are included for enrollment
+                          type: string
+                        ocspStapling:
+                          description: Enable OCSP stapling
+                          type: string
+                        preferredCiphers:
+                          description: Preferred Ciphers which are included for enrollment
+                          type: string
+                        quicEnabled:
+                          description: Enable QUIC protocol
+                          type: boolean
+                      type: object
+                    type: array
+                  organization:
+                    description: Organization information
+                    items:
+                      properties:
+                        addressLineOne:
+                          description: The address of organization
+                          type: string
+                        addressLineTwo:
+                          description: The address of organization
+                          type: string
+                        city:
+                          description: City of organization
+                          type: string
+                        countryCode:
+                          description: Country code of organization
+                          type: string
+                        name:
+                          description: Name of organization
+                          type: string
+                        phone:
+                          description: Phone number of organization
+                          type: string
+                        postalCode:
+                          description: Postal code of organization
+                          type: string
+                        region:
+                          description: The region of organization
+                          type: string
+                      type: object
+                    type: array
+                  sans:
+                    description: List of SANs
+                    items:
+                      type: string
+                    type: array
+                    x-kubernetes-list-type: set
+                  secureNetwork:
+                    description: Type of TLS deployment network
+                    type: string
+                  signatureAlgorithm:
+                    description: The SHA function
+                    type: string
+                  sniOnly:
+                    description: Whether Server Name Indication is used for enrollment
+                    type: boolean
+                  techContact:
+                    description: Contact information for an administrator at Akamai
+                    items:
+                      properties:
+                        addressLineOne:
+                          description: The address of the contact
+                          type: string
+                        addressLineTwo:
+                          description: The address of the contact
+                          type: string
+                        city:
+                          description: City of residence of the contact
+                          type: string
+                        countryCode:
+                          description: Country code of the contact
+                          type: string
+                        email:
+                          description: E-mail address of the contact
+                          type: string
+                        firstName:
+                          description: First name of the contact
+                          type: string
+                        lastName:
+                          description: Last name of the contact
+                          type: string
+                        organization:
+                          description: Organization where contact is hired
+                          type: string
+                        phone:
+                          description: Phone number of the contact
+                          type: string
+                        postalCode:
+                          description: Postal code of the contact
+                          type: string
+                        region:
+                          description: The region of the contact
+                          type: string
+                        title:
+                          description: Title of the the contact
+                          type: string
+                      type: object
+                    type: array
+                type: object
+              conditions:
+                description: Conditions of the resource.
+                items:
+                  description: A Condition that may apply to a resource.
+                  properties:
+                    lastTransitionTime:
+                      description: |-
+                        LastTransitionTime is the last time this condition transitioned from one
+                        status to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: |-
+                        A Message containing details about this condition's last transition from
+                        one status to another, if any.
+                      type: string
+                    observedGeneration:
+                      description: |-
+                        ObservedGeneration represents the .metadata.generation that the condition was set based upon.
+                        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
+                        with respect to the current state of the instance.
+                      format: int64
+                      type: integer
+                    reason:
+                      description: A Reason for this condition's last transition from
+                        one status to another.
+                      type: string
+                    status:
+                      description: Status of this condition; is it currently True,
+                        False, or Unknown?
+                      type: string
+                    type:
+                      description: |-
+                        Type of this condition. At most one of each condition type may apply to
+                        a resource at any point in time.
+                      type: string
+                  required:
+                  - lastTransitionTime
+                  - reason
+                  - status
+                  - type
+                  type: object
+                type: array
+                x-kubernetes-list-map-keys:
+                - type
+                x-kubernetes-list-type: map
+              observedGeneration:
+                description: |-
+                  ObservedGeneration is the latest metadata.generation
+                  which resulted in either a ready state, or stalled due to error
+                  it can not recover from without human intervention.
+                format: int64
+                type: integer
+            type: object
+        required:
+        - spec
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

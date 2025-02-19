@@ -10,15 +10,47 @@ package apis
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/upbound/upjet-provider-template/apis/null/v1alpha1"
-	v1alpha1apis "github.com/upbound/upjet-provider-template/apis/v1alpha1"
-	v1beta1 "github.com/upbound/upjet-provider-template/apis/v1beta1"
+	v1alpha1 "github.com/terasky-oss/provider-akamai/apis/appsec/v1alpha1"
+	v1alpha1botman "github.com/terasky-oss/provider-akamai/apis/botman/v1alpha1"
+	v1alpha1clientlist "github.com/terasky-oss/provider-akamai/apis/clientlist/v1alpha1"
+	v1alpha1cloudlets "github.com/terasky-oss/provider-akamai/apis/cloudlets/v1alpha1"
+	v1alpha1cloudwrapper "github.com/terasky-oss/provider-akamai/apis/cloudwrapper/v1alpha1"
+	v1alpha1cp "github.com/terasky-oss/provider-akamai/apis/cp/v1alpha1"
+	v1alpha1cps "github.com/terasky-oss/provider-akamai/apis/cps/v1alpha1"
+	v1alpha1datastream "github.com/terasky-oss/provider-akamai/apis/datastream/v1alpha1"
+	v1alpha1dns "github.com/terasky-oss/provider-akamai/apis/dns/v1alpha1"
+	v1alpha1edge "github.com/terasky-oss/provider-akamai/apis/edge/v1alpha1"
+	v1alpha1edgekv "github.com/terasky-oss/provider-akamai/apis/edgekv/v1alpha1"
+	v1alpha1edgeworker "github.com/terasky-oss/provider-akamai/apis/edgeworker/v1alpha1"
+	v1alpha1gtm "github.com/terasky-oss/provider-akamai/apis/gtm/v1alpha1"
+	v1alpha1iam "github.com/terasky-oss/provider-akamai/apis/iam/v1alpha1"
+	v1alpha1imaging "github.com/terasky-oss/provider-akamai/apis/imaging/v1alpha1"
+	v1alpha1networklist "github.com/terasky-oss/provider-akamai/apis/networklist/v1alpha1"
+	v1alpha1property "github.com/terasky-oss/provider-akamai/apis/property/v1alpha1"
+	v1alpha1apis "github.com/terasky-oss/provider-akamai/apis/v1alpha1"
+	v1beta1 "github.com/terasky-oss/provider-akamai/apis/v1beta1"
 )
 
 func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
+		v1alpha1botman.SchemeBuilder.AddToScheme,
+		v1alpha1clientlist.SchemeBuilder.AddToScheme,
+		v1alpha1cloudlets.SchemeBuilder.AddToScheme,
+		v1alpha1cloudwrapper.SchemeBuilder.AddToScheme,
+		v1alpha1cp.SchemeBuilder.AddToScheme,
+		v1alpha1cps.SchemeBuilder.AddToScheme,
+		v1alpha1datastream.SchemeBuilder.AddToScheme,
+		v1alpha1dns.SchemeBuilder.AddToScheme,
+		v1alpha1edge.SchemeBuilder.AddToScheme,
+		v1alpha1edgekv.SchemeBuilder.AddToScheme,
+		v1alpha1edgeworker.SchemeBuilder.AddToScheme,
+		v1alpha1gtm.SchemeBuilder.AddToScheme,
+		v1alpha1iam.SchemeBuilder.AddToScheme,
+		v1alpha1imaging.SchemeBuilder.AddToScheme,
+		v1alpha1networklist.SchemeBuilder.AddToScheme,
+		v1alpha1property.SchemeBuilder.AddToScheme,
 		v1alpha1apis.SchemeBuilder.AddToScheme,
 		v1beta1.SchemeBuilder.AddToScheme,
 	)

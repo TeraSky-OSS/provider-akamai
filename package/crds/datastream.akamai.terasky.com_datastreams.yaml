@@ -1,0 +1,2470 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.14.0
+  name: datastreams.datastream.akamai.terasky.com
+spec:
+  group: datastream.akamai.terasky.com
+  names:
+    categories:
+    - crossplane
+    - managed
+    - akamai
+    kind: Datastream
+    listKind: DatastreamList
+    plural: datastreams
+    singular: datastream
+  scope: Cluster
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .status.conditions[?(@.type=='Synced')].status
+      name: SYNCED
+      type: string
+    - jsonPath: .status.conditions[?(@.type=='Ready')].status
+      name: READY
+      type: string
+    - jsonPath: .metadata.annotations.crossplane\.io/external-name
+      name: EXTERNAL-NAME
+      type: string
+    - jsonPath: .metadata.creationTimestamp
+      name: AGE
+      type: date
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Datastream is the Schema for the Datastreams API. <no value>
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: DatastreamSpec defines the desired state of Datastream
+            properties:
+              deletionPolicy:
+                default: Delete
+                description: |-
+                  DeletionPolicy specifies what will happen to the underlying external
+                  when this managed resource is deleted - either "Delete" or "Orphan" the
+                  external resource.
+                  This field is planned to be deprecated in favor of the ManagementPolicies
+                  field in a future release. Currently, both could be set independently and
+                  non-default values would be honored if the feature flag is enabled.
+                  See the design doc for more information: https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223
+                enum:
+                - Orphan
+                - Delete
+                type: string
+              forProvider:
+                properties:
+                  active:
+                    description: Defining if stream should be active or not
+                    type: boolean
+                  azureConnector:
+                    items:
+                      properties:
+                        accessKeySecretRef:
+                          description: Access keys associated with Azure Storage account
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        accountName:
+                          description: Specifies the Azure Storage account name
+                          type: string
+                        containerName:
+                          description: Specifies the Azure Storage container name
+                          type: string
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        path:
+                          description: The path to the folder within Azure Storage
+                            container where logs will be stored
+                          type: string
+                      type: object
+                    type: array
+                  collectMidgress:
+                    description: Identifies if stream needs to collect midgress data
+                    type: boolean
+                  contractId:
+                    description: Identifies the contract that has access to the product
+                    type: string
+                  datadogConnector:
+                    items:
+                      properties:
+                        authTokenSecretRef:
+                          description: The API key associated with Datadog account
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        compressLogs:
+                          description: Indicates whether the logs should be compressed
+                          type: boolean
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        endpoint:
+                          description: The Datadog endpoint where logs will be stored
+                          type: string
+                        service:
+                          description: The service of the Datadog connector
+                          type: string
+                        source:
+                          description: The source of the Datadog connector
+                          type: string
+                        tags:
+                          description: The tags of the Datadog connector
+                          type: string
+                      type: object
+                    type: array
+                  datasetFields:
+                    description: A list of data set fields selected from the associated
+                      template that the stream monitors in logs. The order of the
+                      identifiers define how the value for these fields appear in
+                      the log lines
+                    items:
+                      type: number
+                    type: array
+                  deliveryConfiguration:
+                    description: Provides information about the configuration related
+                      to logs (format, file names, delivery frequency)
+                    items:
+                      properties:
+                        fieldDelimiter:
+                          description: A delimiter that you use to separate data set
+                            fields in log lines
+                          type: string
+                        format:
+                          description: The format in which logs will be received
+                          type: string
+                        frequency:
+                          description: The frequency of collecting logs from each
+                            uploader and sending these logs to a destination
+                          items:
+                            properties:
+                              intervalInSecs:
+                                description: The time in seconds after which the system
+                                  bundles log lines into a file and sends it to a
+                                  destination
+                                type: number
+                            type: object
+                          type: array
+                        uploadFilePrefix:
+                          description: The prefix of the log file that will be send
+                            to a destination
+                          type: string
+                        uploadFileSuffix:
+                          description: The suffix of the log file that will be send
+                            to a destination
+                          type: string
+                      type: object
+                    type: array
+                  elasticsearchConnector:
+                    items:
+                      properties:
+                        caCertSecretRef:
+                          description: The certification authority (CA) certificate
+                            used to verify the origin server's certificate. If the
+                            certificate is not signed by a well-known certification
+                            authority, enter the CA certificate in the PEM format
+                            for verification.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        clientCertSecretRef:
+                          description: The PEM-formatted digital certificate you want
+                            to authenticate requests to your destination with. If
+                            you want to use mutual authentication, you need to provide
+                            both the client certificate and the client key.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        clientKeySecretRef:
+                          description: The private key in the non-encrypted PKCS8
+                            format you want to use to authenticate with the backend
+                            server. If you want to use mutual authentication, you
+                            need to provide both the client certificate and the client
+                            key.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        contentType:
+                          description: The type of the resource passed in the request's
+                            custom header. For details, see Additional options in
+                            the DataStream user guide.
+                          type: string
+                        customHeaderName:
+                          description: A human-readable name for the request's custom
+                            header, containing only alphanumeric, dash, and underscore
+                            characters. For details, see Additional options in the
+                            DataStream user guide.
+                          type: string
+                        customHeaderValue:
+                          description: The custom header's contents passed with the
+                            request that contains information about the client connection.
+                            For details, see Additional options in the DataStream
+                            user guide.
+                          type: string
+                        displayName:
+                          description: The name of the connector.
+                          type: string
+                        endpoint:
+                          description: The Elasticsearch bulk endpoint URL in the
+                            https://hostname.elastic-cloud.com:9243/_bulk/ format.
+                            Set indexName in the appropriate field instead of providing
+                            it in the URL. You can use Akamaized property hostnames
+                            as endpoint URLs. See Stream logs to Elasticsearch.
+                          type: string
+                        indexNameSecretRef:
+                          description: The index name of the Elastic cloud where you
+                            want to store log files.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        passwordSecretRef:
+                          description: The Elasticsearch basic access authentication
+                            password.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        tlsHostname:
+                          description: The hostname that verifies the server's certificate
+                            and matches the Subject Alternative Names (SANs) in the
+                            certificate. If not provided, DataStream fetches the hostname
+                            from the endpoint URL.
+                          type: string
+                        userNameSecretRef:
+                          description: The Elasticsearch basic access authentication
+                            username.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                      type: object
+                    type: array
+                  gcsConnector:
+                    items:
+                      properties:
+                        bucket:
+                          description: The name of the storage bucket created in Google
+                            Cloud account
+                          type: string
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        path:
+                          description: The path to the folder within Google Cloud
+                            bucket where logs will be stored
+                          type: string
+                        privateKeySecretRef:
+                          description: The contents of the JSON private key generated
+                            and downloaded in Google Cloud Storage account
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        projectId:
+                          description: The unique ID of Google Cloud project
+                          type: string
+                        serviceAccountName:
+                          description: The name of the service account with the storage.object.create
+                            permission or Storage Object Creator role
+                          type: string
+                      type: object
+                    type: array
+                  groupId:
+                    description: Identifies the group that has access to the product
+                      and for which the stream configuration was created
+                    type: string
+                  httpsConnector:
+                    items:
+                      properties:
+                        authenticationType:
+                          description: Either NONE for no authentication, or BASIC
+                            for username and password authentication
+                          type: string
+                        caCertSecretRef:
+                          description: The certification authority (CA) certificate
+                            used to verify the origin server's certificate. If the
+                            certificate is not signed by a well-known certification
+                            authority, enter the CA certificate in the PEM format
+                            for verification.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        clientCertSecretRef:
+                          description: The digital certificate in the PEM format you
+                            want to use to authenticate requests to your destination.
+                            If you want to use mutual authentication, you need to
+                            provide both the client certificate and the client key
+                            (in the PEM format).
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        clientKeySecretRef:
+                          description: The private key in the non-encrypted PKCS8
+                            format you want to use to authenticate with the back-end
+                            server. If you want to use mutual authentication, you
+                            need to provide both the client certificate and the client
+                            key.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        compressLogs:
+                          description: Indicates whether the logs should be compressed
+                          type: boolean
+                        contentType:
+                          description: Content type to pass in the log file header
+                          type: string
+                        customHeaderName:
+                          description: The name of custom header passed with the request
+                            to the destination
+                          type: string
+                        customHeaderValue:
+                          description: The custom header's contents passed with the
+                            request to the destination
+                          type: string
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        endpoint:
+                          description: URL where logs will be stored
+                          type: string
+                        passwordSecretRef:
+                          description: Password set for custom HTTPS endpoint for
+                            authentication
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        tlsHostname:
+                          description: The hostname that verifies the server's certificate
+                            and matches the Subject Alternative Names (SANs) in the
+                            certificate. If not provided, DataStream fetches the hostname
+                            from the endpoint URL.
+                          type: string
+                        userNameSecretRef:
+                          description: Username used for authentication
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                      type: object
+                    type: array
+                  logglyConnector:
+                    items:
+                      properties:
+                        authTokenSecretRef:
+                          description: The unique HTTP code for your Loggly bulk endpoint.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        contentType:
+                          description: The type of the resource passed in the request's
+                            custom header. For details, see Additional options in
+                            the DataStream user guide.
+                          type: string
+                        customHeaderName:
+                          description: A human-readable name for the request's custom
+                            header, containing only alphanumeric, dash, and underscore
+                            characters. For details, see Additional options in the
+                            DataStream user guide.
+                          type: string
+                        customHeaderValue:
+                          description: The custom header's contents passed with the
+                            request that contains information about the client connection.
+                            For details, see Additional options in the DataStream
+                            user guide.
+                          type: string
+                        displayName:
+                          description: The name of the connector.
+                          type: string
+                        endpoint:
+                          description: The Loggly bulk endpoint URL in the https://hostname.loggly.com/bulk/
+                            format. Set the endpoint code in the authToken field instead
+                            of providing it in the URL. You can use Akamaized property
+                            hostnames as endpoint URLs. See Stream logs to Loggly.
+                          type: string
+                        tags:
+                          description: The tags you can use to segment and filter
+                            log events in Loggly. See Tags in the Loggly documentation.
+                          type: string
+                      type: object
+                    type: array
+                  newRelicConnector:
+                    items:
+                      properties:
+                        authTokenSecretRef:
+                          description: Your Log API token for your account in New
+                            Relic.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        contentType:
+                          description: The type of the resource passed in the request's
+                            custom header. For details, see Additional options in
+                            the DataStream user guide.
+                          type: string
+                        customHeaderName:
+                          description: A human-readable name for the request's custom
+                            header, containing only alphanumeric, dash, and underscore
+                            characters. For details, see Additional options in the
+                            DataStream user guide.
+                          type: string
+                        customHeaderValue:
+                          description: The custom header's contents passed with the
+                            request that contains information about the client connection.
+                            For details, see Additional options in the DataStream
+                            user guide.
+                          type: string
+                        displayName:
+                          description: The name of the connector.
+                          type: string
+                        endpoint:
+                          description: A New Relic endpoint URL you want to send your
+                            logs to. The endpoint URL should follow the https://<newrelic.com>/log/v1/
+                            format format. See Introduction to the Log API https://docs.newrelic.com/docs/logs/log-api/introduction-log-api/
+                            if you want to retrieve your New Relic endpoint URL.
+                          type: string
+                      type: object
+                    type: array
+                  notificationEmails:
+                    description: List of email addresses where the system sends notifications
+                      about activations and deactivations of the stream
+                    items:
+                      type: string
+                    type: array
+                  oracleConnector:
+                    items:
+                      properties:
+                        accessKeySecretRef:
+                          description: The access key identifier used to authenticate
+                            requests to the Oracle Cloud account
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        bucket:
+                          description: The name of the Oracle Cloud Storage bucket
+                          type: string
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        namespace:
+                          description: The namespace of Oracle Cloud Storage account
+                          type: string
+                        path:
+                          description: The path to the folder within your Oracle Cloud
+                            Storage bucket where logs will be stored
+                          type: string
+                        region:
+                          description: The Oracle Cloud Storage region where bucket
+                            resides
+                          type: string
+                        secretAccessKeySecretRef:
+                          description: The secret access key identifier used to authenticate
+                            requests to the Oracle Cloud account
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                      type: object
+                    type: array
+                  properties:
+                    description: Identifies the properties monitored in the stream
+                    items:
+                      type: string
+                    type: array
+                  s3Connector:
+                    items:
+                      properties:
+                        accessKeySecretRef:
+                          description: The access key identifier used to authenticate
+                            requests to the Amazon S3 account
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        bucket:
+                          description: The name of the Amazon S3 bucket
+                          type: string
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        path:
+                          description: The path to the folder within Amazon S3 bucket
+                            where logs will be stored
+                          type: string
+                        region:
+                          description: The AWS region where Amazon S3 bucket resides
+                          type: string
+                        secretAccessKeySecretRef:
+                          description: The secret access key identifier used to authenticate
+                            requests to the Amazon S3 account
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                      type: object
+                    type: array
+                  splunkConnector:
+                    items:
+                      properties:
+                        caCertSecretRef:
+                          description: The certification authority (CA) certificate
+                            used to verify the origin server's certificate. If the
+                            certificate is not signed by a well-known certification
+                            authority, enter the CA certificate in the PEM format
+                            for verification.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        clientCertSecretRef:
+                          description: The digital certificate in the PEM format you
+                            want to use to authenticate requests to your destination.
+                            If you want to use mutual authentication, you need to
+                            provide both the client certificate and the client key
+                            (in the PEM format).
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        clientKeySecretRef:
+                          description: The private key in the non-encrypted PKCS8
+                            format you want to use to authenticate with the back-end
+                            server. If you want to use mutual authentication, you
+                            need to provide both the client certificate and the client
+                            key.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        compressLogs:
+                          description: Indicates whether the logs should be compressed
+                          type: boolean
+                        customHeaderName:
+                          description: The name of custom header passed with the request
+                            to the destination
+                          type: string
+                        customHeaderValue:
+                          description: The custom header's contents passed with the
+                            request to the destination
+                          type: string
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        endpoint:
+                          description: The raw event Splunk URL where logs will be
+                            stored
+                          type: string
+                        eventCollectorTokenSecretRef:
+                          description: The Event Collector token associated with Splunk
+                            account
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        tlsHostname:
+                          description: The hostname that verifies the server's certificate
+                            and matches the Subject Alternative Names (SANs) in the
+                            certificate. If not provided, DataStream fetches the hostname
+                            from the endpoint URL.
+                          type: string
+                      type: object
+                    type: array
+                  streamName:
+                    description: The name of the stream
+                    type: string
+                  sumologicConnector:
+                    items:
+                      properties:
+                        collectorCodeSecretRef:
+                          description: The unique HTTP collector code of Sumo Logic
+                            endpoint
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        compressLogs:
+                          description: Indicates whether the logs should be compressed
+                          type: boolean
+                        contentType:
+                          description: Content type to pass in the log file header
+                          type: string
+                        customHeaderName:
+                          description: The name of custom header passed with the request
+                            to the destination
+                          type: string
+                        customHeaderValue:
+                          description: The custom header's contents passed with the
+                            request to the destination
+                          type: string
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        endpoint:
+                          description: The Sumo Logic collection endpoint where logs
+                            will be stored
+                          type: string
+                      type: object
+                    type: array
+                type: object
+              initProvider:
+                description: |-
+                  THIS IS A BETA FIELD. It will be honored
+                  unless the Management Policies feature flag is disabled.
+                  InitProvider holds the same fields as ForProvider, with the exception
+                  of Identifier and other resource reference fields. The fields that are
+                  in InitProvider are merged into ForProvider when the resource is created.
+                  The same fields are also added to the terraform ignore_changes hook, to
+                  avoid updating them after creation. This is useful for fields that are
+                  required on creation, but we do not desire to update them after creation,
+                  for example because of an external controller is managing them, like an
+                  autoscaler.
+                properties:
+                  active:
+                    description: Defining if stream should be active or not
+                    type: boolean
+                  azureConnector:
+                    items:
+                      properties:
+                        accessKeySecretRef:
+                          description: Access keys associated with Azure Storage account
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        accountName:
+                          description: Specifies the Azure Storage account name
+                          type: string
+                        containerName:
+                          description: Specifies the Azure Storage container name
+                          type: string
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        path:
+                          description: The path to the folder within Azure Storage
+                            container where logs will be stored
+                          type: string
+                      required:
+                      - accessKeySecretRef
+                      type: object
+                    type: array
+                  collectMidgress:
+                    description: Identifies if stream needs to collect midgress data
+                    type: boolean
+                  contractId:
+                    description: Identifies the contract that has access to the product
+                    type: string
+                  datadogConnector:
+                    items:
+                      properties:
+                        authTokenSecretRef:
+                          description: The API key associated with Datadog account
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        compressLogs:
+                          description: Indicates whether the logs should be compressed
+                          type: boolean
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        endpoint:
+                          description: The Datadog endpoint where logs will be stored
+                          type: string
+                        service:
+                          description: The service of the Datadog connector
+                          type: string
+                        source:
+                          description: The source of the Datadog connector
+                          type: string
+                        tags:
+                          description: The tags of the Datadog connector
+                          type: string
+                      required:
+                      - authTokenSecretRef
+                      type: object
+                    type: array
+                  datasetFields:
+                    description: A list of data set fields selected from the associated
+                      template that the stream monitors in logs. The order of the
+                      identifiers define how the value for these fields appear in
+                      the log lines
+                    items:
+                      type: number
+                    type: array
+                  deliveryConfiguration:
+                    description: Provides information about the configuration related
+                      to logs (format, file names, delivery frequency)
+                    items:
+                      properties:
+                        fieldDelimiter:
+                          description: A delimiter that you use to separate data set
+                            fields in log lines
+                          type: string
+                        format:
+                          description: The format in which logs will be received
+                          type: string
+                        frequency:
+                          description: The frequency of collecting logs from each
+                            uploader and sending these logs to a destination
+                          items:
+                            properties:
+                              intervalInSecs:
+                                description: The time in seconds after which the system
+                                  bundles log lines into a file and sends it to a
+                                  destination
+                                type: number
+                            type: object
+                          type: array
+                        uploadFilePrefix:
+                          description: The prefix of the log file that will be send
+                            to a destination
+                          type: string
+                        uploadFileSuffix:
+                          description: The suffix of the log file that will be send
+                            to a destination
+                          type: string
+                      type: object
+                    type: array
+                  elasticsearchConnector:
+                    items:
+                      properties:
+                        caCertSecretRef:
+                          description: The certification authority (CA) certificate
+                            used to verify the origin server's certificate. If the
+                            certificate is not signed by a well-known certification
+                            authority, enter the CA certificate in the PEM format
+                            for verification.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        clientCertSecretRef:
+                          description: The PEM-formatted digital certificate you want
+                            to authenticate requests to your destination with. If
+                            you want to use mutual authentication, you need to provide
+                            both the client certificate and the client key.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        clientKeySecretRef:
+                          description: The private key in the non-encrypted PKCS8
+                            format you want to use to authenticate with the backend
+                            server. If you want to use mutual authentication, you
+                            need to provide both the client certificate and the client
+                            key.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        contentType:
+                          description: The type of the resource passed in the request's
+                            custom header. For details, see Additional options in
+                            the DataStream user guide.
+                          type: string
+                        customHeaderName:
+                          description: A human-readable name for the request's custom
+                            header, containing only alphanumeric, dash, and underscore
+                            characters. For details, see Additional options in the
+                            DataStream user guide.
+                          type: string
+                        customHeaderValue:
+                          description: The custom header's contents passed with the
+                            request that contains information about the client connection.
+                            For details, see Additional options in the DataStream
+                            user guide.
+                          type: string
+                        displayName:
+                          description: The name of the connector.
+                          type: string
+                        endpoint:
+                          description: The Elasticsearch bulk endpoint URL in the
+                            https://hostname.elastic-cloud.com:9243/_bulk/ format.
+                            Set indexName in the appropriate field instead of providing
+                            it in the URL. You can use Akamaized property hostnames
+                            as endpoint URLs. See Stream logs to Elasticsearch.
+                          type: string
+                        indexNameSecretRef:
+                          description: The index name of the Elastic cloud where you
+                            want to store log files.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        passwordSecretRef:
+                          description: The Elasticsearch basic access authentication
+                            password.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        tlsHostname:
+                          description: The hostname that verifies the server's certificate
+                            and matches the Subject Alternative Names (SANs) in the
+                            certificate. If not provided, DataStream fetches the hostname
+                            from the endpoint URL.
+                          type: string
+                        userNameSecretRef:
+                          description: The Elasticsearch basic access authentication
+                            username.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                      required:
+                      - indexNameSecretRef
+                      - passwordSecretRef
+                      - userNameSecretRef
+                      type: object
+                    type: array
+                  gcsConnector:
+                    items:
+                      properties:
+                        bucket:
+                          description: The name of the storage bucket created in Google
+                            Cloud account
+                          type: string
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        path:
+                          description: The path to the folder within Google Cloud
+                            bucket where logs will be stored
+                          type: string
+                        privateKeySecretRef:
+                          description: The contents of the JSON private key generated
+                            and downloaded in Google Cloud Storage account
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        projectId:
+                          description: The unique ID of Google Cloud project
+                          type: string
+                        serviceAccountName:
+                          description: The name of the service account with the storage.object.create
+                            permission or Storage Object Creator role
+                          type: string
+                      required:
+                      - privateKeySecretRef
+                      type: object
+                    type: array
+                  groupId:
+                    description: Identifies the group that has access to the product
+                      and for which the stream configuration was created
+                    type: string
+                  httpsConnector:
+                    items:
+                      properties:
+                        authenticationType:
+                          description: Either NONE for no authentication, or BASIC
+                            for username and password authentication
+                          type: string
+                        caCertSecretRef:
+                          description: The certification authority (CA) certificate
+                            used to verify the origin server's certificate. If the
+                            certificate is not signed by a well-known certification
+                            authority, enter the CA certificate in the PEM format
+                            for verification.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        clientCertSecretRef:
+                          description: The digital certificate in the PEM format you
+                            want to use to authenticate requests to your destination.
+                            If you want to use mutual authentication, you need to
+                            provide both the client certificate and the client key
+                            (in the PEM format).
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        clientKeySecretRef:
+                          description: The private key in the non-encrypted PKCS8
+                            format you want to use to authenticate with the back-end
+                            server. If you want to use mutual authentication, you
+                            need to provide both the client certificate and the client
+                            key.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        compressLogs:
+                          description: Indicates whether the logs should be compressed
+                          type: boolean
+                        contentType:
+                          description: Content type to pass in the log file header
+                          type: string
+                        customHeaderName:
+                          description: The name of custom header passed with the request
+                            to the destination
+                          type: string
+                        customHeaderValue:
+                          description: The custom header's contents passed with the
+                            request to the destination
+                          type: string
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        endpoint:
+                          description: URL where logs will be stored
+                          type: string
+                        passwordSecretRef:
+                          description: Password set for custom HTTPS endpoint for
+                            authentication
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        tlsHostname:
+                          description: The hostname that verifies the server's certificate
+                            and matches the Subject Alternative Names (SANs) in the
+                            certificate. If not provided, DataStream fetches the hostname
+                            from the endpoint URL.
+                          type: string
+                        userNameSecretRef:
+                          description: Username used for authentication
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                      type: object
+                    type: array
+                  logglyConnector:
+                    items:
+                      properties:
+                        authTokenSecretRef:
+                          description: The unique HTTP code for your Loggly bulk endpoint.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        contentType:
+                          description: The type of the resource passed in the request's
+                            custom header. For details, see Additional options in
+                            the DataStream user guide.
+                          type: string
+                        customHeaderName:
+                          description: A human-readable name for the request's custom
+                            header, containing only alphanumeric, dash, and underscore
+                            characters. For details, see Additional options in the
+                            DataStream user guide.
+                          type: string
+                        customHeaderValue:
+                          description: The custom header's contents passed with the
+                            request that contains information about the client connection.
+                            For details, see Additional options in the DataStream
+                            user guide.
+                          type: string
+                        displayName:
+                          description: The name of the connector.
+                          type: string
+                        endpoint:
+                          description: The Loggly bulk endpoint URL in the https://hostname.loggly.com/bulk/
+                            format. Set the endpoint code in the authToken field instead
+                            of providing it in the URL. You can use Akamaized property
+                            hostnames as endpoint URLs. See Stream logs to Loggly.
+                          type: string
+                        tags:
+                          description: The tags you can use to segment and filter
+                            log events in Loggly. See Tags in the Loggly documentation.
+                          type: string
+                      required:
+                      - authTokenSecretRef
+                      type: object
+                    type: array
+                  newRelicConnector:
+                    items:
+                      properties:
+                        authTokenSecretRef:
+                          description: Your Log API token for your account in New
+                            Relic.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        contentType:
+                          description: The type of the resource passed in the request's
+                            custom header. For details, see Additional options in
+                            the DataStream user guide.
+                          type: string
+                        customHeaderName:
+                          description: A human-readable name for the request's custom
+                            header, containing only alphanumeric, dash, and underscore
+                            characters. For details, see Additional options in the
+                            DataStream user guide.
+                          type: string
+                        customHeaderValue:
+                          description: The custom header's contents passed with the
+                            request that contains information about the client connection.
+                            For details, see Additional options in the DataStream
+                            user guide.
+                          type: string
+                        displayName:
+                          description: The name of the connector.
+                          type: string
+                        endpoint:
+                          description: A New Relic endpoint URL you want to send your
+                            logs to. The endpoint URL should follow the https://<newrelic.com>/log/v1/
+                            format format. See Introduction to the Log API https://docs.newrelic.com/docs/logs/log-api/introduction-log-api/
+                            if you want to retrieve your New Relic endpoint URL.
+                          type: string
+                      required:
+                      - authTokenSecretRef
+                      type: object
+                    type: array
+                  notificationEmails:
+                    description: List of email addresses where the system sends notifications
+                      about activations and deactivations of the stream
+                    items:
+                      type: string
+                    type: array
+                  oracleConnector:
+                    items:
+                      properties:
+                        accessKeySecretRef:
+                          description: The access key identifier used to authenticate
+                            requests to the Oracle Cloud account
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        bucket:
+                          description: The name of the Oracle Cloud Storage bucket
+                          type: string
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        namespace:
+                          description: The namespace of Oracle Cloud Storage account
+                          type: string
+                        path:
+                          description: The path to the folder within your Oracle Cloud
+                            Storage bucket where logs will be stored
+                          type: string
+                        region:
+                          description: The Oracle Cloud Storage region where bucket
+                            resides
+                          type: string
+                        secretAccessKeySecretRef:
+                          description: The secret access key identifier used to authenticate
+                            requests to the Oracle Cloud account
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                      required:
+                      - accessKeySecretRef
+                      - secretAccessKeySecretRef
+                      type: object
+                    type: array
+                  properties:
+                    description: Identifies the properties monitored in the stream
+                    items:
+                      type: string
+                    type: array
+                  s3Connector:
+                    items:
+                      properties:
+                        accessKeySecretRef:
+                          description: The access key identifier used to authenticate
+                            requests to the Amazon S3 account
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        bucket:
+                          description: The name of the Amazon S3 bucket
+                          type: string
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        path:
+                          description: The path to the folder within Amazon S3 bucket
+                            where logs will be stored
+                          type: string
+                        region:
+                          description: The AWS region where Amazon S3 bucket resides
+                          type: string
+                        secretAccessKeySecretRef:
+                          description: The secret access key identifier used to authenticate
+                            requests to the Amazon S3 account
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                      required:
+                      - accessKeySecretRef
+                      - secretAccessKeySecretRef
+                      type: object
+                    type: array
+                  splunkConnector:
+                    items:
+                      properties:
+                        caCertSecretRef:
+                          description: The certification authority (CA) certificate
+                            used to verify the origin server's certificate. If the
+                            certificate is not signed by a well-known certification
+                            authority, enter the CA certificate in the PEM format
+                            for verification.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        clientCertSecretRef:
+                          description: The digital certificate in the PEM format you
+                            want to use to authenticate requests to your destination.
+                            If you want to use mutual authentication, you need to
+                            provide both the client certificate and the client key
+                            (in the PEM format).
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        clientKeySecretRef:
+                          description: The private key in the non-encrypted PKCS8
+                            format you want to use to authenticate with the back-end
+                            server. If you want to use mutual authentication, you
+                            need to provide both the client certificate and the client
+                            key.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        compressLogs:
+                          description: Indicates whether the logs should be compressed
+                          type: boolean
+                        customHeaderName:
+                          description: The name of custom header passed with the request
+                            to the destination
+                          type: string
+                        customHeaderValue:
+                          description: The custom header's contents passed with the
+                            request to the destination
+                          type: string
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        endpoint:
+                          description: The raw event Splunk URL where logs will be
+                            stored
+                          type: string
+                        eventCollectorTokenSecretRef:
+                          description: The Event Collector token associated with Splunk
+                            account
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        tlsHostname:
+                          description: The hostname that verifies the server's certificate
+                            and matches the Subject Alternative Names (SANs) in the
+                            certificate. If not provided, DataStream fetches the hostname
+                            from the endpoint URL.
+                          type: string
+                      required:
+                      - eventCollectorTokenSecretRef
+                      type: object
+                    type: array
+                  streamName:
+                    description: The name of the stream
+                    type: string
+                  sumologicConnector:
+                    items:
+                      properties:
+                        collectorCodeSecretRef:
+                          description: The unique HTTP collector code of Sumo Logic
+                            endpoint
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        compressLogs:
+                          description: Indicates whether the logs should be compressed
+                          type: boolean
+                        contentType:
+                          description: Content type to pass in the log file header
+                          type: string
+                        customHeaderName:
+                          description: The name of custom header passed with the request
+                            to the destination
+                          type: string
+                        customHeaderValue:
+                          description: The custom header's contents passed with the
+                            request to the destination
+                          type: string
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        endpoint:
+                          description: The Sumo Logic collection endpoint where logs
+                            will be stored
+                          type: string
+                      required:
+                      - collectorCodeSecretRef
+                      type: object
+                    type: array
+                type: object
+              managementPolicies:
+                default:
+                - '*'
+                description: |-
+                  THIS IS A BETA FIELD. It is on by default but can be opted out
+                  through a Crossplane feature flag.
+                  ManagementPolicies specify the array of actions Crossplane is allowed to
+                  take on the managed and external resources.
+                  This field is planned to replace the DeletionPolicy field in a future
+                  release. Currently, both could be set independently and non-default
+                  values would be honored if the feature flag is enabled. If both are
+                  custom, the DeletionPolicy field will be ignored.
+                  See the design doc for more information: https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223
+                  and this one: https://github.com/crossplane/crossplane/blob/444267e84783136daa93568b364a5f01228cacbe/design/one-pager-ignore-changes.md
+                items:
+                  description: |-
+                    A ManagementAction represents an action that the Crossplane controllers
+                    can take on an external resource.
+                  enum:
+                  - Observe
+                  - Create
+                  - Update
+                  - Delete
+                  - LateInitialize
+                  - '*'
+                  type: string
+                type: array
+              providerConfigRef:
+                default:
+                  name: default
+                description: |-
+                  ProviderConfigReference specifies how the provider that will be used to
+                  create, observe, update, and delete this managed resource should be
+                  configured.
+                properties:
+                  name:
+                    description: Name of the referenced object.
+                    type: string
+                  policy:
+                    description: Policies for referencing.
+                    properties:
+                      resolution:
+                        default: Required
+                        description: |-
+                          Resolution specifies whether resolution of this reference is required.
+                          The default is 'Required', which means the reconcile will fail if the
+                          reference cannot be resolved. 'Optional' means this reference will be
+                          a no-op if it cannot be resolved.
+                        enum:
+                        - Required
+                        - Optional
+                        type: string
+                      resolve:
+                        description: |-
+                          Resolve specifies when this reference should be resolved. The default
+                          is 'IfNotPresent', which will attempt to resolve the reference only when
+                          the corresponding field is not present. Use 'Always' to resolve the
+                          reference on every reconcile.
+                        enum:
+                        - Always
+                        - IfNotPresent
+                        type: string
+                    type: object
+                required:
+                - name
+                type: object
+              publishConnectionDetailsTo:
+                description: |-
+                  PublishConnectionDetailsTo specifies the connection secret config which
+                  contains a name, metadata and a reference to secret store config to
+                  which any connection details for this managed resource should be written.
+                  Connection details frequently include the endpoint, username,
+                  and password required to connect to the managed resource.
+                properties:
+                  configRef:
+                    default:
+                      name: default
+                    description: |-
+                      SecretStoreConfigRef specifies which secret store config should be used
+                      for this ConnectionSecret.
+                    properties:
+                      name:
+                        description: Name of the referenced object.
+                        type: string
+                      policy:
+                        description: Policies for referencing.
+                        properties:
+                          resolution:
+                            default: Required
+                            description: |-
+                              Resolution specifies whether resolution of this reference is required.
+                              The default is 'Required', which means the reconcile will fail if the
+                              reference cannot be resolved. 'Optional' means this reference will be
+                              a no-op if it cannot be resolved.
+                            enum:
+                            - Required
+                            - Optional
+                            type: string
+                          resolve:
+                            description: |-
+                              Resolve specifies when this reference should be resolved. The default
+                              is 'IfNotPresent', which will attempt to resolve the reference only when
+                              the corresponding field is not present. Use 'Always' to resolve the
+                              reference on every reconcile.
+                            enum:
+                            - Always
+                            - IfNotPresent
+                            type: string
+                        type: object
+                    required:
+                    - name
+                    type: object
+                  metadata:
+                    description: Metadata is the metadata for connection secret.
+                    properties:
+                      annotations:
+                        additionalProperties:
+                          type: string
+                        description: |-
+                          Annotations are the annotations to be added to connection secret.
+                          - For Kubernetes secrets, this will be used as "metadata.annotations".
+                          - It is up to Secret Store implementation for others store types.
+                        type: object
+                      labels:
+                        additionalProperties:
+                          type: string
+                        description: |-
+                          Labels are the labels/tags to be added to connection secret.
+                          - For Kubernetes secrets, this will be used as "metadata.labels".
+                          - It is up to Secret Store implementation for others store types.
+                        type: object
+                      type:
+                        description: |-
+                          Type is the SecretType for the connection secret.
+                          - Only valid for Kubernetes Secret Stores.
+                        type: string
+                    type: object
+                  name:
+                    description: Name is the name of the connection secret.
+                    type: string
+                required:
+                - name
+                type: object
+              writeConnectionSecretToRef:
+                description: |-
+                  WriteConnectionSecretToReference specifies the namespace and name of a
+                  Secret to which any connection details for this managed resource should
+                  be written. Connection details frequently include the endpoint, username,
+                  and password required to connect to the managed resource.
+                  This field is planned to be replaced in a future release in favor of
+                  PublishConnectionDetailsTo. Currently, both could be set independently
+                  and connection details would be published to both without affecting
+                  each other.
+                properties:
+                  name:
+                    description: Name of the secret.
+                    type: string
+                  namespace:
+                    description: Namespace of the secret.
+                    type: string
+                required:
+                - name
+                - namespace
+                type: object
+            required:
+            - forProvider
+            type: object
+            x-kubernetes-validations:
+            - message: spec.forProvider.active is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.active)
+                || (has(self.initProvider) && has(self.initProvider.active))'
+            - message: spec.forProvider.contractId is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.contractId)
+                || (has(self.initProvider) && has(self.initProvider.contractId))'
+            - message: spec.forProvider.datasetFields is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.datasetFields)
+                || (has(self.initProvider) && has(self.initProvider.datasetFields))'
+            - message: spec.forProvider.deliveryConfiguration is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.deliveryConfiguration)
+                || (has(self.initProvider) && has(self.initProvider.deliveryConfiguration))'
+            - message: spec.forProvider.groupId is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.groupId)
+                || (has(self.initProvider) && has(self.initProvider.groupId))'
+            - message: spec.forProvider.properties is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.properties)
+                || (has(self.initProvider) && has(self.initProvider.properties))'
+            - message: spec.forProvider.streamName is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.streamName)
+                || (has(self.initProvider) && has(self.initProvider.streamName))'
+          status:
+            description: DatastreamStatus defines the observed state of Datastream.
+            properties:
+              atProvider:
+                properties:
+                  active:
+                    description: Defining if stream should be active or not
+                    type: boolean
+                  azureConnector:
+                    items:
+                      properties:
+                        accountName:
+                          description: Specifies the Azure Storage account name
+                          type: string
+                        compressLogs:
+                          description: Indicates whether the logs should be compressed
+                          type: boolean
+                        containerName:
+                          description: Specifies the Azure Storage container name
+                          type: string
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        path:
+                          description: The path to the folder within Azure Storage
+                            container where logs will be stored
+                          type: string
+                      type: object
+                    type: array
+                  collectMidgress:
+                    description: Identifies if stream needs to collect midgress data
+                    type: boolean
+                  contractId:
+                    description: Identifies the contract that has access to the product
+                    type: string
+                  createdBy:
+                    description: The username who created the stream
+                    type: string
+                  createdDate:
+                    description: The date and time when the stream was created
+                    type: string
+                  datadogConnector:
+                    items:
+                      properties:
+                        compressLogs:
+                          description: Indicates whether the logs should be compressed
+                          type: boolean
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        endpoint:
+                          description: The Datadog endpoint where logs will be stored
+                          type: string
+                        service:
+                          description: The service of the Datadog connector
+                          type: string
+                        source:
+                          description: The source of the Datadog connector
+                          type: string
+                        tags:
+                          description: The tags of the Datadog connector
+                          type: string
+                      type: object
+                    type: array
+                  datasetFields:
+                    description: A list of data set fields selected from the associated
+                      template that the stream monitors in logs. The order of the
+                      identifiers define how the value for these fields appear in
+                      the log lines
+                    items:
+                      type: number
+                    type: array
+                  deliveryConfiguration:
+                    description: Provides information about the configuration related
+                      to logs (format, file names, delivery frequency)
+                    items:
+                      properties:
+                        fieldDelimiter:
+                          description: A delimiter that you use to separate data set
+                            fields in log lines
+                          type: string
+                        format:
+                          description: The format in which logs will be received
+                          type: string
+                        frequency:
+                          description: The frequency of collecting logs from each
+                            uploader and sending these logs to a destination
+                          items:
+                            properties:
+                              intervalInSecs:
+                                description: The time in seconds after which the system
+                                  bundles log lines into a file and sends it to a
+                                  destination
+                                type: number
+                            type: object
+                          type: array
+                        uploadFilePrefix:
+                          description: The prefix of the log file that will be send
+                            to a destination
+                          type: string
+                        uploadFileSuffix:
+                          description: The suffix of the log file that will be send
+                            to a destination
+                          type: string
+                      type: object
+                    type: array
+                  elasticsearchConnector:
+                    items:
+                      properties:
+                        contentType:
+                          description: The type of the resource passed in the request's
+                            custom header. For details, see Additional options in
+                            the DataStream user guide.
+                          type: string
+                        customHeaderName:
+                          description: A human-readable name for the request's custom
+                            header, containing only alphanumeric, dash, and underscore
+                            characters. For details, see Additional options in the
+                            DataStream user guide.
+                          type: string
+                        customHeaderValue:
+                          description: The custom header's contents passed with the
+                            request that contains information about the client connection.
+                            For details, see Additional options in the DataStream
+                            user guide.
+                          type: string
+                        displayName:
+                          description: The name of the connector.
+                          type: string
+                        endpoint:
+                          description: The Elasticsearch bulk endpoint URL in the
+                            https://hostname.elastic-cloud.com:9243/_bulk/ format.
+                            Set indexName in the appropriate field instead of providing
+                            it in the URL. You can use Akamaized property hostnames
+                            as endpoint URLs. See Stream logs to Elasticsearch.
+                          type: string
+                        mTls:
+                          description: Indicates whether mTLS is enabled or not.
+                          type: boolean
+                        tlsHostname:
+                          description: The hostname that verifies the server's certificate
+                            and matches the Subject Alternative Names (SANs) in the
+                            certificate. If not provided, DataStream fetches the hostname
+                            from the endpoint URL.
+                          type: string
+                      type: object
+                    type: array
+                  gcsConnector:
+                    items:
+                      properties:
+                        bucket:
+                          description: The name of the storage bucket created in Google
+                            Cloud account
+                          type: string
+                        compressLogs:
+                          description: Indicates whether the logs should be compressed
+                          type: boolean
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        path:
+                          description: The path to the folder within Google Cloud
+                            bucket where logs will be stored
+                          type: string
+                        projectId:
+                          description: The unique ID of Google Cloud project
+                          type: string
+                        serviceAccountName:
+                          description: The name of the service account with the storage.object.create
+                            permission or Storage Object Creator role
+                          type: string
+                      type: object
+                    type: array
+                  groupId:
+                    description: Identifies the group that has access to the product
+                      and for which the stream configuration was created
+                    type: string
+                  httpsConnector:
+                    items:
+                      properties:
+                        authenticationType:
+                          description: Either NONE for no authentication, or BASIC
+                            for username and password authentication
+                          type: string
+                        compressLogs:
+                          description: Indicates whether the logs should be compressed
+                          type: boolean
+                        contentType:
+                          description: Content type to pass in the log file header
+                          type: string
+                        customHeaderName:
+                          description: The name of custom header passed with the request
+                            to the destination
+                          type: string
+                        customHeaderValue:
+                          description: The custom header's contents passed with the
+                            request to the destination
+                          type: string
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        endpoint:
+                          description: URL where logs will be stored
+                          type: string
+                        mTls:
+                          description: Indicates whether mTLS is enabled or not.
+                          type: boolean
+                        tlsHostname:
+                          description: The hostname that verifies the server's certificate
+                            and matches the Subject Alternative Names (SANs) in the
+                            certificate. If not provided, DataStream fetches the hostname
+                            from the endpoint URL.
+                          type: string
+                      type: object
+                    type: array
+                  id:
+                    type: string
+                  latestVersion:
+                    description: Identifies the latest active configuration version
+                      of the stream
+                    type: number
+                  logglyConnector:
+                    items:
+                      properties:
+                        contentType:
+                          description: The type of the resource passed in the request's
+                            custom header. For details, see Additional options in
+                            the DataStream user guide.
+                          type: string
+                        customHeaderName:
+                          description: A human-readable name for the request's custom
+                            header, containing only alphanumeric, dash, and underscore
+                            characters. For details, see Additional options in the
+                            DataStream user guide.
+                          type: string
+                        customHeaderValue:
+                          description: The custom header's contents passed with the
+                            request that contains information about the client connection.
+                            For details, see Additional options in the DataStream
+                            user guide.
+                          type: string
+                        displayName:
+                          description: The name of the connector.
+                          type: string
+                        endpoint:
+                          description: The Loggly bulk endpoint URL in the https://hostname.loggly.com/bulk/
+                            format. Set the endpoint code in the authToken field instead
+                            of providing it in the URL. You can use Akamaized property
+                            hostnames as endpoint URLs. See Stream logs to Loggly.
+                          type: string
+                        tags:
+                          description: The tags you can use to segment and filter
+                            log events in Loggly. See Tags in the Loggly documentation.
+                          type: string
+                      type: object
+                    type: array
+                  modifiedBy:
+                    description: The username who modified the stream
+                    type: string
+                  modifiedDate:
+                    description: The date and time when the stream was modified
+                    type: string
+                  newRelicConnector:
+                    items:
+                      properties:
+                        contentType:
+                          description: The type of the resource passed in the request's
+                            custom header. For details, see Additional options in
+                            the DataStream user guide.
+                          type: string
+                        customHeaderName:
+                          description: A human-readable name for the request's custom
+                            header, containing only alphanumeric, dash, and underscore
+                            characters. For details, see Additional options in the
+                            DataStream user guide.
+                          type: string
+                        customHeaderValue:
+                          description: The custom header's contents passed with the
+                            request that contains information about the client connection.
+                            For details, see Additional options in the DataStream
+                            user guide.
+                          type: string
+                        displayName:
+                          description: The name of the connector.
+                          type: string
+                        endpoint:
+                          description: A New Relic endpoint URL you want to send your
+                            logs to. The endpoint URL should follow the https://<newrelic.com>/log/v1/
+                            format format. See Introduction to the Log API https://docs.newrelic.com/docs/logs/log-api/introduction-log-api/
+                            if you want to retrieve your New Relic endpoint URL.
+                          type: string
+                      type: object
+                    type: array
+                  notificationEmails:
+                    description: List of email addresses where the system sends notifications
+                      about activations and deactivations of the stream
+                    items:
+                      type: string
+                    type: array
+                  oracleConnector:
+                    items:
+                      properties:
+                        bucket:
+                          description: The name of the Oracle Cloud Storage bucket
+                          type: string
+                        compressLogs:
+                          description: Indicates whether the logs should be compressed
+                          type: boolean
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        namespace:
+                          description: The namespace of Oracle Cloud Storage account
+                          type: string
+                        path:
+                          description: The path to the folder within your Oracle Cloud
+                            Storage bucket where logs will be stored
+                          type: string
+                        region:
+                          description: The Oracle Cloud Storage region where bucket
+                            resides
+                          type: string
+                      type: object
+                    type: array
+                  papiJson:
+                    description: The configuration in JSON format that can be copy-pasted
+                      into PAPI configuration to enable datastream behavior
+                    type: string
+                  productId:
+                    description: The ID of the product for which the stream was created
+                    type: string
+                  properties:
+                    description: Identifies the properties monitored in the stream
+                    items:
+                      type: string
+                    type: array
+                  s3Connector:
+                    items:
+                      properties:
+                        bucket:
+                          description: The name of the Amazon S3 bucket
+                          type: string
+                        compressLogs:
+                          description: Indicates whether the logs should be compressed
+                          type: boolean
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        path:
+                          description: The path to the folder within Amazon S3 bucket
+                            where logs will be stored
+                          type: string
+                        region:
+                          description: The AWS region where Amazon S3 bucket resides
+                          type: string
+                      type: object
+                    type: array
+                  splunkConnector:
+                    items:
+                      properties:
+                        compressLogs:
+                          description: Indicates whether the logs should be compressed
+                          type: boolean
+                        customHeaderName:
+                          description: The name of custom header passed with the request
+                            to the destination
+                          type: string
+                        customHeaderValue:
+                          description: The custom header's contents passed with the
+                            request to the destination
+                          type: string
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        endpoint:
+                          description: The raw event Splunk URL where logs will be
+                            stored
+                          type: string
+                        mTls:
+                          description: Indicates whether mTLS is enabled or not.
+                          type: boolean
+                        tlsHostname:
+                          description: The hostname that verifies the server's certificate
+                            and matches the Subject Alternative Names (SANs) in the
+                            certificate. If not provided, DataStream fetches the hostname
+                            from the endpoint URL.
+                          type: string
+                      type: object
+                    type: array
+                  streamName:
+                    description: The name of the stream
+                    type: string
+                  streamVersion:
+                    description: Identifies the configuration version of the stream
+                    type: number
+                  sumologicConnector:
+                    items:
+                      properties:
+                        compressLogs:
+                          description: Indicates whether the logs should be compressed
+                          type: boolean
+                        contentType:
+                          description: Content type to pass in the log file header
+                          type: string
+                        customHeaderName:
+                          description: The name of custom header passed with the request
+                            to the destination
+                          type: string
+                        customHeaderValue:
+                          description: The custom header's contents passed with the
+                            request to the destination
+                          type: string
+                        displayName:
+                          description: The name of the connector
+                          type: string
+                        endpoint:
+                          description: The Sumo Logic collection endpoint where logs
+                            will be stored
+                          type: string
+                      type: object
+                    type: array
+                type: object
+              conditions:
+                description: Conditions of the resource.
+                items:
+                  description: A Condition that may apply to a resource.
+                  properties:
+                    lastTransitionTime:
+                      description: |-
+                        LastTransitionTime is the last time this condition transitioned from one
+                        status to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: |-
+                        A Message containing details about this condition's last transition from
+                        one status to another, if any.
+                      type: string
+                    observedGeneration:
+                      description: |-
+                        ObservedGeneration represents the .metadata.generation that the condition was set based upon.
+                        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
+                        with respect to the current state of the instance.
+                      format: int64
+                      type: integer
+                    reason:
+                      description: A Reason for this condition's last transition from
+                        one status to another.
+                      type: string
+                    status:
+                      description: Status of this condition; is it currently True,
+                        False, or Unknown?
+                      type: string
+                    type:
+                      description: |-
+                        Type of this condition. At most one of each condition type may apply to
+                        a resource at any point in time.
+                      type: string
+                  required:
+                  - lastTransitionTime
+                  - reason
+                  - status
+                  - type
+                  type: object
+                type: array
+                x-kubernetes-list-map-keys:
+                - type
+                x-kubernetes-list-type: map
+              observedGeneration:
+                description: |-
+                  ObservedGeneration is the latest metadata.generation
+                  which resulted in either a ready state, or stalled due to error
+                  it can not recover from without human intervention.
+                format: int64
+                type: integer
+            type: object
+        required:
+        - spec
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

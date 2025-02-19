@@ -1,40 +1,1992 @@
-name: hashicorp/null
+name: akamai/akamai
 resources:
-    null_resource:
+    akamai_appsec_aap_selected_hostnames Resource - akamai:
         subCategory: ""
-        description: The null_resource resource implements the standard resource lifecycle but takes no further action. On Terraform 1.4 and later, use the terraform_data resource type https://developer.hashicorp.com/terraform/language/resources/terraform-data instead. The triggers argument allows specifying an arbitrary set of values that, when changed, will cause the resource to be replaced.
-        name: null_resource
-        title: null_resource Resource - terraform-provider-null
-        examples:
-            - name: cluster
-              manifest: |-
-                {
-                  "connection": [
-                    {
-                      "host": "${element(aws_instance.cluster[*].public_ip, 0)}"
-                    }
-                  ],
-                  "provisioner": {
-                    "remote-exec": [
-                      {
-                        "inline": [
-                          "bootstrap-cluster.sh ${join(\" \",\n      aws_instance.cluster[*].private_ip)}"
-                        ]
-                      }
-                    ]
-                  },
-                  "triggers": {
-                    "cluster_instance_ids": "${join(\",\", aws_instance.cluster[*].id)}"
-                  }
-                }
-              dependencies:
-                aws_instance.cluster: |-
-                    {
-                      "ami": "ami-0dcc1e21636832c5d",
-                      "count": 3,
-                      "instance_type": "m5.large"
-                    }
+        name: akamai_appsec_aap_selected_hostnames Resource - akamai
+        title: akamai_appsec_aap_selected_hostnames Resource - akamai
         argumentDocs:
-            id: (String) This is set to a random value at create time.
-            triggers: (Map of String) A map of arbitrary strings that, when changed, will force the null resource to be replaced, re-running any associated provisioners.
+            config_id: (Number) Unique identifier of the security configuration
+            evaluated_hosts: (Set of String) List of hostnames to be evaluated
+            id: (String) The ID of this resource.
+            protected_hosts: (Set of String) List of hostnames to be protected
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_activations Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_activations Resource - akamai
+        title: akamai_appsec_activations Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration to be activated
+            default: (String)
+            id: (String) The ID of this resource.
+            network: (String) Network on which to activate the configuration version (STAGING or PRODUCTION)
+            note: (String) Note describing the activation. Will use timestamp if omitted.
+            notification_emails: (Set of String) List of email addresses to be notified with the results of the activation
+            status: (String) The results of the activation
+            timeouts: (Block, Optional) (see below for nested schema)
+            version: (Number) Version of the security configuration to be activated
+        importStatements: []
+    akamai_appsec_advanced_settings_attack_payload_logging Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_advanced_settings_attack_payload_logging Resource - akamai
+        title: akamai_appsec_advanced_settings_attack_payload_logging Resource - akamai
+        argumentDocs:
+            attack_payload_logging: (String) Whether to enable, disable, or update attack payload logging settings
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_advanced_settings_evasive_path_match Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_advanced_settings_evasive_path_match Resource - akamai
+        title: akamai_appsec_advanced_settings_evasive_path_match Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            enable_path_match: (Boolean) Whether to enable the evasive path match setting
+            id: (String) The ID of this resource.
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_advanced_settings_logging Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_advanced_settings_logging Resource - akamai
+        title: akamai_appsec_advanced_settings_logging Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            logging: (String) Whether to enable, disable, or update HTTP header logging settings
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_advanced_settings_pii_learning Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_advanced_settings_pii_learning Resource - akamai
+        title: akamai_appsec_advanced_settings_pii_learning Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            enable_pii_learning: (Boolean) Whether to enable the PII learning advanced setting
+            id: (String) The ID of this resource.
+        importStatements: []
+    akamai_appsec_advanced_settings_pragma_header Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_advanced_settings_pragma_header Resource - akamai
+        title: akamai_appsec_advanced_settings_pragma_header Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            pragma_header: (String) JSON-formatted information describing the conditions to exclude from the default remove action
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_advanced_settings_prefetch Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_advanced_settings_prefetch Resource - akamai
+        title: akamai_appsec_advanced_settings_prefetch Resource - akamai
+        argumentDocs:
+            all_extensions: (Boolean) Whether to enable prefetch requests for all file extensions
+            config_id: (Number) Unique identifier of the security configuration
+            enable_app_layer: (Boolean) Whether to enable or disable prefetch requests
+            enable_rate_controls: (Boolean) Whether to enable prefetch requests for rate controls
+            extensions: (Set of String) List of file extensions
+            id: (String) The ID of this resource.
+        importStatements: []
+    akamai_appsec_advanced_settings_request_body Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_advanced_settings_request_body Resource - akamai
+        title: akamai_appsec_advanced_settings_request_body Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            request_body_inspection_limit: (String) Request body inspection size limit in KB allowed values are 'default', 8, 16, 32
+            request_body_inspection_limit_override: (Boolean) Indicates if the Request body inspection size should be overridden at policy
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_api_constraints_protection Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_api_constraints_protection Resource - akamai
+        title: akamai_appsec_api_constraints_protection Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            enabled: (Boolean) Whether to enable API constraints protection
+            id: (String) The ID of this resource.
+            output_text: (String) Text representation
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_api_request_constraints Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_api_request_constraints Resource - akamai
+        title: akamai_appsec_api_request_constraints Resource - akamai
+        argumentDocs:
+            action: (String) Action to be taken when the API request constraint is triggered
+            api_endpoint_id: (Number) Unique identifier of the API endpoint to which the constraint will be assigned
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_attack_group Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_attack_group Resource - akamai
+        title: akamai_appsec_attack_group Resource - akamai
+        argumentDocs:
+            attack_group: (String) Unique name of the attack group to be modified
+            attack_group_action: (String) Action to be taken when the attack group is triggered
+            condition_exception: (String) JSON-formatted condition and exception information for the attack group
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_bypass_network_lists Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_bypass_network_lists Resource - akamai
+        title: akamai_appsec_bypass_network_lists Resource - akamai
+        argumentDocs:
+            bypass_network_list: (Set of String) List of network list IDs that compose the bypass list
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            security_policy_id: (String) The unique identifier of the security policy governing the bypass network lists
+        importStatements: []
+    akamai_appsec_configuration Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_configuration Resource - akamai
+        title: akamai_appsec_configuration Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the new security configuration
+            contract_id: (String) Unique identifier of the Akamai contract associated with the new configuration
+            create_from_config_id: (Number) Unique identifier of the existing configuration being cloned to create the new configuration
+            create_from_version: (Number) Version number of the existing configuration being cloned to create the new configuration
+            description: (String) Brief description of the new configuration
+            group_id: (Number) Unique identifier of the contract group associated with the new configuration
+            host_names: (Set of String) Hostnames to be protected by the new configuration
+            id: (String) The ID of this resource.
+            name: (String) Name of the new configuration
+        importStatements: []
+    akamai_appsec_configuration_rename Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_configuration_rename Resource - akamai
+        title: akamai_appsec_configuration_rename Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            description: (String) Brief description of the security configuration
+            id: (String) The ID of this resource.
+            name: (String) New name for the security configuration
+        importStatements: []
+    akamai_appsec_custom_deny Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_custom_deny Resource - akamai
+        title: akamai_appsec_custom_deny Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            custom_deny: (String) JSON-formatted information about the properties and property values for the custom deny
+            custom_deny_id: (String) custom_deny_id
+            id: (String) The ID of this resource.
+        importStatements: []
+    akamai_appsec_custom_rule Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_custom_rule Resource - akamai
+        title: akamai_appsec_custom_rule Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            custom_rule: (String) JSON-formatted definition of the custom rule
+            custom_rule_id: (Number)
+            id: (String) The ID of this resource.
+        importStatements: []
+    akamai_appsec_custom_rule_action Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_custom_rule_action Resource - akamai
+        title: akamai_appsec_custom_rule_action Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            custom_rule_action: (String) Action to be taken when the custom rule is invoked
+            custom_rule_id: (Number) Unique identifier of the custom rule whose action is being modified
+            id: (String) The ID of this resource.
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_eval Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_eval Resource - akamai
+        title: akamai_appsec_eval Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            current_ruleset: (String) Versioning information for the Kona Rule Set currently in use in production
+            eval_mode: (String) Evaluation mode (ASE_AUTO or ASE_MANUAL)
+            eval_operation: (String) Evaluation mode operation (START, STOP, RESTART, UPDATE or COMPLETE)
+            eval_status: (String) Whether an evaluation is currently in progress
+            evaluating_ruleset: (String) Versioning information for the Kona Rule Set being evaluated
+            expiration_date: (String) Date when the evaluation period ends
+            id: (String) The ID of this resource.
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_eval_group Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_eval_group Resource - akamai
+        title: akamai_appsec_eval_group Resource - akamai
+        argumentDocs:
+            attack_group: (String) Unique identifier of the evaluation attack group being modified
+            attack_group_action: (String) Action to be taken when the attack group is triggered
+            condition_exception: (String) JSON-formatted condition and exception information for the evaluation attack group
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_eval_penalty_box Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_eval_penalty_box Resource - akamai
+        title: akamai_appsec_eval_penalty_box Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            penalty_box_action: (String) Action applied to requests from clients in the penalty box
+            penalty_box_protection: (Boolean) Whether to enable the penalty box for the specified security policy
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_eval_penalty_box_conditions Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_eval_penalty_box_conditions Resource - akamai
+        title: akamai_appsec_eval_penalty_box_conditions Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            penalty_box_conditions: (String) Description of evaluation penalty box conditions
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_eval_rule Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_eval_rule Resource - akamai
+        title: akamai_appsec_eval_rule Resource - akamai
+        argumentDocs:
+            condition_exception: (String) JSON-formatted condition and exception information for the evaluation rule
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            rule_action: (String) Action to be taken when the evaluation rule is triggered
+            rule_id: (Number) Unique identifier of the evaluation rule being modified
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_ip_geo Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_ip_geo Resource - akamai
+        title: akamai_appsec_ip_geo Resource - akamai
+        argumentDocs:
+            asn_network_lists: (List of String) List of IDs of ASN network list to be blocked
+            config_id: (Number) Unique identifier of the security configuration
+            exception_ip_network_lists: (List of String) List of IDs of network list that are always allowed
+            geo_network_lists: (List of String) List of IDs of geographic network list to be blocked
+            id: (String) The ID of this resource.
+            ip_network_lists: (List of String) List of IDs of IP network list to be blocked
+            mode: (String) Protection mode (block or allow)
+            security_policy_id: (String) Unique identifier of the security policy
+            ukraine_geo_control_action: (String) Action set for Ukraine geo control
+        importStatements: []
+    akamai_appsec_ip_geo_protection Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_ip_geo_protection Resource - akamai
+        title: akamai_appsec_ip_geo_protection Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            enabled: (Boolean) Whether to enable IP/Geo protection
+            id: (String) The ID of this resource.
+            output_text: (String) Text representation
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_malware_policy Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_malware_policy Resource - akamai
+        title: akamai_appsec_malware_policy Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            malware_policy: (String) JSON-formatted definition of the malware policy
+            malware_policy_id: (Number) Unique identifier of the malware policy
+        importStatements: []
+    akamai_appsec_malware_policy_action Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_malware_policy_action Resource - akamai
+        title: akamai_appsec_malware_policy_action Resource - akamai
+        argumentDocs:
+            action: (String) Action to be taken for requests scanned according to the malware policy
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            malware_policy_id: (Number) Unique identifier of the malware policy
+            security_policy_id: (String) Unique identifier of the security policy
+            unscanned_action: (String) Action to be taken for requests not scanned according to the malware policy
+        importStatements: []
+    akamai_appsec_malware_policy_actions Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_malware_policy_actions Resource - akamai
+        title: akamai_appsec_malware_policy_actions Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            malware_policy_actions: (String) JSON-formatted list of malware policies and their associated actions
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_malware_protection Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_malware_protection Resource - akamai
+        title: akamai_appsec_malware_protection Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            enabled: (Boolean) Whether to enable malware protection
+            id: (String) The ID of this resource.
+            output_text: (String) Text representation
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_match_target Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_match_target Resource - akamai
+        title: akamai_appsec_match_target Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            match_target: (String) JSON-formatted definition of the match target
+            match_target_id: (Number) Unique identifier of the match target
+        importStatements: []
+    akamai_appsec_match_target_sequence Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_match_target_sequence Resource - akamai
+        title: akamai_appsec_match_target_sequence Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            match_target_sequence: (String) JSON-formatted definition of the processing sequence for all defined match targets
+        importStatements: []
+    akamai_appsec_penalty_box Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_penalty_box Resource - akamai
+        title: akamai_appsec_penalty_box Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            penalty_box_action: (String) The action to be taken when the penalty box is triggered
+            penalty_box_protection: (Boolean) Whether to enable the penalty box for the specified security policy
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_penalty_box_conditions Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_penalty_box_conditions Resource - akamai
+        title: akamai_appsec_penalty_box_conditions Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            penalty_box_conditions: (String) Describes the conditions and the operator to be applied for penalty box
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_rapid_rules Resource - akamai:
+        subCategory: ""
+        description: Rapid rule resource.
+        name: akamai_appsec_rapid_rules Resource - akamai
+        title: akamai_appsec_rapid_rules Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            default_action: (String) Default action that applies to violations of all rapid rules
+            enabled: (Boolean) Hidden attribute containing information about rapid rules status enabled/disabled
+            id: (String) Identifier of the resource
+            rule_definitions: (String) JSON-formatted list of rule definition (ID, action, action lock and exception)
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_rate_policy Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_rate_policy Resource - akamai
+        title: akamai_appsec_rate_policy Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            rate_policy: (String) JSON-formatted definition of the rate policy
+            rate_policy_id: (Number) Unique identifier of the rate policy
+        importStatements: []
+    akamai_appsec_rate_policy_action Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_rate_policy_action Resource - akamai
+        title: akamai_appsec_rate_policy_action Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            ipv4_action: (String) Action to be taken for requests coming from an IPv4 address
+            ipv6_action: (String) Action to be taken for requests coming from an IPv6 address
+            rate_policy_id: (Number) Unique identifier of the rate policy
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_rate_protection Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_rate_protection Resource - akamai
+        title: akamai_appsec_rate_protection Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            enabled: (Boolean)
+            id: (String) The ID of this resource.
+            output_text: (String) Text representation
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_reputation_profile Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_reputation_profile Resource - akamai
+        title: akamai_appsec_reputation_profile Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            reputation_profile: (String) JSON-formatted definition of the reputation profile
+            reputation_profile_id: (Number) Unique identifier of the reputation profile
+        importStatements: []
+    akamai_appsec_reputation_profile_action Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_reputation_profile_action Resource - akamai
+        title: akamai_appsec_reputation_profile_action Resource - akamai
+        argumentDocs:
+            action: (String) Action to be taken when the reputation profile is triggered
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            reputation_profile_id: (Number) Unique identifier of the reputation profile
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_reputation_profile_analysis Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_reputation_profile_analysis Resource - akamai
+        title: akamai_appsec_reputation_profile_analysis Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            forward_shared_ip_to_http_header_siem: (Boolean) Whether to add a value indicating that shared IPs are included in HTTP header and SIEM integration
+            forward_to_http_header: (Boolean) Whether to add client reputation details to requests forwarded to the origin server
+            id: (String) The ID of this resource.
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_reputation_protection Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_reputation_protection Resource - akamai
+        title: akamai_appsec_reputation_protection Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            enabled: (Boolean) Whether to enable reputation protection
+            id: (String) The ID of this resource.
+            output_text: (String) Text representation
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_rule Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_rule Resource - akamai
+        title: akamai_appsec_rule Resource - akamai
+        argumentDocs:
+            condition_exception: (String) JSON-formatted condition and exception information for the rule
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            rule_action: (String) Action to be taken when the rule is triggered
+            rule_id: (Number) Unique identifier of the rule
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_rule_upgrade Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_rule_upgrade Resource - akamai
+        title: akamai_appsec_rule_upgrade Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            current_ruleset: (String) Versioning information for the current KRS rule set
+            eval_status: (String) Whether an evaluation is currently in progress
+            id: (String) The ID of this resource.
+            mode: (String) Upgrade mode (KRS, AAG, ASE_MANUAL or ASE_AUTO)
+            security_policy_id: (String) Unique identifier of the security policy
+            upgrade_mode: (String) Modifies the upgrade type for organizations running the ASE beta (ASE_AUTO or ASE_MANUAL)
+        importStatements: []
+    akamai_appsec_security_policy Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_security_policy Resource - akamai
+        title: akamai_appsec_security_policy Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            create_from_security_policy_id: (String) Unique identifier of the existing security policy being cloned
+            default_settings: (Boolean) Whether to assign default settings to the new security policy
+            id: (String) The ID of this resource.
+            security_policy_id: (String) Unique identifier of the new security policy
+            security_policy_name: (String) Name of the new security policy
+            security_policy_prefix: (String) Four-character alphanumeric string prefix used in creating the security policy ID
+        importStatements: []
+    akamai_appsec_security_policy_default_protections Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_security_policy_default_protections Resource - akamai
+        title: akamai_appsec_security_policy_default_protections Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            security_policy_id: (String) Unique identifier of the new security policy
+            security_policy_name: (String) Name of the new security policy
+            security_policy_prefix: (String) Four-character alphanumeric string prefix used in creating the security policy ID
+        importStatements: []
+    akamai_appsec_security_policy_rename Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_security_policy_rename Resource - akamai
+        title: akamai_appsec_security_policy_rename Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            security_policy_id: (String) Unique identifier of the security policy
+            security_policy_name: (String) New name to be given to the security policy
+        importStatements: []
+    akamai_appsec_siem_settings Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_siem_settings Resource - akamai
+        title: akamai_appsec_siem_settings Resource - akamai
+        argumentDocs:
+            api_request_constraints: (Set of String)
+            apr_protection: (Set of String)
+            bot_management: (Set of String)
+            client_rep: (Set of String)
+            config_id: (Number) Unique identifier of the security configuration
+            custom_rules: (Set of String)
+            enable_botman_siem: (Boolean) Whether Bot Manager events should be included in SIEM events
+            enable_for_all_policies: (Boolean) Whether to enable SIEM on all security policies in the security configuration
+            enable_siem: (Boolean) Whether to enable SIEM
+            exceptions: (List of Object) Describes all the protections and actions to be excluded from SIEM events (see below for nested schema)
+            id: (String) The ID of this resource.
+            ip_geo: (Set of String)
+            malware_protection: (Set of String)
+            rate: (Set of String)
+            security_policy_ids: (Set of String) List of IDs of security policy for which SIEM integration is to be enabled
+            siem_id: (Number) Unique identifier of the SIEM settings being modified
+            slow_post: (Set of String)
+            url_protection: (Set of String)
+            waf: (Set of String)
+        importStatements: []
+    akamai_appsec_slow_post Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_slow_post Resource - akamai
+        title: akamai_appsec_slow_post Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            duration_threshold_timeout: (Number) Maximum amount of time (in seconds) within which the first 8KB of the POST body must be received to avoid triggering the specified action
+            id: (String) The ID of this resource.
+            security_policy_id: (String) Unique identifier of the security policy
+            slow_rate_action: (String) Action to be taken when slow POST protection is triggered
+            slow_rate_threshold_period: (Number) Amount of time (in seconds) that the server should allow a request before marking the request as being too slow
+            slow_rate_threshold_rate: (Number) Average rate (in bytes per second over the specified time period) allowed before the specified action is triggered
+        importStatements: []
+    akamai_appsec_slowpost_protection Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_slowpost_protection Resource - akamai
+        title: akamai_appsec_slowpost_protection Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            enabled: (Boolean) Whether to enable slow POST protection
+            id: (String) The ID of this resource.
+            output_text: (String) Text representation
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_threat_intel Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_threat_intel Resource - akamai
+        title: akamai_appsec_threat_intel Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            security_policy_id: (String) Unique identifier of the security policy
+            threat_intel: (String) Whether threat intelligence protection should be on or off
+        importStatements: []
+    akamai_appsec_version_notes Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_version_notes Resource - akamai
+        title: akamai_appsec_version_notes Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+            output_text: (String) Text representation
+            version_notes: (String) Brief description of the security configuration version
+        importStatements: []
+    akamai_appsec_waf_mode Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_waf_mode Resource - akamai
+        title: akamai_appsec_waf_mode Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            current_ruleset: (String) Versioning information for the current Kona Rule Set
+            eval_expiration_date: (String) Date on which the evaluation period ends, if applicable
+            eval_ruleset: (String) Versioning information for the Kona Rule Set being evaluated, if applicable
+            eval_status: (String) Whether an evaluation is currently in progress
+            id: (String) The ID of this resource.
+            mode: (String) How Kona Rule Set rules should be upgraded (KRS, AAG, ASE_MANUAL or ASE_AUTO)
+            output_text: (String) Text representation
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_appsec_waf_protection Resource - akamai:
+        subCategory: ""
+        name: akamai_appsec_waf_protection Resource - akamai
+        title: akamai_appsec_waf_protection Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            enabled: (Boolean) Whether to enable WAF protection
+            id: (String) The ID of this resource.
+            output_text: (String) Text representation
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_botman_akamai_bot_category_action Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_akamai_bot_category_action Resource - akamai
+        title: akamai_botman_akamai_bot_category_action Resource - akamai
+        argumentDocs:
+            akamai_bot_category_action: (String)
+            category_id: (String)
+            config_id: (Number)
+            id: (String) The ID of this resource.
+            security_policy_id: (String)
+        importStatements: []
+    akamai_botman_bot_analytics_cookie Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_bot_analytics_cookie Resource - akamai
+        title: akamai_botman_bot_analytics_cookie Resource - akamai
+        argumentDocs:
+            bot_analytics_cookie: (String)
+            config_id: (Number)
+            id: (String) The ID of this resource.
+        importStatements: []
+    akamai_botman_bot_category_exception Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_bot_category_exception Resource - akamai
+        title: akamai_botman_bot_category_exception Resource - akamai
+        argumentDocs:
+            bot_category_exception: (String)
+            config_id: (Number)
+            id: (String) The ID of this resource.
+            security_policy_id: (String)
+        importStatements: []
+    akamai_botman_bot_detection_action Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_bot_detection_action Resource - akamai
+        title: akamai_botman_bot_detection_action Resource - akamai
+        argumentDocs:
+            bot_detection_action: (String)
+            config_id: (Number)
+            detection_id: (String)
+            id: (String) The ID of this resource.
+            security_policy_id: (String)
+        importStatements: []
+    akamai_botman_bot_management_settings Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_bot_management_settings Resource - akamai
+        title: akamai_botman_bot_management_settings Resource - akamai
+        argumentDocs:
+            bot_management_settings: (String)
+            config_id: (Number)
+            id: (String) The ID of this resource.
+            security_policy_id: (String)
+        importStatements: []
+    akamai_botman_challenge_action Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_challenge_action Resource - akamai
+        title: akamai_botman_challenge_action Resource - akamai
+        argumentDocs:
+            action_id: (String)
+            challenge_action: (String)
+            config_id: (Number)
+            id: (String) The ID of this resource.
+        importStatements: []
+    akamai_botman_challenge_injection_rules Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_challenge_injection_rules Resource - akamai
+        title: akamai_botman_challenge_injection_rules Resource - akamai
+        argumentDocs:
+            challenge_injection_rules: (String)
+            config_id: (Number)
+            id: (String) The ID of this resource.
+        importStatements: []
+    akamai_botman_client_side_security Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_client_side_security Resource - akamai
+        title: akamai_botman_client_side_security Resource - akamai
+        argumentDocs:
+            client_side_security: (String)
+            config_id: (Number)
+            id: (String) The ID of this resource.
+        importStatements: []
+    akamai_botman_conditional_action Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_conditional_action Resource - akamai
+        title: akamai_botman_conditional_action Resource - akamai
+        argumentDocs:
+            action_id: (String)
+            conditional_action: (String)
+            config_id: (Number)
+            id: (String) The ID of this resource.
+        importStatements: []
+    akamai_botman_content_protection_javascript_injection_rule Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_content_protection_javascript_injection_rule Resource - akamai
+        title: akamai_botman_content_protection_javascript_injection_rule Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            content_protection_javascript_injection_rule: (String) The content protection JavaScript injection rule
+            content_protection_javascript_injection_rule_id: (String) Unique identifier of a content protection JavaScript injection rule
+            id: (String) The ID of this resource.
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_botman_content_protection_rule Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_content_protection_rule Resource - akamai
+        title: akamai_botman_content_protection_rule Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            content_protection_rule: (String) The content protection rule
+            content_protection_rule_id: (String) Unique identifier of a content protection rule
+            id: (String) The ID of this resource.
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_botman_content_protection_rule_sequence Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_content_protection_rule_sequence Resource - akamai
+        title: akamai_botman_content_protection_rule_sequence Resource - akamai
+        argumentDocs:
+            config_id: (Number) Unique identifier of the security configuration
+            content_protection_rule_ids: (List of String) Unique identifiers of content protection rules, listed in the order of their evaluation
+            id: (String) The ID of this resource.
+            security_policy_id: (String) Unique identifier of the security policy
+        importStatements: []
+    akamai_botman_custom_bot_category Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_custom_bot_category Resource - akamai
+        title: akamai_botman_custom_bot_category Resource - akamai
+        argumentDocs:
+            category_id: (String)
+            config_id: (Number)
+            custom_bot_category: (String)
+            id: (String) The ID of this resource.
+        importStatements: []
+    akamai_botman_custom_bot_category_action Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_custom_bot_category_action Resource - akamai
+        title: akamai_botman_custom_bot_category_action Resource - akamai
+        argumentDocs:
+            category_id: (String)
+            config_id: (Number)
+            custom_bot_category_action: (String)
+            id: (String) The ID of this resource.
+            security_policy_id: (String)
+        importStatements: []
+    akamai_botman_custom_bot_category_item_sequence Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_custom_bot_category_item_sequence Resource - akamai
+        title: akamai_botman_custom_bot_category_item_sequence Resource - akamai
+        argumentDocs:
+            bot_ids: (List of String) Unique identifiers of bots in this category, sorted in preferred order
+            category_id: (String) Unique identifier of the bot category
+            config_id: (Number) Unique identifier of the security configuration
+            id: (String) The ID of this resource.
+        importStatements: []
+    akamai_botman_custom_bot_category_sequence Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_custom_bot_category_sequence Resource - akamai
+        title: akamai_botman_custom_bot_category_sequence Resource - akamai
+        argumentDocs:
+            category_ids: (List of String)
+            config_id: (Number)
+            id: (String) The ID of this resource.
+        importStatements: []
+    akamai_botman_custom_client Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_custom_client Resource - akamai
+        title: akamai_botman_custom_client Resource - akamai
+        argumentDocs:
+            config_id: (Number)
+            custom_client: (String)
+            custom_client_id: (String)
+            id: (String) The ID of this resource.
+        importStatements: []
+    akamai_botman_custom_client_sequence Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_custom_client_sequence Resource - akamai
+        title: akamai_botman_custom_client_sequence Resource - akamai
+        argumentDocs:
+            config_id: (Number)
+            custom_client_ids: (List of String)
+            id: (String) The ID of this resource.
+        importStatements: []
+    akamai_botman_custom_code Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_custom_code Resource - akamai
+        title: akamai_botman_custom_code Resource - akamai
+        argumentDocs:
+            config_id: (Number)
+            custom_code: (String)
+            id: (String) The ID of this resource.
+        importStatements: []
+    akamai_botman_custom_defined_bot Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_custom_defined_bot Resource - akamai
+        title: akamai_botman_custom_defined_bot Resource - akamai
+        argumentDocs:
+            bot_id: (String)
+            config_id: (Number)
+            custom_defined_bot: (String)
+            id: (String) The ID of this resource.
+        importStatements: []
+    akamai_botman_custom_deny_action Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_custom_deny_action Resource - akamai
+        title: akamai_botman_custom_deny_action Resource - akamai
+        argumentDocs:
+            action_id: (String)
+            config_id: (Number)
+            custom_deny_action: (String)
+            id: (String) The ID of this resource.
+        importStatements: []
+    akamai_botman_javascript_injection Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_javascript_injection Resource - akamai
+        title: akamai_botman_javascript_injection Resource - akamai
+        argumentDocs:
+            config_id: (Number)
+            id: (String) The ID of this resource.
+            javascript_injection: (String)
+            security_policy_id: (String)
+        importStatements: []
+    akamai_botman_recategorized_akamai_defined_bot Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_recategorized_akamai_defined_bot Resource - akamai
+        title: akamai_botman_recategorized_akamai_defined_bot Resource - akamai
+        argumentDocs:
+            bot_id: (String)
+            category_id: (String)
+            config_id: (Number)
+            id: (String) The ID of this resource.
+        importStatements: []
+    akamai_botman_serve_alternate_action Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_serve_alternate_action Resource - akamai
+        title: akamai_botman_serve_alternate_action Resource - akamai
+        argumentDocs:
+            action_id: (String)
+            config_id: (Number)
+            id: (String) The ID of this resource.
+            serve_alternate_action: (String)
+        importStatements: []
+    akamai_botman_transactional_endpoint Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_transactional_endpoint Resource - akamai
+        title: akamai_botman_transactional_endpoint Resource - akamai
+        argumentDocs:
+            config_id: (Number)
+            id: (String) The ID of this resource.
+            operation_id: (String)
+            security_policy_id: (String)
+            transactional_endpoint: (String)
+        importStatements: []
+    akamai_botman_transactional_endpoint_protection Resource - akamai:
+        subCategory: ""
+        name: akamai_botman_transactional_endpoint_protection Resource - akamai
+        title: akamai_botman_transactional_endpoint_protection Resource - akamai
+        argumentDocs:
+            config_id: (Number)
+            id: (String) The ID of this resource.
+            transactional_endpoint_protection: (String)
+        importStatements: []
+    akamai_clientlist_activation Resource - akamai:
+        subCategory: ""
+        name: akamai_clientlist_activation Resource - akamai
+        title: akamai_clientlist_activation Resource - akamai
+        argumentDocs:
+            comments: (String) A brief description for the activation.
+            id: (String) The ID of this resource.
+            list_id: (String) The client list unique identifier.
+            network: '(String) The network environment where you activate your client list: either STAGING or PRODUCTION.'
+            notification_recipients: (Set of String) Users to notify via email.
+            siebel_ticket_id: (String) Identifies the Siebel ticket, if the activation is linked to one.
+            status: (String) The current activation status, either ACTIVE, INACTIVE, MODIFIED, PENDING_ACTIVATION, PENDING_DEACTIVATION, or FAILED.
+            version: (Number) The client list version.
+        importStatements: []
+    akamai_clientlist_list Resource - akamai:
+        subCategory: ""
+        name: akamai_clientlist_list Resource - akamai
+        title: akamai_clientlist_list Resource - akamai
+        argumentDocs:
+            contract_id: (String) Contract ID for which client list is assigned.
+            description: (String) A description of the item.
+            expiration_date: (String) The item expiration date.
+            group_id: (Number) Group ID for which client list is assigned.
+            id: (String) The ID of this resource.
+            items: (Block Set) Set of items containing item information. (see below for nested schema)
+            items_count: (Number) The number of items that a client list contains.
+            list_id: (String) The ID of the client list.
+            name: (String) The name of the client list.
+            notes: (String) The client list notes.
+            tags: (Set of String) The client list tags.
+            type: '(String) The type of the client list. Valid types: [IP GEO ASN TLS_FINGERPRINT FILE_HASH]'
+            value: (String) Value of the item. (i.e. IP address, AS Number, GEO, ...etc)
+            version: (Number) The current version of the client list.
+        importStatements: []
+    akamai_cloudaccess_key Resource - akamai:
+        subCategory: ""
+        name: akamai_cloudaccess_key Resource - akamai
+        title: akamai_cloudaccess_key Resource - akamai
+        argumentDocs:
+            access_key_name: (String) Name of the access key.
+            access_key_uid: (Number) The unique identifier Akamai assigns to an access key.
+            additional_cdn: (String) Additional type of the deployment network that the access key will be deployed to.
+            authentication_method: '(String) The type of cloud provider signing process used to authenticate API requests. Two options are available: "AWS4_HMAC_SHA256" or "GOOG4_HMAC_SHA256".'
+            cloud_access_key_id: (String) Access key id from cloud provider which is used to sign API requests
+            cloud_secret_access_key: (String, Sensitive) Cloud Access secret from cloud provider which is used to sign API requests
+            contract_id: (String) The unique identifier for the contract assigned to the access key
+            create: (String) Optional configurable resource create timeout. By default it's 60 minutes with 1 minute polling interval.
+            credentials_a: (Attributes) The combination of a cloud_access_key_id and a cloud_secret_access_key used to sign API requests. This pair can be identified as access key version. Access key can contain only two access key versions at specific time (defined as credentialsA and credentialsB). (see below for nested schema)
+            credentials_b: (Attributes) The combination of a cloud_access_key_id and a cloud_secret_access_key used to sign API requests. This pair can be identified as access key version. Access key can contain only two access key versions at specific time (defined as credentialsA and credentialsB). (see below for nested schema)
+            delete: (String) Optional configurable resource delete timeout. By default it's 60 minutes with 1 minute polling interval.
+            group_id: (Number) The unique identifier assigned to the access control group assigned to the access key
+            network_configuration: (Attributes) The secure networks that you assigned the access key to during creation (see below for nested schema)
+            primary_guid: (String) Value of version_guid field for credentials marked as primary
+            primary_key: (Boolean) Boolean value which helps to define if credentials should be assigned to property
+            security_network: (String) The API deploys the access key to this secure network
+            timeouts: (Attributes) (see below for nested schema)
+            update: (String) Optional configurable resource update timeout. By default it's 60 minutes with 1 minute polling interval.
+            version: (Number) Numeric access key version associated with specific pair of cloud access credentials used to sign API requests
+            version_guid: (String) The unique identifier assigned to specific access key version
+        importStatements: []
+    akamai_cloudlets_application_load_balancer Resource - akamai:
+        subCategory: ""
+        name: akamai_cloudlets_application_load_balancer Resource - akamai
+        title: akamai_cloudlets_application_load_balancer Resource - akamai
+        argumentDocs:
+            additional_headers: (Map of String) Maps additional case-insensitive HTTP header names included to the liveness testing requests
+            balancing_type: (String) The type of load balancing being performed. Options include WEIGHTED and PERFORMANCE
+            city: (String) The city in which the data center is located.
+            cloud_server_host_header_override: (Boolean) Describes if cloud server host header is overridden
+            cloud_service: (Boolean) Describes if this datacenter is a cloud service
+            continent: (String) The continent on which the data center is located
+            country: (String) The country in which the data center is located
+            data_centers: '(Block Set, Min: 1) The object containing information on conditional origins being used as data centers for an Application Load Balancer implementation. Only Conditional Origins with an originType of CUSTOMER or NETSTORAGE can be used as data centers in an application load balancer configuration. (see below for nested schema)'
+            description: (String) The load balancer configuration version description
+            host_header: (String) The Host header for the liveness HTTP request
+            hostname: (String) This should match the 'hostname' value defined for this datacenter in Property Manager
+            id: (String) The ID of this resource.
+            interval: (Number) Describes how often the liveness test will be performed. Optional defaults to 60 seconds, minimum is 10 seconds.
+            latitude: (Number) The latitude value for the data center. This member supports six decimal places of precision.
+            liveness_hosts: (List of String) An array of strings that represent the origin servers used to poll the data centers in an application load balancer configuration. These servers support basic HTTP polling.
+            liveness_settings: '(Block List, Max: 1) (see below for nested schema)'
+            longitude: (Number) The longitude value for the data center. This member supports six decimal places of precision.
+            origin_description: (String) The load balancer configuration description
+            origin_id: (String) The conditional origin's unique identifier
+            path: (String) The path to the test object used for liveness testing. The function of the test object is to help determine whether the data center is functioning.
+            peer_certificate_verification: (Boolean) Describes whether or not to validate the origin certificate for an HTTPS request
+            percent: (Number) The percent of traffic that is sent to the data center. The total for all data centers must equal 100%.
+            port: (Number) The port for the test object. The default port is 80, which is standard for HTTP. Enter 443 if you are using HTTPS.
+            protocol: (String) The protocol or scheme for the database, either HTTP or HTTPS.
+            request_string: (String) The request which will be used for TCP(S) tests
+            response_string: (String)
+            state_or_province: (String) The state, province, or region where the data center is located
+            status_3xx_failure: (Boolean) Set to true to mark the liveness test as failed when the request returns a 3xx (redirection) status code.
+            status_4xx_failure: (Boolean) Set to true to mark the liveness test as failed when the request returns a 4xx (client error) status code.
+            status_5xx_failure: (Boolean) Set to true to mark the liveness test as failed when the request returns a 5xx (server error) status code.
+            timeout: (Number) The number of seconds the system waits before failing the liveness test. The default is 25 seconds.
+            version: (Number) The load balancer configuration version
+            warnings: (String) Describes warnings during activation of load balancer configuration
+        importStatements: []
+    akamai_cloudlets_application_load_balancer_activation Resource - akamai:
+        subCategory: ""
+        name: akamai_cloudlets_application_load_balancer_activation Resource - akamai
+        title: akamai_cloudlets_application_load_balancer_activation Resource - akamai
+        argumentDocs:
+            default: (String)
+            id: (String) The ID of this resource.
+            network: (String) The network you want to activate the application load balancer version on (options are Staging and Production)
+            origin_id: (String) The conditional origin’s unique identifier
+            status: (String) Activation status for this application load balancer
+            timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
+            version: (Number) Cloudlets application load balancer version you want to activate
+        importStatements: []
+    akamai_cloudlets_policy Resource - akamai:
+        subCategory: ""
+        name: akamai_cloudlets_policy Resource - akamai
+        title: akamai_cloudlets_policy Resource - akamai
+        argumentDocs:
+            cloudlet_code: (String) Code for the type of Cloudlet (ALB, AP, AS, CD, ER, FR, IG, or VP)
+            cloudlet_id: (Number) An integer that corresponds to a non-shared Cloudlets policy type (0 to 9). Not used for shared policies
+            default: (String)
+            description: (String) The description of this specific policy
+            group_id: (String) Defines the group association for the policy. You must have edit privileges for the group
+            id: (String) The ID of this resource.
+            is_shared: (Boolean) The type of policy that you want to create
+            match_rule_format: (String) The version of the Cloudlet specific matchRules
+            match_rules: (String) A JSON structure that defines the rules for this policy
+            name: (String) The name of the policy. The name must be unique
+            timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
+            version: (Number) The version number of the policy
+            warnings: (String) A JSON encoded list of warnings
+        importStatements: []
+    akamai_cloudlets_policy_activation Resource - akamai:
+        subCategory: ""
+        name: akamai_cloudlets_policy_activation Resource - akamai
+        title: akamai_cloudlets_policy_activation Resource - akamai
+        argumentDocs:
+            associated_properties: (Set of String) Set of property IDs to link to this Cloudlets policy. It is required for non-shared policies
+            default: (String)
+            id: (String) The ID of this resource.
+            is_shared: (Boolean) Indicates if policy that is being activated is a shared policy
+            network: (String) The network you want to activate the policy version on (options are Staging and Production)
+            policy_id: (Number) ID of the Cloudlets policy you want to activate
+            status: (String) Activation status for this Cloudlets policy
+            timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
+            version: (Number) Cloudlets policy version you want to activate
+        importStatements: []
+    akamai_cloudwrapper_activation Resource - akamai:
+        subCategory: ""
+        name: akamai_cloudwrapper_activation Resource - akamai
+        title: akamai_cloudwrapper_activation Resource - akamai
+        argumentDocs:
+            config_id: (Number) The configuration you want to activate.
+            create: (String) Optional configurable activation timeout to be used on resource create. By default it's 4h with 1m pooling interval.
+            id: (String, Deprecated) ID of the resource.
+            revision: (String) Unique hash value of the configuration.
+            timeouts: (Block, Optional) (see below for nested schema)
+            update: (String) Optional configurable activation timeout to be used on resource update. By default it's 4h with 1m pooling interval.
+        importStatements: []
+    akamai_cloudwrapper_configuration Resource - akamai:
+        subCategory: ""
+        name: akamai_cloudwrapper_configuration Resource - akamai
+        title: akamai_cloudwrapper_configuration Resource - akamai
+        argumentDocs:
+            capacity: (Block, Optional) The capacity assigned to this configuration's location (see below for nested schema)
+            capacity_alerts_threshold: (Number) Capacity Alerts enablement information for the configuration. The Alert Threshold should be between 50 and 100.
+            comments: (String) Additional information you provide to differentiate or track changes of the configuration.
+            config_name: (String) Name of the configuration.
+            contract_id: (String) Contract ID having Cloud Wrapper entitlement.
+            delete: (String) A string that can be parsed as a duration consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+            id: (Number) Resource's unique identifier.
+            location: (Block Set) List of locations to use with the configuration. (see below for nested schema)
+            notification_emails: (Set of String) Email addresses to use for notifications.
+            property_ids: (Set of String) List of properties belonging to eligible products.
+            retain_idle_objects: (Boolean) Retain idle objects beyond their max idle lifetime.
+            revision: (String) Unique hash value of the configuration.
+            timeouts: (Block, Optional) (see below for nested schema)
+            traffic_type_id: (Number) Unique identifier for the location and traffic type combination
+            unit: (String) Unit of capacity. Can be either 'GB' or 'TB'.
+            value: (Number) Value of capacity.
+        importStatements: []
+    akamai_cp_code Resource - akamai:
+        subCategory: ""
+        name: akamai_cp_code Resource - akamai
+        title: akamai_cp_code Resource - akamai
+        argumentDocs:
+            contract_id: (String)
+            group_id: (String)
+            id: (String) The ID of this resource.
+            name: (String)
+            product_id: (String)
+            timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
+            update: (String)
+        importStatements: []
+    akamai_cps_dv_enrollment Resource - akamai:
+        subCategory: ""
+        name: akamai_cps_dv_enrollment Resource - akamai
+        title: akamai_cps_dv_enrollment Resource - akamai
+        argumentDocs:
+            acknowledge_pre_verification_warnings: (Boolean) Whether acknowledge warnings before certificate verification
+            address_line_one: (String) The address of the contact
+            address_line_two: (String) The address of the contact
+            admin_contact: '(Block Set, Min: 1, Max: 1) Contact information for the certificate administrator to use at organization (see below for nested schema)'
+            allow_duplicate_common_name: (Boolean) Allow to duplicate common name
+            certificate_chain_type: (String) Certificate trust chain type
+            certificate_type: (String) Certificate type of enrollment
+            city: (String) City of residence of the contact
+            client_mutual_authentication: '(Block Set, Max: 1) The trust chain configuration used for client mutual authentication (see below for nested schema)'
+            clone_dns_names: (Boolean) Enable CPS to direct traffic using all the SANs listed in the SANs parameter when enrollment is created
+            common_name: (String) Common name used for enrollment
+            contract_id: (String) Contract ID for which enrollment is retrieved
+            country_code: (String) Country code of the contact
+            csr: '(Block Set, Min: 1, Max: 1) Certificate signing request generated during enrollment creation (see below for nested schema)'
+            default: (String)
+            disallowed_tls_versions: (Set of String) TLS versions which are disallowed
+            dns_challenges: (Set of Object) DNS challenge information (see below for nested schema)
+            domain: (String)
+            email: (String) E-mail address of the contact
+            first_name: (String) First name of the contact
+            full_path: (String)
+            geography: (String) Geography type used for enrollment
+            http_challenges: (Set of Object) HTTP challenge information (see below for nested schema)
+            id: (String) The ID of this resource.
+            last_name: (String) Last name of the contact
+            must_have_ciphers: (String) Mandatory Ciphers which are included for enrollment
+            name: (String) Name of organization
+            network_configuration: '(Block Set, Min: 1, Max: 1) Settings containing network information and TLS Metadata used by CPS (see below for nested schema)'
+            ocsp_enabled: (Boolean) Enable OCSP stapling
+            ocsp_stapling: (String) Enable OCSP stapling
+            organization: '(Block Set, Min: 1, Max: 1) Organization information (see below for nested schema)'
+            organizational_unit: (String) Organizational unit of organization
+            phone: (String) Phone number of the contact
+            postal_code: (String) Postal code of the contact
+            preferred_ciphers: (String) Preferred Ciphers which are included for enrollment
+            preferred_trust_chain: (String) For the Let's Encrypt Domain Validated (DV) SAN certificates, the preferred trust chain will be included by CPS with the leaf certificate in the TLS handshake. If the field does not have a value, whichever trust chain Akamai chooses will be used by default
+            quic_enabled: (Boolean) Enable QUIC protocol
+            region: (String) The region of the contact
+            registration_authority: (String) The registration authority or certificate authority (CA) used to obtain a certificate
+            response_body: (String)
+            sans: (Set of String) List of SANs
+            secure_network: (String) Type of TLS deployment network
+            send_ca_list_to_client: (Boolean) Enable the server to send the certificate authority (CA) list to the client
+            set_id: (String) The identifier of the set of trust chains, created in the Trust Chain Manager
+            signature_algorithm: (String) SHA algorithm type
+            sni_only: (Boolean) Whether Server Name Indication is used for enrollment
+            state: (String) State or province of organization location
+            tech_contact: '(Block Set, Min: 1, Max: 1) Contact information for an administrator at Akamai (see below for nested schema)'
+            timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
+            title: (String) Title of the the contact
+            validation_type: (String) Enrolment validation type
+        importStatements: []
+    akamai_cps_dv_validation Resource - akamai:
+        subCategory: ""
+        name: akamai_cps_dv_validation Resource - akamai
+        title: akamai_cps_dv_validation Resource - akamai
+        argumentDocs:
+            acknowledge_post_verification_warnings: (Boolean) Whether to acknowledge all post-verification warnings
+            default: (String)
+            enrollment_id: (Number) The unique identifier of enrollment
+            id: (String) The ID of this resource.
+            sans: (Set of String) List of SANs
+            status: (String) Status of validation
+            timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
+        importStatements: []
+    akamai_cps_third_party_enrollment Resource - akamai:
+        subCategory: ""
+        name: akamai_cps_third_party_enrollment Resource - akamai
+        title: akamai_cps_third_party_enrollment Resource - akamai
+        argumentDocs:
+            acknowledge_pre_verification_warnings: (Boolean) Whether acknowledge warnings before certificate verification
+            address_line_one: (String) The address of the contact
+            address_line_two: (String) The address of the contact
+            admin_contact: '(Block Set, Min: 1, Max: 1) Contact information for the certificate administrator to use at organization (see below for nested schema)'
+            allow_duplicate_common_name: (Boolean) Allow to duplicate common name
+            auto_approve_warnings: (Set of String) List of warnings to be automatically approved
+            certificate_chain_type: (String) Certificate trust chain type
+            change_management: (Boolean) When set to false, the certificate will be deployed to both staging and production networks
+            city: (String) City of residence of the contact
+            client_mutual_authentication: '(Block Set, Max: 1) The trust chain configuration used for client mutual authentication (see below for nested schema)'
+            clone_dns_names: (Boolean) Enable CPS to direct traffic using all the SANs listed in the SANs parameter when enrollment is created
+            common_name: (String) Common name used for enrollment
+            contract_id: (String) Contract ID for which enrollment is retrieved
+            country_code: (String) Country code of the contact
+            csr: '(Block Set, Min: 1, Max: 1) Data used for generation of Certificate Signing Request (see below for nested schema)'
+            default: (String)
+            disallowed_tls_versions: (Set of String) TLS versions which are disallowed
+            email: (String) E-mail address of the contact
+            exclude_sans: (Boolean) When true, SANs are excluded from the CSR
+            first_name: (String) First name of the contact
+            geography: (String) Geography type used for enrollment
+            id: (String) The ID of this resource.
+            last_name: (String) Last name of the contact
+            must_have_ciphers: (String) Mandatory Ciphers which are included for enrollment
+            name: (String) Name of organization
+            network_configuration: '(Block Set, Min: 1, Max: 1) Settings containing network information and TLS metadata used by CPS (see below for nested schema)'
+            ocsp_enabled: (Boolean) Enable OCSP stapling
+            ocsp_stapling: (String) Enable OCSP stapling
+            organization: '(Block Set, Min: 1, Max: 1) Organization information (see below for nested schema)'
+            organizational_unit: (String) Organizational unit of organization
+            phone: (String) Phone number of the contact
+            postal_code: (String) Postal code of the contact
+            preferred_ciphers: (String) Preferred Ciphers which are included for enrollment
+            preferred_trust_chain: (String) For the Let's Encrypt Domain Validated (DV) SAN certificates, the preferred trust chain will be included by CPS with the leaf certificate in the TLS handshake. If the field does not have a value, whichever trust chain Akamai chooses will be used by default
+            quic_enabled: (Boolean) Enable QUIC protocol
+            region: (String) The region of the contact
+            sans: (Set of String) List of SANs
+            secure_network: (String) Type of TLS deployment network
+            send_ca_list_to_client: (Boolean) Enable the server to send the certificate authority (CA) list to the client
+            set_id: (String) The identifier of the set of trust chains, created in the Trust Chain Manager
+            signature_algorithm: (String) The SHA function. Changing this value may require running terraform destroy, terraform apply
+            sni_only: (Boolean) Whether Server Name Indication is used for enrollment
+            state: (String) State or province of organization location
+            tech_contact: '(Block Set, Min: 1, Max: 1) Contact information for an administrator at Akamai (see below for nested schema)'
+            timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
+            title: (String) Title of the the contact
+        importStatements: []
+    akamai_cps_upload_certificate Resource - akamai:
+        subCategory: ""
+        description: Enables to upload a certificates and trust-chains for third-party enrollment
+        name: akamai_cps_upload_certificate Resource - akamai
+        title: akamai_cps_upload_certificate Resource - akamai
+        argumentDocs:
+            acknowledge_change_management: (Boolean) Whether to acknowledge change management
+            acknowledge_post_verification_warnings: (Boolean) Whether to acknowledge post-verification warnings
+            auto_approve_warnings: (Set of String) List of post-verification warnings to be automatically acknowledged
+            certificate_ecdsa_pem: (String) ECDSA certificate in pem format to be uploaded
+            certificate_rsa_pem: (String) RSA certificate in pem format to be uploaded
+            default: (String)
+            enrollment_id: (Number) The unique identifier of the enrollment
+            id: (String) The ID of this resource.
+            timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
+            trust_chain_ecdsa_pem: (String) Trust chain in pem format for provided ECDSA certificate
+            trust_chain_rsa_pem: (String) Trust chain in pem format for provided RSA certificate
+            wait_for_deployment: (Boolean) Whether to wait for certificate to be deployed
+        importStatements: []
+    akamai_datastream Resource - akamai:
+        subCategory: ""
+        name: akamai_datastream Resource - akamai
+        title: akamai_datastream Resource - akamai
+        argumentDocs:
+            access_key: (String, Sensitive) Access keys associated with Azure Storage account
+            account_name: (String) Specifies the Azure Storage account name
+            active: (Boolean) Defining if stream should be active or not
+            auth_token: (String, Sensitive) The API key associated with Datadog account
+            authentication_type: (String) Either NONE for no authentication, or BASIC for username and password authentication
+            azure_connector: '(Block Set, Max: 1) (see below for nested schema)'
+            bucket: (String) The name of the storage bucket created in Google Cloud account
+            ca_cert: (String, Sensitive) The certification authority (CA) certificate used to verify the origin server's certificate. If the certificate is not signed by a well-known certification authority, enter the CA certificate in the PEM format for verification.
+            client_cert: (String, Sensitive) The PEM-formatted digital certificate you want to authenticate requests to your destination with. If you want to use mutual authentication, you need to provide both the client certificate and the client key.
+            client_key: (String, Sensitive) The private key in the non-encrypted PKCS8 format you want to use to authenticate with the backend server. If you want to use mutual authentication, you need to provide both the client certificate and the client key.
+            collect_midgress: (Boolean) Identifies if stream needs to collect midgress data
+            collector_code: (String, Sensitive) The unique HTTP collector code of Sumo Logic endpoint
+            compress_logs: (Boolean) Indicates whether the logs should be compressed
+            container_name: (String) Specifies the Azure Storage container name
+            content_type: (String) The type of the resource passed in the request's custom header. For details, see Additional options in the DataStream user guide.
+            contract_id: (String) Identifies the contract that has access to the product
+            created_by: (String) The username who created the stream
+            created_date: (String) The date and time when the stream was created
+            custom_header_name: (String) A human-readable name for the request's custom header, containing only alphanumeric, dash, and underscore characters. For details, see Additional options in the DataStream user guide.
+            custom_header_value: (String) The custom header's contents passed with the request that contains information about the client connection. For details, see Additional options in the DataStream user guide.
+            datadog_connector: '(Block Set, Max: 1) (see below for nested schema)'
+            dataset_fields: (List of Number) A list of data set fields selected from the associated template that the stream monitors in logs. The order of the identifiers define how the value for these fields appear in the log lines
+            default: (String)
+            delivery_configuration: '(Block Set, Min: 1, Max: 1) Provides information about the configuration related to logs (format, file names, delivery frequency) (see below for nested schema)'
+            display_name: (String) The name of the connector
+            elasticsearch_connector: '(Block Set, Max: 1) (see below for nested schema)'
+            endpoint: (String) The Datadog endpoint where logs will be stored
+            event_collector_token: (String, Sensitive) The Event Collector token associated with Splunk account
+            field_delimiter: (String) A delimiter that you use to separate data set fields in log lines
+            format: (String) The format in which logs will be received
+            frequency: '(Block Set, Min: 1, Max: 1) The frequency of collecting logs from each uploader and sending these logs to a destination (see below for nested schema)'
+            gcs_connector: '(Block Set, Max: 1) (see below for nested schema)'
+            group_id: (String) Identifies the group that has access to the product and for which the stream configuration was created
+            https_connector: '(Block Set, Max: 1) (see below for nested schema)'
+            id: (String) The ID of this resource.
+            index_name: (String, Sensitive) The index name of the Elastic cloud where you want to store log files.
+            interval_in_secs: (Number) The time in seconds after which the system bundles log lines into a file and sends it to a destination
+            latest_version: (Number) Identifies the latest active configuration version of the stream
+            loggly_connector: '(Block Set, Max: 1) (see below for nested schema)'
+            m_tls: (Boolean) Indicates whether mTLS is enabled or not.
+            modified_by: (String) The username who modified the stream
+            modified_date: (String) The date and time when the stream was modified
+            namespace: (String) The namespace of Oracle Cloud Storage account
+            new_relic_connector: '(Block Set, Max: 1) (see below for nested schema)'
+            notification_emails: (List of String) List of email addresses where the system sends notifications about activations and deactivations of the stream
+            oracle_connector: '(Block Set, Max: 1) (see below for nested schema)'
+            papi_json: (String) The configuration in JSON format that can be copy-pasted into PAPI configuration to enable datastream behavior
+            password: (String, Sensitive) The Elasticsearch basic access authentication password.
+            path: (String) The path to the folder within Azure Storage container where logs will be stored
+            private_key: (String, Sensitive) The contents of the JSON private key generated and downloaded in Google Cloud Storage account
+            product_id: (String) The ID of the product for which the stream was created
+            project_id: (String) The unique ID of Google Cloud project
+            properties: (List of String) Identifies the properties monitored in the stream
+            region: (String) The Oracle Cloud Storage region where bucket resides
+            s3_connector: '(Block Set, Max: 1) (see below for nested schema)'
+            secret_access_key: (String, Sensitive) The secret access key identifier used to authenticate requests to the Oracle Cloud account
+            service: (String) The service of the Datadog connector
+            service_account_name: (String) The name of the service account with the storage.object.create permission or Storage Object Creator role
+            source: (String) The source of the Datadog connector
+            splunk_connector: '(Block Set, Max: 1) (see below for nested schema)'
+            stream_name: (String) The name of the stream
+            stream_version: (Number) Identifies the configuration version of the stream
+            sumologic_connector: '(Block Set, Max: 1) (see below for nested schema)'
+            tags: (String) The tags of the Datadog connector
+            timeouts: (Block, Optional) (see below for nested schema)
+            tls_hostname: (String) The hostname that verifies the server's certificate and matches the Subject Alternative Names (SANs) in the certificate. If not provided, DataStream fetches the hostname from the endpoint URL.
+            upload_file_prefix: (String) The prefix of the log file that will be send to a destination
+            upload_file_suffix: (String) The suffix of the log file that will be send to a destination
+            user_name: (String, Sensitive) The Elasticsearch basic access authentication username.
+        importStatements: []
+    akamai_dns_record Resource - akamai:
+        subCategory: ""
+        name: akamai_dns_record Resource - akamai
+        title: akamai_dns_record Resource - akamai
+        argumentDocs:
+            algorithm: (Number)
+            answer_type: (String)
+            certificate: (String)
+            digest: (String)
+            digest_type: (Number)
+            dns_name: (String)
+            email_address: (String)
+            expiration: (String)
+            expiry: (Number)
+            fingerprint: (String)
+            fingerprint_type: (Number)
+            flags: (Number)
+            flagsnaptr: (String)
+            hardware: (String)
+            id: (String) The ID of this resource.
+            inception: (String)
+            iterations: (Number)
+            key: (String)
+            keytag: (Number)
+            labels: (Number)
+            mailbox: (String)
+            match_type: (Number)
+            name: (String)
+            name_server: (String)
+            next_hashed_owner_name: (String)
+            nxdomain_ttl: (Number)
+            order: (Number)
+            original_ttl: (Number)
+            port: (Number)
+            preference: (Number)
+            priority: (Number)
+            priority_increment: (Number)
+            protocol: (Number)
+            record_sha: (String)
+            recordtype: (String)
+            refresh: (Number)
+            regexp: (String)
+            replacement: (String)
+            retry: (Number)
+            salt: (String)
+            selector: (Number)
+            serial: (Number)
+            service: (String)
+            signature: (String)
+            signer: (String)
+            software: (String)
+            subtype: (Number)
+            svc_params: (String)
+            svc_priority: (Number)
+            target: (List of String)
+            target_name: (String)
+            ttl: (Number)
+            txt: (String)
+            type_bitmaps: (String)
+            type_covered: (String)
+            type_mnemonic: (String)
+            type_value: (Number)
+            usage: (Number)
+            weight: (Number)
+            zone: (String)
+        importStatements: []
+    akamai_dns_zone Resource - akamai:
+        subCategory: ""
+        name: akamai_dns_zone Resource - akamai
+        title: akamai_dns_zone Resource - akamai
+        argumentDocs:
+            acl: (Set of String) The access control list, defined as IPv4 and IPv6 CIDR blocks.
+            activation_state: (String)
+            algorithm: '(String) The algorithm used to encode the TSIG key''s secret data. Possible values are: hmac-md5, hmac-sha1, hmac-sha224, hmac-sha256, hmac-sha384, hmac-sha512, or HMAC-MD5.SIG-ALG.REG.INT.'
+            alias_count: (Number)
+            comment: (String)
+            contract: (String)
+            enabled: (Boolean) Enables outbound zone transfer.
+            end_customer_id: (String)
+            group: (String)
+            id: (String) The ID of this resource.
+            masters: (Set of String)
+            name: (String) The zone name.
+            notify_targets: (Set of String) Customer secondary nameservers to notify, if NOTIFY requests are desired. Up to 64 IPv4 or IPv6 addresses. If no targets are specified, you can manually request zone transfer updates as needed.
+            outbound_zone_transfer: '(Block List, Max: 1) Outbound zone transfer properties. (see below for nested schema)'
+            secret: (String) A Base64-encoded string of data. When decoded, it needs to contain the correct number of bits for the chosen algorithm. If the input isn't correctly padded, the server applies the padding.
+            sign_and_serve: (Boolean)
+            sign_and_serve_algorithm: (String)
+            target: (String)
+            tsig_key: '(Block List, Max: 1) (see below for nested schema)'
+            type: (String)
+            version_id: (String)
+            zone: (String)
+        importStatements: []
+    akamai_edge_hostname Resource - akamai:
+        subCategory: ""
+        name: akamai_edge_hostname Resource - akamai
+        title: akamai_edge_hostname Resource - akamai
+        argumentDocs:
+            certificate: (Number)
+            contract_id: (String)
+            default: (String)
+            edge_hostname: (String)
+            group_id: (String)
+            id: (String) The ID of this resource.
+            ip_behavior: (String)
+            product_id: (String)
+            status_update_email: (List of String) Email address that should receive updates on the IP behavior update request.
+            timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
+            ttl: (Number) The time to live, or number of seconds to keep an edge hostname assigned to a map or target. If not provided default value for product is used.
+            use_cases: (String) A JSON encoded list of use cases
+        importStatements: []
+    akamai_edgekv Resource - akamai:
+        subCategory: ""
+        name: akamai_edgekv Resource - akamai
+        title: akamai_edgekv Resource - akamai
+        argumentDocs:
+            geo_location: (String) Storage location for data
+            group_id: (Number) Namespace ACC group ID. It will be used in EdgeKV API v2. Not updatable.
+            id: (String) The ID of this resource.
+            namespace_name: (String) Name for the EKV namespace
+            network: (String) The network on which the namespace will be activated
+            retention_in_seconds: (Number) Retention period for data in this namespace. An update of this value will just affect new EKV items.
+        importStatements: []
+    akamai_edgekv_group_items Resource - akamai:
+        subCategory: ""
+        name: akamai_edgekv_group_items Resource - akamai
+        title: akamai_edgekv_group_items Resource - akamai
+        argumentDocs:
+            default: (String)
+            group_name: (String) The name of the EdgeKV group.
+            id: (String) The ID of this resource.
+            items: (Map of String) A map of items within the specified group. Each item consists of an item key and a value.
+            namespace_name: (String) The name for the EdgeKV namespace.
+            network: (String) The network against which to execute the API request.
+            timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
+        importStatements: []
+    akamai_edgeworker Resource - akamai:
+        subCategory: ""
+        name: akamai_edgeworker Resource - akamai
+        title: akamai_edgeworker Resource - akamai
+        argumentDocs:
+            default: (String)
+            edgeworker_id: (Number) The unique identifier of the EdgeWorker
+            group_id: (String) Defines the group association for the EdgeWorker
+            id: (String) The ID of this resource.
+            local_bundle: (String) The path to the EdgeWorkers tgz code bundle
+            local_bundle_hash: (String) The local bundle hash for the EdgeWorker
+            name: (String) The EdgeWorker name
+            resource_tier_id: (Number) The unique identifier of a resource tier
+            timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
+            version: (String) The bundle version
+            warnings: (List of String) The list of warnings returned by EdgeWorker validation
+        importStatements: []
+    akamai_edgeworkers_activation Resource - akamai:
+        subCategory: ""
+        name: akamai_edgeworkers_activation Resource - akamai
+        title: akamai_edgeworkers_activation Resource - akamai
+        argumentDocs:
+            activation_id: (Number) A unique identifier of the activation
+            default: (String)
+            delete: (String)
+            edgeworker_id: (Number) Id of the EdgeWorker to activate
+            id: (String) The ID of this resource.
+            network: (String) The network on which the version will be activated
+            note: (String) Assigns a log message to the activation request
+            timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
+            version: (String) The version of EdgeWorker to activate
+        importStatements: []
+    akamai_gtm_asmap Resource - akamai:
+        subCategory: ""
+        name: akamai_gtm_asmap Resource - akamai
+        title: akamai_gtm_asmap Resource - akamai
+        argumentDocs:
+            as_numbers: (Set of Number)
+            assignment: (Block List) (see below for nested schema)
+            datacenter_id: (Number)
+            default_datacenter: (List of Object) (see below for nested schema)
+            domain: (String)
+            id: (String) The ID of this resource.
+            name: (String)
+            nickname: (String)
+            wait_on_complete: (Boolean)
+        importStatements: []
+    akamai_gtm_cidrmap Resource - akamai:
+        subCategory: ""
+        name: akamai_gtm_cidrmap Resource - akamai
+        title: akamai_gtm_cidrmap Resource - akamai
+        argumentDocs:
+            assignment: (Block List) (see below for nested schema)
+            blocks: (Set of String)
+            datacenter_id: (Number)
+            default_datacenter: '(Block List, Min: 1, Max: 1) (see below for nested schema)'
+            domain: (String)
+            id: (String) The ID of this resource.
+            name: (String)
+            nickname: (String)
+            wait_on_complete: (Boolean)
+        importStatements: []
+    akamai_gtm_datacenter Resource - akamai:
+        subCategory: ""
+        name: akamai_gtm_datacenter Resource - akamai
+        title: akamai_gtm_datacenter Resource - akamai
+        argumentDocs:
+            city: (String)
+            clone_of: (Number)
+            cloud_server_host_header_override: (Boolean)
+            cloud_server_targeting: (Boolean)
+            continent: (String)
+            country: (String)
+            datacenter_id: (Number)
+            default_load_object: '(Block List, Max: 1) (see below for nested schema)'
+            domain: (String)
+            id: (String) The ID of this resource.
+            latitude: (Number)
+            load_object: (String)
+            load_object_port: (Number)
+            load_servers: (List of String)
+            longitude: (Number)
+            nickname: (String)
+            ping_interval: (Number)
+            ping_packet_size: (Number)
+            score_penalty: (Number)
+            servermonitor_liveness_count: (Number)
+            servermonitor_load_count: (Number)
+            servermonitor_pool: (String)
+            state_or_province: (String)
+            virtual: (Boolean)
+            wait_on_complete: (Boolean)
+        importStatements: []
+    akamai_gtm_domain Resource - akamai:
+        subCategory: ""
+        name: akamai_gtm_domain Resource - akamai
+        title: akamai_gtm_domain Resource - akamai
+        argumentDocs:
+            cname_coalescing_enabled: (Boolean)
+            comment: (String)
+            contract: (String)
+            default_error_penalty: (Number)
+            default_health_max: (Number)
+            default_health_multiplier: (Number)
+            default_health_threshold: (Number)
+            default_max_unreachable_penalty: (Number)
+            default_ssl_client_certificate: (String)
+            default_ssl_client_private_key: (String)
+            default_timeout_penalty: (Number)
+            default_unreachable_threshold: (Number)
+            email_notification_list: (Set of String)
+            end_user_mapping_enabled: (Boolean)
+            group: (String)
+            id: (String) The ID of this resource.
+            load_feedback: (Boolean)
+            load_imbalance_percentage: (Number)
+            map_update_interval: (Number)
+            max_properties: (Number)
+            max_resources: (Number)
+            max_test_timeout: (Number)
+            max_ttl: (Number)
+            min_pingable_region_fraction: (Number)
+            min_test_interval: (Number)
+            min_ttl: (Number)
+            name: (String)
+            ping_interval: (Number)
+            ping_packet_size: (Number)
+            round_robin_prefix: (String)
+            servermonitor_liveness_count: (Number)
+            servermonitor_load_count: (Number)
+            servermonitor_pool: (String)
+            sign_and_serve: (Boolean) If set (true) we will sign the domain's resource records so that they can be validated by a validating resolver.
+            sign_and_serve_algorithm: '(String) The signing algorithm to use for signAndServe. One of the following values: RSA_SHA1, RSA_SHA256, RSA_SHA512, ECDSA_P256_SHA256, ECDSA_P384_SHA384, ED25519, ED448.'
+            type: (String)
+            wait_on_complete: (Boolean)
+        importStatements: []
+    akamai_gtm_geomap Resource - akamai:
+        subCategory: ""
+        name: akamai_gtm_geomap Resource - akamai
+        title: akamai_gtm_geomap Resource - akamai
+        argumentDocs:
+            assignment: (Block List) (see below for nested schema)
+            countries: (Set of String)
+            datacenter_id: (Number)
+            default_datacenter: (List of Object) (see below for nested schema)
+            domain: (String)
+            id: (String) The ID of this resource.
+            name: (String)
+            nickname: (String)
+            wait_on_complete: (Boolean)
+        importStatements: []
+    akamai_gtm_property Resource - akamai:
+        subCategory: ""
+        name: akamai_gtm_property Resource - akamai
+        title: akamai_gtm_property Resource - akamai
+        argumentDocs:
+            alternate_ca_certificates: (List of String)
+            answers_required: (Boolean)
+            backup_cname: (String)
+            backup_ip: (String)
+            balance_by_download_score: (Boolean)
+            cname: (String)
+            comments: (String)
+            datacenter_id: (Number)
+            disable_nonstandard_port_warning: (Boolean)
+            disabled: (Boolean)
+            domain: (String)
+            dynamic_ttl: (Number)
+            enabled: (Boolean)
+            error_penalty: (Number)
+            failback_delay: (Number)
+            failover_delay: (Number)
+            ghost_demand_reporting: (Boolean)
+            handout_cname: (String)
+            handout_limit: (Number)
+            handout_mode: (String)
+            health_max: (Number)
+            health_multiplier: (Number)
+            health_threshold: (Number)
+            http_error3xx: (Boolean)
+            http_error4xx: (Boolean)
+            http_error5xx: (Boolean)
+            http_header: (Block List) (see below for nested schema)
+            http_method: (String)
+            http_request_body: (String)
+            id: (String) The ID of this resource.
+            ipv6: (Boolean)
+            liveness_test: (Block List) (see below for nested schema)
+            load_imbalance_percentage: (Number)
+            map_name: (String)
+            max_unreachable_penalty: (Number)
+            min_live_fraction: (Number)
+            name: (String)
+            peer_certificate_verification: (Boolean)
+            pre_2023_security_posture: (Boolean) Whether to enable backwards compatibility for liveness endpoints that use older TLS protocols
+            precedence: (Number)
+            rdata: (List of String)
+            recursion_requested: (Boolean)
+            request_string: (String)
+            resource_type: (String)
+            response_string: (String)
+            score_aggregation_type: (String)
+            servers: (Set of String)
+            ssl_client_certificate: (String)
+            ssl_client_private_key: (String)
+            static_rr_set: (Block List) (see below for nested schema)
+            stickiness_bonus_constant: (Number)
+            stickiness_bonus_percentage: (Number)
+            test_interval: (Number)
+            test_object: (String)
+            test_object_password: (String)
+            test_object_port: (Number)
+            test_object_protocol: (String)
+            test_object_username: (String)
+            test_timeout: (Number)
+            timeout_penalty: (Number)
+            traffic_target: (Block List) (see below for nested schema)
+            ttl: (Number)
+            type: (String)
+            unreachable_threshold: (Number)
+            use_computed_targets: (Boolean)
+            value: (String)
+            wait_on_complete: (Boolean)
+            weight: (Number)
+            weighted_hash_bits_for_ipv4: (Number)
+            weighted_hash_bits_for_ipv6: (Number)
+        importStatements: []
+    akamai_gtm_resource Resource - akamai:
+        subCategory: ""
+        name: akamai_gtm_resource Resource - akamai
+        title: akamai_gtm_resource Resource - akamai
+        argumentDocs:
+            aggregation_type: (String)
+            constrained_property: (String)
+            datacenter_id: (Number)
+            decay_rate: (Number)
+            description: (String)
+            domain: (String)
+            host_header: (String)
+            id: (String) The ID of this resource.
+            leader_string: (String)
+            least_squares_decay: (Number)
+            load_imbalance_percentage: (Number)
+            load_object: (String)
+            load_object_port: (Number)
+            load_servers: (Set of String)
+            max_u_multiplicative_increment: (Number)
+            name: (String)
+            resource_instance: (Block List) (see below for nested schema)
+            type: (String)
+            upper_bound: (Number)
+            use_default_load_object: (Boolean)
+            wait_on_complete: (Boolean)
+        importStatements: []
+    akamai_iam_blocked_user_properties Resource - akamai:
+        subCategory: ""
+        description: Manage a user in your account.
+        name: akamai_iam_blocked_user_properties Resource - akamai
+        title: akamai_iam_blocked_user_properties Resource - akamai
+        argumentDocs:
+            blocked_properties: (List of Number) List of properties to block for a user.
+            group_id: (Number) A unique identifier for a group.
+            id: (String) The ID of this resource.
+            identity_id: (String) A unique identifier for a user's profile, which corresponds to a user's actual profile or client ID.
+        importStatements: []
+    akamai_iam_cidr_block Resource - akamai:
+        subCategory: ""
+        name: akamai_iam_cidr_block Resource - akamai
+        title: akamai_iam_cidr_block Resource - akamai
+        argumentDocs:
+            actions: (Attributes) Specifies activities available for the CIDR block. (see below for nested schema)
+            cidr_block: (String) The value of an IP address or IP address range.
+            cidr_block_id: (Number) Unique identifier for each CIDR block.
+            comments: (String) Descriptive label you provide for the CIDR block.
+            created_by: (String) The user who created the CIDR block.
+            created_date: (String) ISO 8601 timestamp indicating when the CIDR block was created.
+            delete: (Boolean) Whether you can delete this CIDR block. You can't delete a CIDR block from an IP address not on the allowlist, or if the CIDR block is the only one on the allowlist.
+            edit: (Boolean) Whether you can edit this CIDR block. You can't edit CIDR block from an IP address not on the allowlist, or if the CIDR block is the only one on the allowlist.
+            enabled: (Boolean) Enables the CIDR block on the account.
+            modified_by: (String) The user who last edited the CIDR block.
+            modified_date: (String) ISO 8601 timestamp indicating when the CIDR block was last modified.
+        importStatements: []
+    akamai_iam_group Resource - akamai:
+        subCategory: ""
+        description: Manage a group in your account.
+        name: akamai_iam_group Resource - akamai
+        title: akamai_iam_group Resource - akamai
+        argumentDocs:
+            id: (String) The ID of this resource.
+            name: (String) Human readable name for a group.
+            parent_group_id: (Number) Unique identifier for the parent group.
+            sub_groups: (Set of Number) Subgroups IDs.
+        importStatements: []
+    akamai_iam_ip_allowlist Resource - akamai:
+        subCategory: ""
+        name: akamai_iam_ip_allowlist Resource - akamai
+        title: akamai_iam_ip_allowlist Resource - akamai
+        argumentDocs:
+            enable: (Boolean) Whether to enable or disable the allowlist.
+        importStatements: []
+    akamai_iam_role Resource - akamai:
+        subCategory: ""
+        name: akamai_iam_role Resource - akamai
+        title: akamai_iam_role Resource - akamai
+        argumentDocs:
+            description: (String) The description for a role.
+            granted_roles: (Set of Number) The list of existing unique identifiers for the granted roles.
+            id: (String) The ID of this resource.
+            name: (String) The name you supply for a role.
+            type: (String) The role type which indicates whether it's a standard role provided by Akamai or a custom role for the account.
+        importStatements: []
+    akamai_iam_user Resource - akamai:
+        subCategory: ""
+        description: Manage a user in your account.
+        name: akamai_iam_user Resource - akamai
+        title: akamai_iam_user Resource - akamai
+        argumentDocs:
+            address: (String) The user's street address.
+            api_client_credential_expiry_notification: (Boolean) Enables notifications for expiring API client credentials.
+            auth_grants_json: (String) A user's per-group role assignments, in JSON form.
+            city: (String) The user's city.
+            contact_type: (String) To help characterize the user, the value can be any that are available from the view-contact-types operation.
+            country: (String) As part of the user's location, the value can be any that are available from the view-supported-countries operation.
+            email: (String) The user's email address.
+            email_update_pending: (Boolean) Indicates whether email update is pending.
+            enable_email_notifications: (Boolean) Enables email notifications.
+            enable_mfa: (Boolean) Indicates whether multi-factor authentication is allowed.
+            enable_tfa: (Boolean) Indicates whether two-factor authentication is allowed.
+            first_name: (String) The user's first name.
+            id: (String) The ID of this resource.
+            job_title: (String) The user's position at your company.
+            last_login: (String) ISO 8601 timestamp indicating when the user last logged in.
+            last_name: (String) The user's surname.
+            lock: (Boolean) Flag to block a user account.
+            mobile_phone: (String) The user's mobile phone number.
+            new_user_notification: (Boolean) Enables notifications for group administrators when the user creates other new users.
+            password: (String, Sensitive) New password for a user.
+            password_expired_after: (String) The date a user's password expires.
+            password_expiry: (Boolean) Enables notifications for expiring passwords.
+            phone: (String) The user's main phone number.
+            preferred_language: (String) The value can be any that are available from the view-languages operation.
+            proactive: (List of String) Products for which the user gets notifications for service issues.
+            secondary_email: (String) The user's secondary email address.
+            session_timeout: (Number) The number of seconds it takes for the user's Control Center session to time out if there hasn't been any activity.
+            state: (String) The user's state.
+            tfa_configured: (Boolean) Indicates whether two-factor authentication is configured.
+            time_zone: (String) The user's time zone. The value can be any that are available from the view-time-zones operation.
+            upgrade: (List of String) Products for which the user receives notifications for upgrades.
+            user_name: (String) A user's loginId. Typically, a user's email address.
+            user_notifications: '(Block List, Max: 1) Specifies email notifications the user receives for products. (see below for nested schema)'
+            zip_code: (String) The user's five-digit ZIP code.
+        importStatements: []
+    akamai_imaging_policy_image Resource - akamai:
+        subCategory: ""
+        name: akamai_imaging_policy_image Resource - akamai
+        title: akamai_imaging_policy_image Resource - akamai
+        argumentDocs:
+            activate_on_production: (Boolean) With this flag set to false, the user can perform modifications on staging without affecting the version already saved to production. With this flag set to true, the policy will be saved on the production network. It is possible to change it back to false only when there are any changes to the policy qualifying it for the new version.
+            contract_id: (String) Unique identifier for the Akamai Contract containing the Policy Set(s)
+            id: (String) The ID of this resource.
+            json: (String) A JSON encoded policy
+            policy_id: (String) Unique identifier for a Policy. It is not possible to modify the id of the policy.
+            policyset_id: (String) Unique identifier for the Image & Video Manager Policy Set.
+            version: (Number) The version number of this policy version
+        importStatements: []
+    akamai_imaging_policy_set Resource - akamai:
+        subCategory: ""
+        name: akamai_imaging_policy_set Resource - akamai
+        title: akamai_imaging_policy_set Resource - akamai
+        argumentDocs:
+            contract_id: (String) The unique identifier for the Akamai Contract containing the Policy Set(s)
+            id: (String) The ID of this resource.
+            name: (String) A friendly name for the Policy Set
+            region: (String) The geographic region which media using this Policy Set is optimized for
+            type: (String) The type of media this Policy Set manages
+        importStatements: []
+    akamai_imaging_policy_video Resource - akamai:
+        subCategory: ""
+        name: akamai_imaging_policy_video Resource - akamai
+        title: akamai_imaging_policy_video Resource - akamai
+        argumentDocs:
+            activate_on_production: (Boolean) With this flag set to false, the user can perform modifications on staging without affecting the version already saved to production. With this flag set to true, the policy will be saved on the production network. It is possible to change it back to false only when there are any changes to the policy qualifying it for the new version.
+            contract_id: (String) Unique identifier for the Akamai Contract containing the Policy Set(s)
+            id: (String) The ID of this resource.
+            json: (String) A JSON encoded policy
+            policy_id: (String) Unique identifier for a Policy. It is not possible to modify the id of the policy.
+            policyset_id: (String) Unique identifier for the Image & Video Manager Policy Set.
+            version: (Number) The version number of this policy version
+        importStatements: []
+    akamai_networklist_activations Resource - akamai:
+        subCategory: ""
+        name: akamai_networklist_activations Resource - akamai
+        title: akamai_networklist_activations Resource - akamai
+        argumentDocs:
+            id: (String) The ID of this resource.
+            network: '(String) The Akamai network on which the list is activated: STAGING or PRODUCTION'
+            network_list_id: (String) Unique identifier of the network list
+            notes: (String) Descriptive text to accompany the activation
+            notification_emails: (Set of String) List of email addresses of Control Center users who receive an email when activation of this list is complete
+            status: (String) This network list's current activation status in the environment specified by the "network" attribute
+            sync_point: (Number) Identifies the sync point of the network list to be activated
+        importStatements: []
+    akamai_networklist_description Resource - akamai:
+        subCategory: ""
+        name: akamai_networklist_description Resource - akamai
+        title: akamai_networklist_description Resource - akamai
+        argumentDocs:
+            description: (String)
+            id: (String) The ID of this resource.
+            name: (String)
+            network_list_id: (String)
+        importStatements: []
+    akamai_networklist_network_list Resource - akamai:
+        subCategory: ""
+        name: akamai_networklist_network_list Resource - akamai
+        title: akamai_networklist_network_list Resource - akamai
+        argumentDocs:
+            contract_id: (String) contract ID
+            description: (String) A description of the network list
+            group_id: (Number) group ID
+            id: (String) The ID of this resource.
+            list: (Set of String) A list of IP addresses or locations to be included in the list, added to an existing list, or removed from an existing list
+            mode: (String) A string specifying the interpretation of the list parameter. Must be 'APPEND', 'REPLACE', or 'REMOVE'
+            name: (String) The name to be assigned to the network list
+            network_list_id: (String) network list ID
+            sync_point: (Number) sync point
+            type: (String) The type of the network list; must be either 'IP' or 'GEO'
+            uniqueid: (String) unique ID
+        importStatements: []
+    akamai_networklist_subscription Resource - akamai:
+        subCategory: ""
+        name: akamai_networklist_subscription Resource - akamai
+        title: akamai_networklist_subscription Resource - akamai
+        argumentDocs:
+            id: (String) The ID of this resource.
+            network_list: (List of String)
+            recipients: (List of String)
+        importStatements: []
+    akamai_property Resource - akamai:
+        subCategory: ""
+        name: akamai_property Resource - akamai
+        title: akamai_property Resource - akamai
+        argumentDocs:
+            asset_id: (String) ID of the property in the Identity and Access Management API.
+            behavior_name: (String)
+            cert_provisioning_type: (String)
+            cert_status: (Block List) (see below for nested schema)
+            cname_from: (String)
+            cname_to: (String)
+            cname_type: (String)
+            contract_id: (String) Contract ID to be assigned to the Property
+            detail: (String)
+            edge_hostname_id: (String)
+            error_location: (String)
+            group_id: (String) Group ID to be assigned to the Property
+            hostname: (String)
+            hostnames: (Block Set) (see below for nested schema)
+            id: (String) The ID of this resource.
+            instance: (String)
+            latest_version: (Number) Property's current latest version number
+            name: (String) Name to give to the Property (must be unique)
+            product_id: (String) Product ID to be assigned to the Property
+            production_status: (String)
+            production_version: (Number) Property's version currently activated in production (zero when not active in production)
+            property_id: (String) Property ID
+            read_version: (Number) Required property's version to be read
+            rule_errors: (List of Object) (see below for nested schema)
+            rule_format: (String) Specify the rule format version (defaults to latest version available when created)
+            rule_warnings: (List of Object) Rule validation warnings (see below for nested schema)
+            rules: (String) Property Rules as JSON
+            staging_status: (String)
+            staging_version: (Number) Property's version currently activated in staging (zero when not active in staging)
+            status_code: (Number)
+            target: (String)
+            title: (String)
+            type: (String)
+            version_notes: (String) Property version notes
+        importStatements: []
+    akamai_property_activation Resource - akamai:
+        subCategory: ""
+        name: akamai_property_activation Resource - akamai
+        title: akamai_property_activation Resource - akamai
+        argumentDocs:
+            activation_id: (String)
+            auto_acknowledge_rule_warnings: (Boolean) Automatically acknowledge all rule warnings for activation to continue. Default is false
+            behavior_name: (String)
+            compliance_record: '(Block List, Max: 1) Provides an audit record when activating on a production network (see below for nested schema)'
+            contact: (Set of String)
+            customer_email: (String) Identifies the customer
+            default: (String)
+            detail: (String)
+            error_location: (String)
+            errors: (String)
+            id: (String) The ID of this resource.
+            instance: (String)
+            network: (String)
+            noncompliance_reason_emergency: '(Block List, Max: 1) Provides an audit record when activating on a production network with noncompliance reason as EMERGENCY (see below for nested schema)'
+            noncompliance_reason_no_production_traffic: '(Block List, Max: 1) Provides an audit record when activating on a production network with noncompliance reason as NO_PRODUCTION_TRAFFIC (see below for nested schema)'
+            noncompliance_reason_none: '(Block List, Max: 1) Provides an audit record when activating on a production network with noncompliance reason as NONE (see below for nested schema)'
+            noncompliance_reason_other: '(Block List, Max: 1) Provides an audit record when activating on a production network with noncompliance reason as OTHER (see below for nested schema)'
+            note: (String) assigns a log message to the activation request
+            other_noncompliance_reason: (String) Describes the reason why the activation must occur immediately, out of compliance with the standard procedure
+            peer_reviewed_by: (String) Identifies person who has independently approved the activation request
+            property_id: (String)
+            rule_errors: (List of Object) (see below for nested schema)
+            status: (String)
+            status_code: (Number)
+            ticket_id: (String) Identifies the ticket that describes the need for the activation
+            timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
+            title: (String)
+            type: (String)
+            unit_tested: (Boolean) Whether the metadata to activate has been fully tested
+            version: (Number)
+            warnings: (String)
+        importStatements: []
+    akamai_property_bootstrap Resource - akamai:
+        subCategory: ""
+        name: akamai_property_bootstrap Resource - akamai
+        title: akamai_property_bootstrap Resource - akamai
+        argumentDocs:
+            asset_id: (String) ID of the property in the Identity and Access Management API.
+            contract_id: (String) Contract ID to be assigned to the Property
+            group_id: (String) Group ID to be assigned to the Property
+            id: (String) ID of the Property
+            name: (String) Name to give to the Property (must be unique)
+            product_id: (String) Product ID to be assigned to the Property
+        importStatements: []
+    akamai_property_include Resource - akamai:
+        subCategory: ""
+        name: akamai_property_include Resource - akamai
+        title: akamai_property_include Resource - akamai
+        argumentDocs:
+            asset_id: (String) ID of the include in the Identity and Access Management API.
+            contract_id: (String) Identifies the contract to which the include is assigned
+            group_id: (String) Identifies the group to which the include is assigned
+            id: (String) The ID of this resource.
+            latest_version: (Number) Specifies the most recent version of the include
+            name: (String) A descriptive name for the include
+            product_id: (String) The product assigned to the include
+            production_version: (String) The most recent version to be activated to the production network
+            rule_errors: (String) Rule validation errors
+            rule_format: (String) Indicates the versioned set of features and criteria
+            rule_warnings: (String) Rule validation warnings
+            rules: (String) Property Rules as JSON
+            staging_version: (String) The most recent version to be activated to the staging network
+            type: (String) Specifies the type of the include, either 'MICROSERVICES' or 'COMMON_SETTINGS'
+        importStatements: []
+    akamai_property_include_activation Resource - akamai:
+        subCategory: ""
+        name: akamai_property_include_activation Resource - akamai
+        title: akamai_property_include_activation Resource - akamai
+        argumentDocs:
+            auto_acknowledge_rule_warnings: (Boolean) Automatically acknowledge all rule warnings for activation and continue
+            compliance_record: '(Block List, Max: 1) Provides an audit record when activating on a production network (see below for nested schema)'
+            contract_id: (String) The contract under which the include is activated
+            customer_email: (String) Identifies the customer
+            default: (String)
+            group_id: (String) The group under which the include is activated
+            id: (String) The ID of this resource.
+            include_id: (String) The unique identifier of the include
+            network: (String) The network for which the activation will be performed
+            noncompliance_reason_emergency: '(Block List, Max: 1) Provides an audit record when activating on a production network with noncompliance reason as EMERGENCY (see below for nested schema)'
+            noncompliance_reason_no_production_traffic: '(Block List, Max: 1) Provides an audit record when activating on a production network with noncompliance reason as NO_PRODUCTION_TRAFFIC (see below for nested schema)'
+            noncompliance_reason_none: '(Block List, Max: 1) Provides an audit record when activating on a production network with noncompliance reason as NONE (see below for nested schema)'
+            noncompliance_reason_other: '(Block List, Max: 1) Provides an audit record when activating on a production network with noncompliance reason as OTHER (see below for nested schema)'
+            note: (String) The note to assign to a log message of the activation request
+            notify_emails: (Set of String) The list of email addresses to notify about an activation status
+            other_noncompliance_reason: (String) Describes the reason why the activation must occur immediately, out of compliance with the standard procedure
+            peer_reviewed_by: (String) Identifies person who has independently approved the activation request
+            ticket_id: (String) Identifies the ticket that describes the need for the activation
+            timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
+            unit_tested: (Boolean) Whether the metadata to activate has been fully tested
+            validations: (String) The validation information in JSON format
+            version: (Number) The unique identifier of the include
         importStatements: []
