@@ -1,0 +1,16 @@
+apiVersion: dns.akamai.terasky.com/v1alpha1
+kind: Zone
+metadata:
+  annotations:
+    meta.upbound.io/example-id: dns/v1alpha1/zone
+  labels:
+    testing.upbound.io/example-name: test_primary_zone
+  name: test-primary-zone
+spec:
+  forProvider:
+    comment: This is a test  primary zone
+    contract: ${data.akamai_contract.contract.id}
+    group: ${data.akamai_group.group.id}
+    signAndServe: false
+    type: PRIMARY
+    zone: example_primary.net

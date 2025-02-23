@@ -1,0 +1,20 @@
+apiVersion: dns.akamai.terasky.com/v1alpha1
+kind: Record
+metadata:
+  annotations:
+    meta.upbound.io/example-id: dns/v1alpha1/record
+  labels:
+    testing.upbound.io/example-name: soa_record
+  name: soa-record
+spec:
+  forProvider:
+    emailAddress: hostmaster.${local.zone}
+    expiry: 604800
+    name: ${local.zone}
+    nameServer: a1-98.akam.net.
+    nxdomainTtl: 300
+    recordtype: SOA
+    refresh: 3600
+    retry: 600
+    ttl: 86400
+    zone: ${local.zone}

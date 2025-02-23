@@ -1,0 +1,14 @@
+apiVersion: cp.akamai.terasky.com/v1alpha1
+kind: Code
+metadata:
+  annotations:
+    meta.upbound.io/example-id: cp/v1alpha1/code
+  labels:
+    testing.upbound.io/example-name: example
+  name: example
+spec:
+  forProvider:
+    contractId: ctr_XXX
+    groupId: grp_XXX
+    name: example-XXX
+    productId: prd_XXX

@@ -34,7 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: Property is the Schema for the Propertys API. <no value>
+        description: Property is the Schema for the Propertys API.
         properties:
           apiVersion:
             description: |-
@@ -73,46 +73,67 @@ spec:
               forProvider:
                 properties:
                   contractId:
-                    description: Contract ID to be assigned to the Property
+                    description: |-
+                      (String) Contract ID to be assigned to the Property
+                      Contract ID to be assigned to the Property
                     type: string
                   groupId:
-                    description: Group ID to be assigned to the Property
+                    description: |-
+                      (String) Group ID to be assigned to the Property
+                      Group ID to be assigned to the Property
                     type: string
                   hostnames:
+                    description: (Block Set) (see below for nested schema)
                     items:
                       properties:
                         certProvisioningType:
+                          description: (String)
                           type: string
                         certStatus:
+                          description: (Block List) (see below for nested schema)
                           items:
                             type: object
                           type: array
                         cnameFrom:
+                          description: (String)
                           type: string
                         cnameTo:
+                          description: (String)
                           type: string
                         cnameType:
+                          description: (String)
                           type: string
                       type: object
                     type: array
                   name:
-                    description: Name to give to the Property (must be unique)
+                    description: |-
+                      (String) Name to give to the Property (must be unique)
+                      Name to give to the Property (must be unique)
                     type: string
                   productId:
-                    description: Product ID to be assigned to the Property
+                    description: |-
+                      (String) Product ID to be assigned to the Property
+                      Product ID to be assigned to the Property
                     type: string
                   propertyId:
-                    description: Property ID
+                    description: |-
+                      (String) Property ID
+                      Property ID
                     type: string
                   ruleFormat:
-                    description: Specify the rule format version (defaults to latest
-                      version available when created)
+                    description: |-
+                      (String) Specify the rule format version (defaults to latest version available when created)
+                      Specify the rule format version (defaults to latest version available when created)
                     type: string
                   rules:
-                    description: Property Rules as JSON
+                    description: |-
+                      (String) Property Rules as JSON
+                      Property Rules as JSON
                     type: string
                   versionNotes:
-                    description: Property version notes
+                    description: |-
+                      (String) Property version notes
+                      Property version notes
                     type: string
                 type: object
               initProvider:
@@ -129,46 +150,67 @@ spec:
                   autoscaler.
                 properties:
                   contractId:
-                    description: Contract ID to be assigned to the Property
+                    description: |-
+                      (String) Contract ID to be assigned to the Property
+                      Contract ID to be assigned to the Property
                     type: string
                   groupId:
-                    description: Group ID to be assigned to the Property
+                    description: |-
+                      (String) Group ID to be assigned to the Property
+                      Group ID to be assigned to the Property
                     type: string
                   hostnames:
+                    description: (Block Set) (see below for nested schema)
                     items:
                       properties:
                         certProvisioningType:
+                          description: (String)
                           type: string
                         certStatus:
+                          description: (Block List) (see below for nested schema)
                           items:
                             type: object
                           type: array
                         cnameFrom:
+                          description: (String)
                           type: string
                         cnameTo:
+                          description: (String)
                           type: string
                         cnameType:
+                          description: (String)
                           type: string
                       type: object
                     type: array
                   name:
-                    description: Name to give to the Property (must be unique)
+                    description: |-
+                      (String) Name to give to the Property (must be unique)
+                      Name to give to the Property (must be unique)
                     type: string
                   productId:
-                    description: Product ID to be assigned to the Property
+                    description: |-
+                      (String) Product ID to be assigned to the Property
+                      Product ID to be assigned to the Property
                     type: string
                   propertyId:
-                    description: Property ID
+                    description: |-
+                      (String) Property ID
+                      Property ID
                     type: string
                   ruleFormat:
-                    description: Specify the rule format version (defaults to latest
-                      version available when created)
+                    description: |-
+                      (String) Specify the rule format version (defaults to latest version available when created)
+                      Specify the rule format version (defaults to latest version available when created)
                     type: string
                   rules:
-                    description: Property Rules as JSON
+                    description: |-
+                      (String) Property Rules as JSON
+                      Property Rules as JSON
                     type: string
                   versionNotes:
-                    description: Property version notes
+                    description: |-
+                      (String) Property version notes
+                      Property version notes
                     type: string
                 type: object
               managementPolicies:
@@ -361,116 +403,167 @@ spec:
               atProvider:
                 properties:
                   assetId:
-                    description: ID of the property in the Identity and Access Management
-                      API.
+                    description: |-
+                      (String) ID of the property in the Identity and Access Management API.
+                      ID of the property in the Identity and Access Management API.
                     type: string
                   contractId:
-                    description: Contract ID to be assigned to the Property
+                    description: |-
+                      (String) Contract ID to be assigned to the Property
+                      Contract ID to be assigned to the Property
                     type: string
                   groupId:
-                    description: Group ID to be assigned to the Property
+                    description: |-
+                      (String) Group ID to be assigned to the Property
+                      Group ID to be assigned to the Property
                     type: string
                   hostnames:
+                    description: (Block Set) (see below for nested schema)
                     items:
                       properties:
                         certProvisioningType:
+                          description: (String)
                           type: string
                         certStatus:
+                          description: (Block List) (see below for nested schema)
                           items:
                             properties:
                               hostname:
+                                description: (String)
                                 type: string
                               productionStatus:
+                                description: (String)
                                 type: string
                               stagingStatus:
+                                description: (String)
                                 type: string
                               target:
+                                description: (String)
                                 type: string
                             type: object
                           type: array
                         cnameFrom:
+                          description: (String)
                           type: string
                         cnameTo:
+                          description: (String)
                           type: string
                         cnameType:
+                          description: (String)
                           type: string
                         edgeHostnameId:
+                          description: (String)
                           type: string
                       type: object
                     type: array
                   id:
+                    description: (String) The ID of this resource.
                     type: string
                   latestVersion:
-                    description: Property's current latest version number
+                    description: |-
+                      (Number) Property's current latest version number
+                      Property's current latest version number
                     type: number
                   name:
-                    description: Name to give to the Property (must be unique)
+                    description: |-
+                      (String) Name to give to the Property (must be unique)
+                      Name to give to the Property (must be unique)
                     type: string
                   productId:
-                    description: Product ID to be assigned to the Property
+                    description: |-
+                      (String) Product ID to be assigned to the Property
+                      Product ID to be assigned to the Property
                     type: string
                   productionVersion:
-                    description: Property's version currently activated in production
-                      (zero when not active in production)
+                    description: |-
+                      (Number) Property's version currently activated in production (zero when not active in production)
+                      Property's version currently activated in production (zero when not active in production)
                     type: number
                   propertyId:
-                    description: Property ID
+                    description: |-
+                      (String) Property ID
+                      Property ID
                     type: string
                   readVersion:
-                    description: Required property's version to be read
+                    description: |-
+                      (Number) Required property's version to be read
+                      Required property's version to be read
                     type: number
                   ruleErrors:
+                    description: (List of Object) (see below for nested schema)
                     items:
                       properties:
                         behaviorName:
+                          description: (String)
                           type: string
                         detail:
+                          description: (String)
                           type: string
                         errorLocation:
+                          description: (String)
                           type: string
                         instance:
+                          description: (String)
                           type: string
                         statusCode:
+                          description: (Number)
                           type: number
                         title:
+                          description: (String)
                           type: string
                         type:
+                          description: (String)
                           type: string
                       type: object
                     type: array
                   ruleFormat:
-                    description: Specify the rule format version (defaults to latest
-                      version available when created)
+                    description: |-
+                      (String) Specify the rule format version (defaults to latest version available when created)
+                      Specify the rule format version (defaults to latest version available when created)
                     type: string
                   ruleWarnings:
-                    description: Rule validation warnings
+                    description: |-
+                      (List of Object) Rule validation warnings (see below for nested schema)
+                      Rule validation warnings
                     items:
                       properties:
                         behaviorName:
+                          description: (String)
                           type: string
                         detail:
+                          description: (String)
                           type: string
                         errorLocation:
+                          description: (String)
                           type: string
                         instance:
+                          description: (String)
                           type: string
                         statusCode:
+                          description: (Number)
                           type: number
                         title:
+                          description: (String)
                           type: string
                         type:
+                          description: (String)
                           type: string
                       type: object
                     type: array
                   rules:
-                    description: Property Rules as JSON
+                    description: |-
+                      (String) Property Rules as JSON
+                      Property Rules as JSON
                     type: string
                   stagingVersion:
-                    description: Property's version currently activated in staging
-                      (zero when not active in staging)
+                    description: |-
+                      (Number) Property's version currently activated in staging (zero when not active in staging)
+                      Property's version currently activated in staging (zero when not active in staging)
                     type: number
                   versionNotes:
-                    description: Property version notes
+                    description: |-
+                      (String) Property version notes
+                      Property version notes
                     type: string
                 type: object
               conditions:

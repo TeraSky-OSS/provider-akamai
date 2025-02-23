@@ -14,403 +14,575 @@ import (
 )
 
 type RecordInitParameters struct {
+
+	// (Number)
 	Algorithm *float64 `json:"algorithm,omitempty" tf:"algorithm,omitempty"`
 
+	// (String)
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (String)
 	Digest *string `json:"digest,omitempty" tf:"digest,omitempty"`
 
+	// (Number)
 	DigestType *float64 `json:"digestType,omitempty" tf:"digest_type,omitempty"`
 
+	// (String)
 	EmailAddress *string `json:"emailAddress,omitempty" tf:"email_address,omitempty"`
 
+	// (String)
 	Expiration *string `json:"expiration,omitempty" tf:"expiration,omitempty"`
 
+	// (Number)
 	Expiry *float64 `json:"expiry,omitempty" tf:"expiry,omitempty"`
 
+	// (String)
 	Fingerprint *string `json:"fingerprint,omitempty" tf:"fingerprint,omitempty"`
 
+	// (Number)
 	FingerprintType *float64 `json:"fingerprintType,omitempty" tf:"fingerprint_type,omitempty"`
 
+	// (Number)
 	Flags *float64 `json:"flags,omitempty" tf:"flags,omitempty"`
 
+	// (String)
 	Flagsnaptr *string `json:"flagsnaptr,omitempty" tf:"flagsnaptr,omitempty"`
 
+	// (String)
 	Hardware *string `json:"hardware,omitempty" tf:"hardware,omitempty"`
 
+	// (String)
 	Inception *string `json:"inception,omitempty" tf:"inception,omitempty"`
 
+	// (Number)
 	Iterations *float64 `json:"iterations,omitempty" tf:"iterations,omitempty"`
 
+	// (String)
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
+	// (Number)
 	Keytag *float64 `json:"keytag,omitempty" tf:"keytag,omitempty"`
 
+	// (Number)
 	Labels *float64 `json:"labels,omitempty" tf:"labels,omitempty"`
 
+	// (String)
 	Mailbox *string `json:"mailbox,omitempty" tf:"mailbox,omitempty"`
 
+	// (Number)
 	MatchType *float64 `json:"matchType,omitempty" tf:"match_type,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String)
 	NameServer *string `json:"nameServer,omitempty" tf:"name_server,omitempty"`
 
+	// (String)
 	NextHashedOwnerName *string `json:"nextHashedOwnerName,omitempty" tf:"next_hashed_owner_name,omitempty"`
 
+	// (Number)
 	NxdomainTTL *float64 `json:"nxdomainTtl,omitempty" tf:"nxdomain_ttl,omitempty"`
 
+	// (Number)
 	Order *float64 `json:"order,omitempty" tf:"order,omitempty"`
 
+	// (Number)
 	OriginalTTL *float64 `json:"originalTtl,omitempty" tf:"original_ttl,omitempty"`
 
+	// (Number)
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (Number)
 	Preference *float64 `json:"preference,omitempty" tf:"preference,omitempty"`
 
+	// (Number)
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (Number)
 	PriorityIncrement *float64 `json:"priorityIncrement,omitempty" tf:"priority_increment,omitempty"`
 
+	// (Number)
 	Protocol *float64 `json:"protocol,omitempty" tf:"protocol,omitempty"`
 
+	// (String)
 	Recordtype *string `json:"recordtype,omitempty" tf:"recordtype,omitempty"`
 
+	// (Number)
 	Refresh *float64 `json:"refresh,omitempty" tf:"refresh,omitempty"`
 
+	// (String)
 	Regexp *string `json:"regexp,omitempty" tf:"regexp,omitempty"`
 
+	// (String)
 	Replacement *string `json:"replacement,omitempty" tf:"replacement,omitempty"`
 
+	// (Number)
 	Retry *float64 `json:"retry,omitempty" tf:"retry,omitempty"`
 
+	// (String)
 	Salt *string `json:"salt,omitempty" tf:"salt,omitempty"`
 
+	// (Number)
 	Selector *float64 `json:"selector,omitempty" tf:"selector,omitempty"`
 
+	// (String)
 	Service *string `json:"service,omitempty" tf:"service,omitempty"`
 
+	// (String)
 	Signature *string `json:"signature,omitempty" tf:"signature,omitempty"`
 
+	// (String)
 	Signer *string `json:"signer,omitempty" tf:"signer,omitempty"`
 
+	// (String)
 	Software *string `json:"software,omitempty" tf:"software,omitempty"`
 
+	// (Number)
 	Subtype *float64 `json:"subtype,omitempty" tf:"subtype,omitempty"`
 
+	// (String)
 	SvcParams *string `json:"svcParams,omitempty" tf:"svc_params,omitempty"`
 
+	// (Number)
 	SvcPriority *float64 `json:"svcPriority,omitempty" tf:"svc_priority,omitempty"`
 
+	// (Number)
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 
+	// (List of String)
 	Target []*string `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String)
 	TargetName *string `json:"targetName,omitempty" tf:"target_name,omitempty"`
 
+	// (String)
 	Txt *string `json:"txt,omitempty" tf:"txt,omitempty"`
 
+	// (String)
 	TypeBitmaps *string `json:"typeBitmaps,omitempty" tf:"type_bitmaps,omitempty"`
 
+	// (String)
 	TypeCovered *string `json:"typeCovered,omitempty" tf:"type_covered,omitempty"`
 
+	// (String)
 	TypeMnemonic *string `json:"typeMnemonic,omitempty" tf:"type_mnemonic,omitempty"`
 
+	// (Number)
 	TypeValue *float64 `json:"typeValue,omitempty" tf:"type_value,omitempty"`
 
+	// (Number)
 	Usage *float64 `json:"usage,omitempty" tf:"usage,omitempty"`
 
+	// (Number)
 	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
 
+	// (String)
 	Zone *string `json:"zone,omitempty" tf:"zone,omitempty"`
 }
 
 type RecordObservation struct {
+
+	// (Number)
 	Algorithm *float64 `json:"algorithm,omitempty" tf:"algorithm,omitempty"`
 
+	// (String)
 	AnswerType *string `json:"answerType,omitempty" tf:"answer_type,omitempty"`
 
+	// (String)
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (String)
 	DNSName *string `json:"dnsName,omitempty" tf:"dns_name,omitempty"`
 
+	// (String)
 	Digest *string `json:"digest,omitempty" tf:"digest,omitempty"`
 
+	// (Number)
 	DigestType *float64 `json:"digestType,omitempty" tf:"digest_type,omitempty"`
 
+	// (String)
 	EmailAddress *string `json:"emailAddress,omitempty" tf:"email_address,omitempty"`
 
+	// (String)
 	Expiration *string `json:"expiration,omitempty" tf:"expiration,omitempty"`
 
+	// (Number)
 	Expiry *float64 `json:"expiry,omitempty" tf:"expiry,omitempty"`
 
+	// (String)
 	Fingerprint *string `json:"fingerprint,omitempty" tf:"fingerprint,omitempty"`
 
+	// (Number)
 	FingerprintType *float64 `json:"fingerprintType,omitempty" tf:"fingerprint_type,omitempty"`
 
+	// (Number)
 	Flags *float64 `json:"flags,omitempty" tf:"flags,omitempty"`
 
+	// (String)
 	Flagsnaptr *string `json:"flagsnaptr,omitempty" tf:"flagsnaptr,omitempty"`
 
+	// (String)
 	Hardware *string `json:"hardware,omitempty" tf:"hardware,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	Inception *string `json:"inception,omitempty" tf:"inception,omitempty"`
 
+	// (Number)
 	Iterations *float64 `json:"iterations,omitempty" tf:"iterations,omitempty"`
 
+	// (String)
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
+	// (Number)
 	Keytag *float64 `json:"keytag,omitempty" tf:"keytag,omitempty"`
 
+	// (Number)
 	Labels *float64 `json:"labels,omitempty" tf:"labels,omitempty"`
 
+	// (String)
 	Mailbox *string `json:"mailbox,omitempty" tf:"mailbox,omitempty"`
 
+	// (Number)
 	MatchType *float64 `json:"matchType,omitempty" tf:"match_type,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String)
 	NameServer *string `json:"nameServer,omitempty" tf:"name_server,omitempty"`
 
+	// (String)
 	NextHashedOwnerName *string `json:"nextHashedOwnerName,omitempty" tf:"next_hashed_owner_name,omitempty"`
 
+	// (Number)
 	NxdomainTTL *float64 `json:"nxdomainTtl,omitempty" tf:"nxdomain_ttl,omitempty"`
 
+	// (Number)
 	Order *float64 `json:"order,omitempty" tf:"order,omitempty"`
 
+	// (Number)
 	OriginalTTL *float64 `json:"originalTtl,omitempty" tf:"original_ttl,omitempty"`
 
+	// (Number)
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (Number)
 	Preference *float64 `json:"preference,omitempty" tf:"preference,omitempty"`
 
+	// (Number)
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (Number)
 	PriorityIncrement *float64 `json:"priorityIncrement,omitempty" tf:"priority_increment,omitempty"`
 
+	// (Number)
 	Protocol *float64 `json:"protocol,omitempty" tf:"protocol,omitempty"`
 
+	// (String)
 	RecordSha *string `json:"recordSha,omitempty" tf:"record_sha,omitempty"`
 
+	// (String)
 	Recordtype *string `json:"recordtype,omitempty" tf:"recordtype,omitempty"`
 
+	// (Number)
 	Refresh *float64 `json:"refresh,omitempty" tf:"refresh,omitempty"`
 
+	// (String)
 	Regexp *string `json:"regexp,omitempty" tf:"regexp,omitempty"`
 
+	// (String)
 	Replacement *string `json:"replacement,omitempty" tf:"replacement,omitempty"`
 
+	// (Number)
 	Retry *float64 `json:"retry,omitempty" tf:"retry,omitempty"`
 
+	// (String)
 	Salt *string `json:"salt,omitempty" tf:"salt,omitempty"`
 
+	// (Number)
 	Selector *float64 `json:"selector,omitempty" tf:"selector,omitempty"`
 
+	// (Number)
 	Serial *float64 `json:"serial,omitempty" tf:"serial,omitempty"`
 
+	// (String)
 	Service *string `json:"service,omitempty" tf:"service,omitempty"`
 
+	// (String)
 	Signature *string `json:"signature,omitempty" tf:"signature,omitempty"`
 
+	// (String)
 	Signer *string `json:"signer,omitempty" tf:"signer,omitempty"`
 
+	// (String)
 	Software *string `json:"software,omitempty" tf:"software,omitempty"`
 
+	// (Number)
 	Subtype *float64 `json:"subtype,omitempty" tf:"subtype,omitempty"`
 
+	// (String)
 	SvcParams *string `json:"svcParams,omitempty" tf:"svc_params,omitempty"`
 
+	// (Number)
 	SvcPriority *float64 `json:"svcPriority,omitempty" tf:"svc_priority,omitempty"`
 
+	// (Number)
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 
+	// (List of String)
 	Target []*string `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String)
 	TargetName *string `json:"targetName,omitempty" tf:"target_name,omitempty"`
 
+	// (String)
 	Txt *string `json:"txt,omitempty" tf:"txt,omitempty"`
 
+	// (String)
 	TypeBitmaps *string `json:"typeBitmaps,omitempty" tf:"type_bitmaps,omitempty"`
 
+	// (String)
 	TypeCovered *string `json:"typeCovered,omitempty" tf:"type_covered,omitempty"`
 
+	// (String)
 	TypeMnemonic *string `json:"typeMnemonic,omitempty" tf:"type_mnemonic,omitempty"`
 
+	// (Number)
 	TypeValue *float64 `json:"typeValue,omitempty" tf:"type_value,omitempty"`
 
+	// (Number)
 	Usage *float64 `json:"usage,omitempty" tf:"usage,omitempty"`
 
+	// (Number)
 	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
 
+	// (String)
 	Zone *string `json:"zone,omitempty" tf:"zone,omitempty"`
 }
 
 type RecordParameters struct {
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Algorithm *float64 `json:"algorithm,omitempty" tf:"algorithm,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Digest *string `json:"digest,omitempty" tf:"digest,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	DigestType *float64 `json:"digestType,omitempty" tf:"digest_type,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	EmailAddress *string `json:"emailAddress,omitempty" tf:"email_address,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Expiration *string `json:"expiration,omitempty" tf:"expiration,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Expiry *float64 `json:"expiry,omitempty" tf:"expiry,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Fingerprint *string `json:"fingerprint,omitempty" tf:"fingerprint,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	FingerprintType *float64 `json:"fingerprintType,omitempty" tf:"fingerprint_type,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Flags *float64 `json:"flags,omitempty" tf:"flags,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Flagsnaptr *string `json:"flagsnaptr,omitempty" tf:"flagsnaptr,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Hardware *string `json:"hardware,omitempty" tf:"hardware,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Inception *string `json:"inception,omitempty" tf:"inception,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Iterations *float64 `json:"iterations,omitempty" tf:"iterations,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Keytag *float64 `json:"keytag,omitempty" tf:"keytag,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Labels *float64 `json:"labels,omitempty" tf:"labels,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Mailbox *string `json:"mailbox,omitempty" tf:"mailbox,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	MatchType *float64 `json:"matchType,omitempty" tf:"match_type,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	NameServer *string `json:"nameServer,omitempty" tf:"name_server,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	NextHashedOwnerName *string `json:"nextHashedOwnerName,omitempty" tf:"next_hashed_owner_name,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	NxdomainTTL *float64 `json:"nxdomainTtl,omitempty" tf:"nxdomain_ttl,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Order *float64 `json:"order,omitempty" tf:"order,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	OriginalTTL *float64 `json:"originalTtl,omitempty" tf:"original_ttl,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Preference *float64 `json:"preference,omitempty" tf:"preference,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	PriorityIncrement *float64 `json:"priorityIncrement,omitempty" tf:"priority_increment,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Protocol *float64 `json:"protocol,omitempty" tf:"protocol,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Recordtype *string `json:"recordtype,omitempty" tf:"recordtype,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Refresh *float64 `json:"refresh,omitempty" tf:"refresh,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Regexp *string `json:"regexp,omitempty" tf:"regexp,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Replacement *string `json:"replacement,omitempty" tf:"replacement,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Retry *float64 `json:"retry,omitempty" tf:"retry,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Salt *string `json:"salt,omitempty" tf:"salt,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Selector *float64 `json:"selector,omitempty" tf:"selector,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Service *string `json:"service,omitempty" tf:"service,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Signature *string `json:"signature,omitempty" tf:"signature,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Signer *string `json:"signer,omitempty" tf:"signer,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Software *string `json:"software,omitempty" tf:"software,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Subtype *float64 `json:"subtype,omitempty" tf:"subtype,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	SvcParams *string `json:"svcParams,omitempty" tf:"svc_params,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	SvcPriority *float64 `json:"svcPriority,omitempty" tf:"svc_priority,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 
+	// (List of String)
 	// +kubebuilder:validation:Optional
 	Target []*string `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	TargetName *string `json:"targetName,omitempty" tf:"target_name,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Txt *string `json:"txt,omitempty" tf:"txt,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	TypeBitmaps *string `json:"typeBitmaps,omitempty" tf:"type_bitmaps,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	TypeCovered *string `json:"typeCovered,omitempty" tf:"type_covered,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	TypeMnemonic *string `json:"typeMnemonic,omitempty" tf:"type_mnemonic,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	TypeValue *float64 `json:"typeValue,omitempty" tf:"type_value,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Usage *float64 `json:"usage,omitempty" tf:"usage,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Zone *string `json:"zone,omitempty" tf:"zone,omitempty"`
 }
@@ -442,7 +614,7 @@ type RecordStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Record is the Schema for the Records API. <no value>
+// Record is the Schema for the Records API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

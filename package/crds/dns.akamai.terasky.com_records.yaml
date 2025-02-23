@@ -34,7 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: Record is the Schema for the Records API. <no value>
+        description: Record is the Schema for the Records API.
         properties:
           apiVersion:
             description: |-
@@ -73,116 +73,171 @@ spec:
               forProvider:
                 properties:
                   algorithm:
+                    description: (Number)
                     type: number
                   certificate:
+                    description: (String)
                     type: string
                   digest:
+                    description: (String)
                     type: string
                   digestType:
+                    description: (Number)
                     type: number
                   emailAddress:
+                    description: (String)
                     type: string
                   expiration:
+                    description: (String)
                     type: string
                   expiry:
+                    description: (Number)
                     type: number
                   fingerprint:
+                    description: (String)
                     type: string
                   fingerprintType:
+                    description: (Number)
                     type: number
                   flags:
+                    description: (Number)
                     type: number
                   flagsnaptr:
+                    description: (String)
                     type: string
                   hardware:
+                    description: (String)
                     type: string
                   inception:
+                    description: (String)
                     type: string
                   iterations:
+                    description: (Number)
                     type: number
                   key:
+                    description: (String)
                     type: string
                   keytag:
+                    description: (Number)
                     type: number
                   labels:
+                    description: (Number)
                     type: number
                   mailbox:
+                    description: (String)
                     type: string
                   matchType:
+                    description: (Number)
                     type: number
                   name:
+                    description: (String)
                     type: string
                   nameServer:
+                    description: (String)
                     type: string
                   nextHashedOwnerName:
+                    description: (String)
                     type: string
                   nxdomainTtl:
+                    description: (Number)
                     type: number
                   order:
+                    description: (Number)
                     type: number
                   originalTtl:
+                    description: (Number)
                     type: number
                   port:
+                    description: (Number)
                     type: number
                   preference:
+                    description: (Number)
                     type: number
                   priority:
+                    description: (Number)
                     type: number
                   priorityIncrement:
+                    description: (Number)
                     type: number
                   protocol:
+                    description: (Number)
                     type: number
                   recordtype:
+                    description: (String)
                     type: string
                   refresh:
+                    description: (Number)
                     type: number
                   regexp:
+                    description: (String)
                     type: string
                   replacement:
+                    description: (String)
                     type: string
                   retry:
+                    description: (Number)
                     type: number
                   salt:
+                    description: (String)
                     type: string
                   selector:
+                    description: (Number)
                     type: number
                   service:
+                    description: (String)
                     type: string
                   signature:
+                    description: (String)
                     type: string
                   signer:
+                    description: (String)
                     type: string
                   software:
+                    description: (String)
                     type: string
                   subtype:
+                    description: (Number)
                     type: number
                   svcParams:
+                    description: (String)
                     type: string
                   svcPriority:
+                    description: (Number)
                     type: number
                   target:
+                    description: (List of String)
                     items:
                       type: string
                     type: array
                   targetName:
+                    description: (String)
                     type: string
                   ttl:
+                    description: (Number)
                     type: number
                   txt:
+                    description: (String)
                     type: string
                   typeBitmaps:
+                    description: (String)
                     type: string
                   typeCovered:
+                    description: (String)
                     type: string
                   typeMnemonic:
+                    description: (String)
                     type: string
                   typeValue:
+                    description: (Number)
                     type: number
                   usage:
+                    description: (Number)
                     type: number
                   weight:
+                    description: (Number)
                     type: number
                   zone:
+                    description: (String)
                     type: string
                 type: object
               initProvider:
@@ -199,116 +254,171 @@ spec:
                   autoscaler.
                 properties:
                   algorithm:
+                    description: (Number)
                     type: number
                   certificate:
+                    description: (String)
                     type: string
                   digest:
+                    description: (String)
                     type: string
                   digestType:
+                    description: (Number)
                     type: number
                   emailAddress:
+                    description: (String)
                     type: string
                   expiration:
+                    description: (String)
                     type: string
                   expiry:
+                    description: (Number)
                     type: number
                   fingerprint:
+                    description: (String)
                     type: string
                   fingerprintType:
+                    description: (Number)
                     type: number
                   flags:
+                    description: (Number)
                     type: number
                   flagsnaptr:
+                    description: (String)
                     type: string
                   hardware:
+                    description: (String)
                     type: string
                   inception:
+                    description: (String)
                     type: string
                   iterations:
+                    description: (Number)
                     type: number
                   key:
+                    description: (String)
                     type: string
                   keytag:
+                    description: (Number)
                     type: number
                   labels:
+                    description: (Number)
                     type: number
                   mailbox:
+                    description: (String)
                     type: string
                   matchType:
+                    description: (Number)
                     type: number
                   name:
+                    description: (String)
                     type: string
                   nameServer:
+                    description: (String)
                     type: string
                   nextHashedOwnerName:
+                    description: (String)
                     type: string
                   nxdomainTtl:
+                    description: (Number)
                     type: number
                   order:
+                    description: (Number)
                     type: number
                   originalTtl:
+                    description: (Number)
                     type: number
                   port:
+                    description: (Number)
                     type: number
                   preference:
+                    description: (Number)
                     type: number
                   priority:
+                    description: (Number)
                     type: number
                   priorityIncrement:
+                    description: (Number)
                     type: number
                   protocol:
+                    description: (Number)
                     type: number
                   recordtype:
+                    description: (String)
                     type: string
                   refresh:
+                    description: (Number)
                     type: number
                   regexp:
+                    description: (String)
                     type: string
                   replacement:
+                    description: (String)
                     type: string
                   retry:
+                    description: (Number)
                     type: number
                   salt:
+                    description: (String)
                     type: string
                   selector:
+                    description: (Number)
                     type: number
                   service:
+                    description: (String)
                     type: string
                   signature:
+                    description: (String)
                     type: string
                   signer:
+                    description: (String)
                     type: string
                   software:
+                    description: (String)
                     type: string
                   subtype:
+                    description: (Number)
                     type: number
                   svcParams:
+                    description: (String)
                     type: string
                   svcPriority:
+                    description: (Number)
                     type: number
                   target:
+                    description: (List of String)
                     items:
                       type: string
                     type: array
                   targetName:
+                    description: (String)
                     type: string
                   ttl:
+                    description: (Number)
                     type: number
                   txt:
+                    description: (String)
                     type: string
                   typeBitmaps:
+                    description: (String)
                     type: string
                   typeCovered:
+                    description: (String)
                     type: string
                   typeMnemonic:
+                    description: (String)
                     type: string
                   typeValue:
+                    description: (Number)
                     type: number
                   usage:
+                    description: (Number)
                     type: number
                   weight:
+                    description: (Number)
                     type: number
                   zone:
+                    description: (String)
                     type: string
                 type: object
               managementPolicies:
@@ -501,126 +611,186 @@ spec:
               atProvider:
                 properties:
                   algorithm:
+                    description: (Number)
                     type: number
                   answerType:
+                    description: (String)
                     type: string
                   certificate:
+                    description: (String)
                     type: string
                   digest:
+                    description: (String)
                     type: string
                   digestType:
+                    description: (Number)
                     type: number
                   dnsName:
+                    description: (String)
                     type: string
                   emailAddress:
+                    description: (String)
                     type: string
                   expiration:
+                    description: (String)
                     type: string
                   expiry:
+                    description: (Number)
                     type: number
                   fingerprint:
+                    description: (String)
                     type: string
                   fingerprintType:
+                    description: (Number)
                     type: number
                   flags:
+                    description: (Number)
                     type: number
                   flagsnaptr:
+                    description: (String)
                     type: string
                   hardware:
+                    description: (String)
                     type: string
                   id:
+                    description: (String) The ID of this resource.
                     type: string
                   inception:
+                    description: (String)
                     type: string
                   iterations:
+                    description: (Number)
                     type: number
                   key:
+                    description: (String)
                     type: string
                   keytag:
+                    description: (Number)
                     type: number
                   labels:
+                    description: (Number)
                     type: number
                   mailbox:
+                    description: (String)
                     type: string
                   matchType:
+                    description: (Number)
                     type: number
                   name:
+                    description: (String)
                     type: string
                   nameServer:
+                    description: (String)
                     type: string
                   nextHashedOwnerName:
+                    description: (String)
                     type: string
                   nxdomainTtl:
+                    description: (Number)
                     type: number
                   order:
+                    description: (Number)
                     type: number
                   originalTtl:
+                    description: (Number)
                     type: number
                   port:
+                    description: (Number)
                     type: number
                   preference:
+                    description: (Number)
                     type: number
                   priority:
+                    description: (Number)
                     type: number
                   priorityIncrement:
+                    description: (Number)
                     type: number
                   protocol:
+                    description: (Number)
                     type: number
                   recordSha:
+                    description: (String)
                     type: string
                   recordtype:
+                    description: (String)
                     type: string
                   refresh:
+                    description: (Number)
                     type: number
                   regexp:
+                    description: (String)
                     type: string
                   replacement:
+                    description: (String)
                     type: string
                   retry:
+                    description: (Number)
                     type: number
                   salt:
+                    description: (String)
                     type: string
                   selector:
+                    description: (Number)
                     type: number
                   serial:
+                    description: (Number)
                     type: number
                   service:
+                    description: (String)
                     type: string
                   signature:
+                    description: (String)
                     type: string
                   signer:
+                    description: (String)
                     type: string
                   software:
+                    description: (String)
                     type: string
                   subtype:
+                    description: (Number)
                     type: number
                   svcParams:
+                    description: (String)
                     type: string
                   svcPriority:
+                    description: (Number)
                     type: number
                   target:
+                    description: (List of String)
                     items:
                       type: string
                     type: array
                   targetName:
+                    description: (String)
                     type: string
                   ttl:
+                    description: (Number)
                     type: number
                   txt:
+                    description: (String)
                     type: string
                   typeBitmaps:
+                    description: (String)
                     type: string
                   typeCovered:
+                    description: (String)
                     type: string
                   typeMnemonic:
+                    description: (String)
                     type: string
                   typeValue:
+                    description: (Number)
                     type: number
                   usage:
+                    description: (Number)
                     type: number
                   weight:
+                    description: (Number)
                     type: number
                   zone:
+                    description: (String)
                     type: string
                 type: object
               conditions:

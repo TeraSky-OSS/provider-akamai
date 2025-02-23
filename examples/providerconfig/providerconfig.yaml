@@ -1,4 +1,4 @@
-apiVersion: akamai.upbound.io/v1beta1
+apiVersion: akamai.terasky.com/v1beta1
 kind: ProviderConfig
 metadata:
   name: default
@@ -6,6 +6,6 @@ spec:
   credentials:
     source: Secret
     secretRef:
-      name: example-creds
+      name: akamai-creds
       namespace: crossplane-system
       key: credentials

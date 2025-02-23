@@ -34,7 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: Code is the Schema for the Codes API. <no value>
+        description: Code is the Schema for the Codes API.
         properties:
           apiVersion:
             description: |-
@@ -73,12 +73,16 @@ spec:
               forProvider:
                 properties:
                   contractId:
+                    description: (String)
                     type: string
                   groupId:
+                    description: (String)
                     type: string
                   name:
+                    description: (String)
                     type: string
                   productId:
+                    description: (String)
                     type: string
                 type: object
               initProvider:
@@ -95,12 +99,16 @@ spec:
                   autoscaler.
                 properties:
                   contractId:
+                    description: (String)
                     type: string
                   groupId:
+                    description: (String)
                     type: string
                   name:
+                    description: (String)
                     type: string
                   productId:
+                    description: (String)
                     type: string
                 type: object
               managementPolicies:
@@ -289,14 +297,19 @@ spec:
               atProvider:
                 properties:
                   contractId:
+                    description: (String)
                     type: string
                   groupId:
+                    description: (String)
                     type: string
                   id:
+                    description: (String) The ID of this resource.
                     type: string
                   name:
+                    description: (String)
                     type: string
                   productId:
+                    description: (String)
                     type: string
                 type: object
               conditions:

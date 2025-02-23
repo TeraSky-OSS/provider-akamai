@@ -14,38 +14,53 @@ import (
 )
 
 type CodeInitParameters struct {
+
+	// (String)
 	ContractID *string `json:"contractId,omitempty" tf:"contract_id,omitempty"`
 
+	// (String)
 	GroupID *string `json:"groupId,omitempty" tf:"group_id,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String)
 	ProductID *string `json:"productId,omitempty" tf:"product_id,omitempty"`
 }
 
 type CodeObservation struct {
+
+	// (String)
 	ContractID *string `json:"contractId,omitempty" tf:"contract_id,omitempty"`
 
+	// (String)
 	GroupID *string `json:"groupId,omitempty" tf:"group_id,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String)
 	ProductID *string `json:"productId,omitempty" tf:"product_id,omitempty"`
 }
 
 type CodeParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	ContractID *string `json:"contractId,omitempty" tf:"contract_id,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	GroupID *string `json:"groupId,omitempty" tf:"group_id,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	ProductID *string `json:"productId,omitempty" tf:"product_id,omitempty"`
 }
@@ -77,7 +92,7 @@ type CodeStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Code is the Schema for the Codes API. <no value>
+// Code is the Schema for the Codes API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

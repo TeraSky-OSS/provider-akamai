@@ -1,9 +1,9 @@
 name: akamai/akamai
 resources:
-    akamai_appsec_aap_selected_hostnames Resource - akamai:
+    akamai_appsec_aap_selected_hostnames Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_aap_selected_hostnames Resource - akamai
-        title: akamai_appsec_aap_selected_hostnames Resource - akamai
+        name: akamai_appsec_aap_selected_hostnames Resource - terraform-provider-akamai
+        title: akamai_appsec_aap_selected_hostnames Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             evaluated_hosts: (Set of String) List of hostnames to be evaluated
@@ -11,10 +11,10 @@ resources:
             protected_hosts: (Set of String) List of hostnames to be protected
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_activations Resource - akamai:
+    akamai_appsec_activations Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_activations Resource - akamai
-        title: akamai_appsec_activations Resource - akamai
+        name: akamai_appsec_activations Resource - terraform-provider-akamai
+        title: akamai_appsec_activations Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration to be activated
             default: (String)
@@ -26,59 +26,59 @@ resources:
             timeouts: (Block, Optional) (see below for nested schema)
             version: (Number) Version of the security configuration to be activated
         importStatements: []
-    akamai_appsec_advanced_settings_attack_payload_logging Resource - akamai:
+    akamai_appsec_advanced_settings_attack_payload_logging Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_advanced_settings_attack_payload_logging Resource - akamai
-        title: akamai_appsec_advanced_settings_attack_payload_logging Resource - akamai
+        name: akamai_appsec_advanced_settings_attack_payload_logging Resource - terraform-provider-akamai
+        title: akamai_appsec_advanced_settings_attack_payload_logging Resource - terraform-provider-akamai
         argumentDocs:
             attack_payload_logging: (String) Whether to enable, disable, or update attack payload logging settings
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_advanced_settings_evasive_path_match Resource - akamai:
+    akamai_appsec_advanced_settings_evasive_path_match Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_advanced_settings_evasive_path_match Resource - akamai
-        title: akamai_appsec_advanced_settings_evasive_path_match Resource - akamai
+        name: akamai_appsec_advanced_settings_evasive_path_match Resource - terraform-provider-akamai
+        title: akamai_appsec_advanced_settings_evasive_path_match Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             enable_path_match: (Boolean) Whether to enable the evasive path match setting
             id: (String) The ID of this resource.
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_advanced_settings_logging Resource - akamai:
+    akamai_appsec_advanced_settings_logging Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_advanced_settings_logging Resource - akamai
-        title: akamai_appsec_advanced_settings_logging Resource - akamai
+        name: akamai_appsec_advanced_settings_logging Resource - terraform-provider-akamai
+        title: akamai_appsec_advanced_settings_logging Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
             logging: (String) Whether to enable, disable, or update HTTP header logging settings
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_advanced_settings_pii_learning Resource - akamai:
+    akamai_appsec_advanced_settings_pii_learning Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_advanced_settings_pii_learning Resource - akamai
-        title: akamai_appsec_advanced_settings_pii_learning Resource - akamai
+        name: akamai_appsec_advanced_settings_pii_learning Resource - terraform-provider-akamai
+        title: akamai_appsec_advanced_settings_pii_learning Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             enable_pii_learning: (Boolean) Whether to enable the PII learning advanced setting
             id: (String) The ID of this resource.
         importStatements: []
-    akamai_appsec_advanced_settings_pragma_header Resource - akamai:
+    akamai_appsec_advanced_settings_pragma_header Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_advanced_settings_pragma_header Resource - akamai
-        title: akamai_appsec_advanced_settings_pragma_header Resource - akamai
+        name: akamai_appsec_advanced_settings_pragma_header Resource - terraform-provider-akamai
+        title: akamai_appsec_advanced_settings_pragma_header Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
             pragma_header: (String) JSON-formatted information describing the conditions to exclude from the default remove action
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_advanced_settings_prefetch Resource - akamai:
+    akamai_appsec_advanced_settings_prefetch Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_advanced_settings_prefetch Resource - akamai
-        title: akamai_appsec_advanced_settings_prefetch Resource - akamai
+        name: akamai_appsec_advanced_settings_prefetch Resource - terraform-provider-akamai
+        title: akamai_appsec_advanced_settings_prefetch Resource - terraform-provider-akamai
         argumentDocs:
             all_extensions: (Boolean) Whether to enable prefetch requests for all file extensions
             config_id: (Number) Unique identifier of the security configuration
@@ -87,10 +87,10 @@ resources:
             extensions: (Set of String) List of file extensions
             id: (String) The ID of this resource.
         importStatements: []
-    akamai_appsec_advanced_settings_request_body Resource - akamai:
+    akamai_appsec_advanced_settings_request_body Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_advanced_settings_request_body Resource - akamai
-        title: akamai_appsec_advanced_settings_request_body Resource - akamai
+        name: akamai_appsec_advanced_settings_request_body Resource - terraform-provider-akamai
+        title: akamai_appsec_advanced_settings_request_body Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
@@ -98,10 +98,10 @@ resources:
             request_body_inspection_limit_override: (Boolean) Indicates if the Request body inspection size should be overridden at policy
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_api_constraints_protection Resource - akamai:
+    akamai_appsec_api_constraints_protection Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_api_constraints_protection Resource - akamai
-        title: akamai_appsec_api_constraints_protection Resource - akamai
+        name: akamai_appsec_api_constraints_protection Resource - terraform-provider-akamai
+        title: akamai_appsec_api_constraints_protection Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             enabled: (Boolean) Whether to enable API constraints protection
@@ -109,10 +109,10 @@ resources:
             output_text: (String) Text representation
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_api_request_constraints Resource - akamai:
+    akamai_appsec_api_request_constraints Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_api_request_constraints Resource - akamai
-        title: akamai_appsec_api_request_constraints Resource - akamai
+        name: akamai_appsec_api_request_constraints Resource - terraform-provider-akamai
+        title: akamai_appsec_api_request_constraints Resource - terraform-provider-akamai
         argumentDocs:
             action: (String) Action to be taken when the API request constraint is triggered
             api_endpoint_id: (Number) Unique identifier of the API endpoint to which the constraint will be assigned
@@ -120,10 +120,10 @@ resources:
             id: (String) The ID of this resource.
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_attack_group Resource - akamai:
+    akamai_appsec_attack_group Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_attack_group Resource - akamai
-        title: akamai_appsec_attack_group Resource - akamai
+        name: akamai_appsec_attack_group Resource - terraform-provider-akamai
+        title: akamai_appsec_attack_group Resource - terraform-provider-akamai
         argumentDocs:
             attack_group: (String) Unique name of the attack group to be modified
             attack_group_action: (String) Action to be taken when the attack group is triggered
@@ -132,20 +132,20 @@ resources:
             id: (String) The ID of this resource.
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_bypass_network_lists Resource - akamai:
+    akamai_appsec_bypass_network_lists Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_bypass_network_lists Resource - akamai
-        title: akamai_appsec_bypass_network_lists Resource - akamai
+        name: akamai_appsec_bypass_network_lists Resource - terraform-provider-akamai
+        title: akamai_appsec_bypass_network_lists Resource - terraform-provider-akamai
         argumentDocs:
             bypass_network_list: (Set of String) List of network list IDs that compose the bypass list
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
             security_policy_id: (String) The unique identifier of the security policy governing the bypass network lists
         importStatements: []
-    akamai_appsec_configuration Resource - akamai:
+    akamai_appsec_configuration Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_configuration Resource - akamai
-        title: akamai_appsec_configuration Resource - akamai
+        name: akamai_appsec_configuration Resource - terraform-provider-akamai
+        title: akamai_appsec_configuration Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the new security configuration
             contract_id: (String) Unique identifier of the Akamai contract associated with the new configuration
@@ -157,40 +157,40 @@ resources:
             id: (String) The ID of this resource.
             name: (String) Name of the new configuration
         importStatements: []
-    akamai_appsec_configuration_rename Resource - akamai:
+    akamai_appsec_configuration_rename Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_configuration_rename Resource - akamai
-        title: akamai_appsec_configuration_rename Resource - akamai
+        name: akamai_appsec_configuration_rename Resource - terraform-provider-akamai
+        title: akamai_appsec_configuration_rename Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             description: (String) Brief description of the security configuration
             id: (String) The ID of this resource.
             name: (String) New name for the security configuration
         importStatements: []
-    akamai_appsec_custom_deny Resource - akamai:
+    akamai_appsec_custom_deny Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_custom_deny Resource - akamai
-        title: akamai_appsec_custom_deny Resource - akamai
+        name: akamai_appsec_custom_deny Resource - terraform-provider-akamai
+        title: akamai_appsec_custom_deny Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             custom_deny: (String) JSON-formatted information about the properties and property values for the custom deny
             custom_deny_id: (String) custom_deny_id
             id: (String) The ID of this resource.
         importStatements: []
-    akamai_appsec_custom_rule Resource - akamai:
+    akamai_appsec_custom_rule Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_custom_rule Resource - akamai
-        title: akamai_appsec_custom_rule Resource - akamai
+        name: akamai_appsec_custom_rule Resource - terraform-provider-akamai
+        title: akamai_appsec_custom_rule Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             custom_rule: (String) JSON-formatted definition of the custom rule
             custom_rule_id: (Number)
             id: (String) The ID of this resource.
         importStatements: []
-    akamai_appsec_custom_rule_action Resource - akamai:
+    akamai_appsec_custom_rule_action Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_custom_rule_action Resource - akamai
-        title: akamai_appsec_custom_rule_action Resource - akamai
+        name: akamai_appsec_custom_rule_action Resource - terraform-provider-akamai
+        title: akamai_appsec_custom_rule_action Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             custom_rule_action: (String) Action to be taken when the custom rule is invoked
@@ -198,10 +198,10 @@ resources:
             id: (String) The ID of this resource.
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_eval Resource - akamai:
+    akamai_appsec_eval Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_eval Resource - akamai
-        title: akamai_appsec_eval Resource - akamai
+        name: akamai_appsec_eval Resource - terraform-provider-akamai
+        title: akamai_appsec_eval Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             current_ruleset: (String) Versioning information for the Kona Rule Set currently in use in production
@@ -213,10 +213,10 @@ resources:
             id: (String) The ID of this resource.
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_eval_group Resource - akamai:
+    akamai_appsec_eval_group Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_eval_group Resource - akamai
-        title: akamai_appsec_eval_group Resource - akamai
+        name: akamai_appsec_eval_group Resource - terraform-provider-akamai
+        title: akamai_appsec_eval_group Resource - terraform-provider-akamai
         argumentDocs:
             attack_group: (String) Unique identifier of the evaluation attack group being modified
             attack_group_action: (String) Action to be taken when the attack group is triggered
@@ -225,10 +225,10 @@ resources:
             id: (String) The ID of this resource.
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_eval_penalty_box Resource - akamai:
+    akamai_appsec_eval_penalty_box Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_eval_penalty_box Resource - akamai
-        title: akamai_appsec_eval_penalty_box Resource - akamai
+        name: akamai_appsec_eval_penalty_box Resource - terraform-provider-akamai
+        title: akamai_appsec_eval_penalty_box Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
@@ -236,20 +236,20 @@ resources:
             penalty_box_protection: (Boolean) Whether to enable the penalty box for the specified security policy
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_eval_penalty_box_conditions Resource - akamai:
+    akamai_appsec_eval_penalty_box_conditions Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_eval_penalty_box_conditions Resource - akamai
-        title: akamai_appsec_eval_penalty_box_conditions Resource - akamai
+        name: akamai_appsec_eval_penalty_box_conditions Resource - terraform-provider-akamai
+        title: akamai_appsec_eval_penalty_box_conditions Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
             penalty_box_conditions: (String) Description of evaluation penalty box conditions
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_eval_rule Resource - akamai:
+    akamai_appsec_eval_rule Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_eval_rule Resource - akamai
-        title: akamai_appsec_eval_rule Resource - akamai
+        name: akamai_appsec_eval_rule Resource - terraform-provider-akamai
+        title: akamai_appsec_eval_rule Resource - terraform-provider-akamai
         argumentDocs:
             condition_exception: (String) JSON-formatted condition and exception information for the evaluation rule
             config_id: (Number) Unique identifier of the security configuration
@@ -258,10 +258,10 @@ resources:
             rule_id: (Number) Unique identifier of the evaluation rule being modified
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_ip_geo Resource - akamai:
+    akamai_appsec_ip_geo Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_ip_geo Resource - akamai
-        title: akamai_appsec_ip_geo Resource - akamai
+        name: akamai_appsec_ip_geo Resource - terraform-provider-akamai
+        title: akamai_appsec_ip_geo Resource - terraform-provider-akamai
         argumentDocs:
             asn_network_lists: (List of String) List of IDs of ASN network list to be blocked
             config_id: (Number) Unique identifier of the security configuration
@@ -273,10 +273,10 @@ resources:
             security_policy_id: (String) Unique identifier of the security policy
             ukraine_geo_control_action: (String) Action set for Ukraine geo control
         importStatements: []
-    akamai_appsec_ip_geo_protection Resource - akamai:
+    akamai_appsec_ip_geo_protection Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_ip_geo_protection Resource - akamai
-        title: akamai_appsec_ip_geo_protection Resource - akamai
+        name: akamai_appsec_ip_geo_protection Resource - terraform-provider-akamai
+        title: akamai_appsec_ip_geo_protection Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             enabled: (Boolean) Whether to enable IP/Geo protection
@@ -284,20 +284,20 @@ resources:
             output_text: (String) Text representation
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_malware_policy Resource - akamai:
+    akamai_appsec_malware_policy Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_malware_policy Resource - akamai
-        title: akamai_appsec_malware_policy Resource - akamai
+        name: akamai_appsec_malware_policy Resource - terraform-provider-akamai
+        title: akamai_appsec_malware_policy Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
             malware_policy: (String) JSON-formatted definition of the malware policy
             malware_policy_id: (Number) Unique identifier of the malware policy
         importStatements: []
-    akamai_appsec_malware_policy_action Resource - akamai:
+    akamai_appsec_malware_policy_action Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_malware_policy_action Resource - akamai
-        title: akamai_appsec_malware_policy_action Resource - akamai
+        name: akamai_appsec_malware_policy_action Resource - terraform-provider-akamai
+        title: akamai_appsec_malware_policy_action Resource - terraform-provider-akamai
         argumentDocs:
             action: (String) Action to be taken for requests scanned according to the malware policy
             config_id: (Number) Unique identifier of the security configuration
@@ -306,20 +306,20 @@ resources:
             security_policy_id: (String) Unique identifier of the security policy
             unscanned_action: (String) Action to be taken for requests not scanned according to the malware policy
         importStatements: []
-    akamai_appsec_malware_policy_actions Resource - akamai:
+    akamai_appsec_malware_policy_actions Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_malware_policy_actions Resource - akamai
-        title: akamai_appsec_malware_policy_actions Resource - akamai
+        name: akamai_appsec_malware_policy_actions Resource - terraform-provider-akamai
+        title: akamai_appsec_malware_policy_actions Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
             malware_policy_actions: (String) JSON-formatted list of malware policies and their associated actions
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_malware_protection Resource - akamai:
+    akamai_appsec_malware_protection Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_malware_protection Resource - akamai
-        title: akamai_appsec_malware_protection Resource - akamai
+        name: akamai_appsec_malware_protection Resource - terraform-provider-akamai
+        title: akamai_appsec_malware_protection Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             enabled: (Boolean) Whether to enable malware protection
@@ -327,29 +327,29 @@ resources:
             output_text: (String) Text representation
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_match_target Resource - akamai:
+    akamai_appsec_match_target Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_match_target Resource - akamai
-        title: akamai_appsec_match_target Resource - akamai
+        name: akamai_appsec_match_target Resource - terraform-provider-akamai
+        title: akamai_appsec_match_target Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
             match_target: (String) JSON-formatted definition of the match target
             match_target_id: (Number) Unique identifier of the match target
         importStatements: []
-    akamai_appsec_match_target_sequence Resource - akamai:
+    akamai_appsec_match_target_sequence Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_match_target_sequence Resource - akamai
-        title: akamai_appsec_match_target_sequence Resource - akamai
+        name: akamai_appsec_match_target_sequence Resource - terraform-provider-akamai
+        title: akamai_appsec_match_target_sequence Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
             match_target_sequence: (String) JSON-formatted definition of the processing sequence for all defined match targets
         importStatements: []
-    akamai_appsec_penalty_box Resource - akamai:
+    akamai_appsec_penalty_box Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_penalty_box Resource - akamai
-        title: akamai_appsec_penalty_box Resource - akamai
+        name: akamai_appsec_penalty_box Resource - terraform-provider-akamai
+        title: akamai_appsec_penalty_box Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
@@ -357,21 +357,21 @@ resources:
             penalty_box_protection: (Boolean) Whether to enable the penalty box for the specified security policy
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_penalty_box_conditions Resource - akamai:
+    akamai_appsec_penalty_box_conditions Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_penalty_box_conditions Resource - akamai
-        title: akamai_appsec_penalty_box_conditions Resource - akamai
+        name: akamai_appsec_penalty_box_conditions Resource - terraform-provider-akamai
+        title: akamai_appsec_penalty_box_conditions Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
             penalty_box_conditions: (String) Describes the conditions and the operator to be applied for penalty box
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_rapid_rules Resource - akamai:
+    akamai_appsec_rapid_rules Resource - terraform-provider-akamai:
         subCategory: ""
         description: Rapid rule resource.
-        name: akamai_appsec_rapid_rules Resource - akamai
-        title: akamai_appsec_rapid_rules Resource - akamai
+        name: akamai_appsec_rapid_rules Resource - terraform-provider-akamai
+        title: akamai_appsec_rapid_rules Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             default_action: (String) Default action that applies to violations of all rapid rules
@@ -380,20 +380,20 @@ resources:
             rule_definitions: (String) JSON-formatted list of rule definition (ID, action, action lock and exception)
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_rate_policy Resource - akamai:
+    akamai_appsec_rate_policy Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_rate_policy Resource - akamai
-        title: akamai_appsec_rate_policy Resource - akamai
+        name: akamai_appsec_rate_policy Resource - terraform-provider-akamai
+        title: akamai_appsec_rate_policy Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
             rate_policy: (String) JSON-formatted definition of the rate policy
             rate_policy_id: (Number) Unique identifier of the rate policy
         importStatements: []
-    akamai_appsec_rate_policy_action Resource - akamai:
+    akamai_appsec_rate_policy_action Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_rate_policy_action Resource - akamai
-        title: akamai_appsec_rate_policy_action Resource - akamai
+        name: akamai_appsec_rate_policy_action Resource - terraform-provider-akamai
+        title: akamai_appsec_rate_policy_action Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
@@ -402,10 +402,10 @@ resources:
             rate_policy_id: (Number) Unique identifier of the rate policy
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_rate_protection Resource - akamai:
+    akamai_appsec_rate_protection Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_rate_protection Resource - akamai
-        title: akamai_appsec_rate_protection Resource - akamai
+        name: akamai_appsec_rate_protection Resource - terraform-provider-akamai
+        title: akamai_appsec_rate_protection Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             enabled: (Boolean)
@@ -413,20 +413,20 @@ resources:
             output_text: (String) Text representation
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_reputation_profile Resource - akamai:
+    akamai_appsec_reputation_profile Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_reputation_profile Resource - akamai
-        title: akamai_appsec_reputation_profile Resource - akamai
+        name: akamai_appsec_reputation_profile Resource - terraform-provider-akamai
+        title: akamai_appsec_reputation_profile Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
             reputation_profile: (String) JSON-formatted definition of the reputation profile
             reputation_profile_id: (Number) Unique identifier of the reputation profile
         importStatements: []
-    akamai_appsec_reputation_profile_action Resource - akamai:
+    akamai_appsec_reputation_profile_action Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_reputation_profile_action Resource - akamai
-        title: akamai_appsec_reputation_profile_action Resource - akamai
+        name: akamai_appsec_reputation_profile_action Resource - terraform-provider-akamai
+        title: akamai_appsec_reputation_profile_action Resource - terraform-provider-akamai
         argumentDocs:
             action: (String) Action to be taken when the reputation profile is triggered
             config_id: (Number) Unique identifier of the security configuration
@@ -434,10 +434,10 @@ resources:
             reputation_profile_id: (Number) Unique identifier of the reputation profile
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_reputation_profile_analysis Resource - akamai:
+    akamai_appsec_reputation_profile_analysis Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_reputation_profile_analysis Resource - akamai
-        title: akamai_appsec_reputation_profile_analysis Resource - akamai
+        name: akamai_appsec_reputation_profile_analysis Resource - terraform-provider-akamai
+        title: akamai_appsec_reputation_profile_analysis Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             forward_shared_ip_to_http_header_siem: (Boolean) Whether to add a value indicating that shared IPs are included in HTTP header and SIEM integration
@@ -445,10 +445,10 @@ resources:
             id: (String) The ID of this resource.
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_reputation_protection Resource - akamai:
+    akamai_appsec_reputation_protection Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_reputation_protection Resource - akamai
-        title: akamai_appsec_reputation_protection Resource - akamai
+        name: akamai_appsec_reputation_protection Resource - terraform-provider-akamai
+        title: akamai_appsec_reputation_protection Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             enabled: (Boolean) Whether to enable reputation protection
@@ -456,10 +456,10 @@ resources:
             output_text: (String) Text representation
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_rule Resource - akamai:
+    akamai_appsec_rule Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_rule Resource - akamai
-        title: akamai_appsec_rule Resource - akamai
+        name: akamai_appsec_rule Resource - terraform-provider-akamai
+        title: akamai_appsec_rule Resource - terraform-provider-akamai
         argumentDocs:
             condition_exception: (String) JSON-formatted condition and exception information for the rule
             config_id: (Number) Unique identifier of the security configuration
@@ -468,10 +468,10 @@ resources:
             rule_id: (Number) Unique identifier of the rule
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_rule_upgrade Resource - akamai:
+    akamai_appsec_rule_upgrade Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_rule_upgrade Resource - akamai
-        title: akamai_appsec_rule_upgrade Resource - akamai
+        name: akamai_appsec_rule_upgrade Resource - terraform-provider-akamai
+        title: akamai_appsec_rule_upgrade Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             current_ruleset: (String) Versioning information for the current KRS rule set
@@ -481,10 +481,10 @@ resources:
             security_policy_id: (String) Unique identifier of the security policy
             upgrade_mode: (String) Modifies the upgrade type for organizations running the ASE beta (ASE_AUTO or ASE_MANUAL)
         importStatements: []
-    akamai_appsec_security_policy Resource - akamai:
+    akamai_appsec_security_policy Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_security_policy Resource - akamai
-        title: akamai_appsec_security_policy Resource - akamai
+        name: akamai_appsec_security_policy Resource - terraform-provider-akamai
+        title: akamai_appsec_security_policy Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             create_from_security_policy_id: (String) Unique identifier of the existing security policy being cloned
@@ -494,10 +494,10 @@ resources:
             security_policy_name: (String) Name of the new security policy
             security_policy_prefix: (String) Four-character alphanumeric string prefix used in creating the security policy ID
         importStatements: []
-    akamai_appsec_security_policy_default_protections Resource - akamai:
+    akamai_appsec_security_policy_default_protections Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_security_policy_default_protections Resource - akamai
-        title: akamai_appsec_security_policy_default_protections Resource - akamai
+        name: akamai_appsec_security_policy_default_protections Resource - terraform-provider-akamai
+        title: akamai_appsec_security_policy_default_protections Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
@@ -505,20 +505,20 @@ resources:
             security_policy_name: (String) Name of the new security policy
             security_policy_prefix: (String) Four-character alphanumeric string prefix used in creating the security policy ID
         importStatements: []
-    akamai_appsec_security_policy_rename Resource - akamai:
+    akamai_appsec_security_policy_rename Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_security_policy_rename Resource - akamai
-        title: akamai_appsec_security_policy_rename Resource - akamai
+        name: akamai_appsec_security_policy_rename Resource - terraform-provider-akamai
+        title: akamai_appsec_security_policy_rename Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
             security_policy_id: (String) Unique identifier of the security policy
             security_policy_name: (String) New name to be given to the security policy
         importStatements: []
-    akamai_appsec_siem_settings Resource - akamai:
+    akamai_appsec_siem_settings Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_siem_settings Resource - akamai
-        title: akamai_appsec_siem_settings Resource - akamai
+        name: akamai_appsec_siem_settings Resource - terraform-provider-akamai
+        title: akamai_appsec_siem_settings Resource - terraform-provider-akamai
         argumentDocs:
             api_request_constraints: (Set of String)
             apr_protection: (Set of String)
@@ -540,10 +540,10 @@ resources:
             url_protection: (Set of String)
             waf: (Set of String)
         importStatements: []
-    akamai_appsec_slow_post Resource - akamai:
+    akamai_appsec_slow_post Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_slow_post Resource - akamai
-        title: akamai_appsec_slow_post Resource - akamai
+        name: akamai_appsec_slow_post Resource - terraform-provider-akamai
+        title: akamai_appsec_slow_post Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             duration_threshold_timeout: (Number) Maximum amount of time (in seconds) within which the first 8KB of the POST body must be received to avoid triggering the specified action
@@ -553,10 +553,10 @@ resources:
             slow_rate_threshold_period: (Number) Amount of time (in seconds) that the server should allow a request before marking the request as being too slow
             slow_rate_threshold_rate: (Number) Average rate (in bytes per second over the specified time period) allowed before the specified action is triggered
         importStatements: []
-    akamai_appsec_slowpost_protection Resource - akamai:
+    akamai_appsec_slowpost_protection Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_slowpost_protection Resource - akamai
-        title: akamai_appsec_slowpost_protection Resource - akamai
+        name: akamai_appsec_slowpost_protection Resource - terraform-provider-akamai
+        title: akamai_appsec_slowpost_protection Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             enabled: (Boolean) Whether to enable slow POST protection
@@ -564,30 +564,30 @@ resources:
             output_text: (String) Text representation
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_threat_intel Resource - akamai:
+    akamai_appsec_threat_intel Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_threat_intel Resource - akamai
-        title: akamai_appsec_threat_intel Resource - akamai
+        name: akamai_appsec_threat_intel Resource - terraform-provider-akamai
+        title: akamai_appsec_threat_intel Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
             security_policy_id: (String) Unique identifier of the security policy
             threat_intel: (String) Whether threat intelligence protection should be on or off
         importStatements: []
-    akamai_appsec_version_notes Resource - akamai:
+    akamai_appsec_version_notes Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_version_notes Resource - akamai
-        title: akamai_appsec_version_notes Resource - akamai
+        name: akamai_appsec_version_notes Resource - terraform-provider-akamai
+        title: akamai_appsec_version_notes Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
             output_text: (String) Text representation
             version_notes: (String) Brief description of the security configuration version
         importStatements: []
-    akamai_appsec_waf_mode Resource - akamai:
+    akamai_appsec_waf_mode Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_waf_mode Resource - akamai
-        title: akamai_appsec_waf_mode Resource - akamai
+        name: akamai_appsec_waf_mode Resource - terraform-provider-akamai
+        title: akamai_appsec_waf_mode Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             current_ruleset: (String) Versioning information for the current Kona Rule Set
@@ -599,10 +599,10 @@ resources:
             output_text: (String) Text representation
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_appsec_waf_protection Resource - akamai:
+    akamai_appsec_waf_protection Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_appsec_waf_protection Resource - akamai
-        title: akamai_appsec_waf_protection Resource - akamai
+        name: akamai_appsec_waf_protection Resource - terraform-provider-akamai
+        title: akamai_appsec_waf_protection Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             enabled: (Boolean) Whether to enable WAF protection
@@ -610,10 +610,10 @@ resources:
             output_text: (String) Text representation
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_botman_akamai_bot_category_action Resource - akamai:
+    akamai_botman_akamai_bot_category_action Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_akamai_bot_category_action Resource - akamai
-        title: akamai_botman_akamai_bot_category_action Resource - akamai
+        name: akamai_botman_akamai_bot_category_action Resource - terraform-provider-akamai
+        title: akamai_botman_akamai_bot_category_action Resource - terraform-provider-akamai
         argumentDocs:
             akamai_bot_category_action: (String)
             category_id: (String)
@@ -621,29 +621,29 @@ resources:
             id: (String) The ID of this resource.
             security_policy_id: (String)
         importStatements: []
-    akamai_botman_bot_analytics_cookie Resource - akamai:
+    akamai_botman_bot_analytics_cookie Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_bot_analytics_cookie Resource - akamai
-        title: akamai_botman_bot_analytics_cookie Resource - akamai
+        name: akamai_botman_bot_analytics_cookie Resource - terraform-provider-akamai
+        title: akamai_botman_bot_analytics_cookie Resource - terraform-provider-akamai
         argumentDocs:
             bot_analytics_cookie: (String)
             config_id: (Number)
             id: (String) The ID of this resource.
         importStatements: []
-    akamai_botman_bot_category_exception Resource - akamai:
+    akamai_botman_bot_category_exception Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_bot_category_exception Resource - akamai
-        title: akamai_botman_bot_category_exception Resource - akamai
+        name: akamai_botman_bot_category_exception Resource - terraform-provider-akamai
+        title: akamai_botman_bot_category_exception Resource - terraform-provider-akamai
         argumentDocs:
             bot_category_exception: (String)
             config_id: (Number)
             id: (String) The ID of this resource.
             security_policy_id: (String)
         importStatements: []
-    akamai_botman_bot_detection_action Resource - akamai:
+    akamai_botman_bot_detection_action Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_bot_detection_action Resource - akamai
-        title: akamai_botman_bot_detection_action Resource - akamai
+        name: akamai_botman_bot_detection_action Resource - terraform-provider-akamai
+        title: akamai_botman_bot_detection_action Resource - terraform-provider-akamai
         argumentDocs:
             bot_detection_action: (String)
             config_id: (Number)
@@ -651,58 +651,58 @@ resources:
             id: (String) The ID of this resource.
             security_policy_id: (String)
         importStatements: []
-    akamai_botman_bot_management_settings Resource - akamai:
+    akamai_botman_bot_management_settings Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_bot_management_settings Resource - akamai
-        title: akamai_botman_bot_management_settings Resource - akamai
+        name: akamai_botman_bot_management_settings Resource - terraform-provider-akamai
+        title: akamai_botman_bot_management_settings Resource - terraform-provider-akamai
         argumentDocs:
             bot_management_settings: (String)
             config_id: (Number)
             id: (String) The ID of this resource.
             security_policy_id: (String)
         importStatements: []
-    akamai_botman_challenge_action Resource - akamai:
+    akamai_botman_challenge_action Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_challenge_action Resource - akamai
-        title: akamai_botman_challenge_action Resource - akamai
+        name: akamai_botman_challenge_action Resource - terraform-provider-akamai
+        title: akamai_botman_challenge_action Resource - terraform-provider-akamai
         argumentDocs:
             action_id: (String)
             challenge_action: (String)
             config_id: (Number)
             id: (String) The ID of this resource.
         importStatements: []
-    akamai_botman_challenge_injection_rules Resource - akamai:
+    akamai_botman_challenge_injection_rules Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_challenge_injection_rules Resource - akamai
-        title: akamai_botman_challenge_injection_rules Resource - akamai
+        name: akamai_botman_challenge_injection_rules Resource - terraform-provider-akamai
+        title: akamai_botman_challenge_injection_rules Resource - terraform-provider-akamai
         argumentDocs:
             challenge_injection_rules: (String)
             config_id: (Number)
             id: (String) The ID of this resource.
         importStatements: []
-    akamai_botman_client_side_security Resource - akamai:
+    akamai_botman_client_side_security Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_client_side_security Resource - akamai
-        title: akamai_botman_client_side_security Resource - akamai
+        name: akamai_botman_client_side_security Resource - terraform-provider-akamai
+        title: akamai_botman_client_side_security Resource - terraform-provider-akamai
         argumentDocs:
             client_side_security: (String)
             config_id: (Number)
             id: (String) The ID of this resource.
         importStatements: []
-    akamai_botman_conditional_action Resource - akamai:
+    akamai_botman_conditional_action Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_conditional_action Resource - akamai
-        title: akamai_botman_conditional_action Resource - akamai
+        name: akamai_botman_conditional_action Resource - terraform-provider-akamai
+        title: akamai_botman_conditional_action Resource - terraform-provider-akamai
         argumentDocs:
             action_id: (String)
             conditional_action: (String)
             config_id: (Number)
             id: (String) The ID of this resource.
         importStatements: []
-    akamai_botman_content_protection_javascript_injection_rule Resource - akamai:
+    akamai_botman_content_protection_javascript_injection_rule Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_content_protection_javascript_injection_rule Resource - akamai
-        title: akamai_botman_content_protection_javascript_injection_rule Resource - akamai
+        name: akamai_botman_content_protection_javascript_injection_rule Resource - terraform-provider-akamai
+        title: akamai_botman_content_protection_javascript_injection_rule Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             content_protection_javascript_injection_rule: (String) The content protection JavaScript injection rule
@@ -710,10 +710,10 @@ resources:
             id: (String) The ID of this resource.
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_botman_content_protection_rule Resource - akamai:
+    akamai_botman_content_protection_rule Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_content_protection_rule Resource - akamai
-        title: akamai_botman_content_protection_rule Resource - akamai
+        name: akamai_botman_content_protection_rule Resource - terraform-provider-akamai
+        title: akamai_botman_content_protection_rule Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             content_protection_rule: (String) The content protection rule
@@ -721,30 +721,30 @@ resources:
             id: (String) The ID of this resource.
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_botman_content_protection_rule_sequence Resource - akamai:
+    akamai_botman_content_protection_rule_sequence Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_content_protection_rule_sequence Resource - akamai
-        title: akamai_botman_content_protection_rule_sequence Resource - akamai
+        name: akamai_botman_content_protection_rule_sequence Resource - terraform-provider-akamai
+        title: akamai_botman_content_protection_rule_sequence Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) Unique identifier of the security configuration
             content_protection_rule_ids: (List of String) Unique identifiers of content protection rules, listed in the order of their evaluation
             id: (String) The ID of this resource.
             security_policy_id: (String) Unique identifier of the security policy
         importStatements: []
-    akamai_botman_custom_bot_category Resource - akamai:
+    akamai_botman_custom_bot_category Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_custom_bot_category Resource - akamai
-        title: akamai_botman_custom_bot_category Resource - akamai
+        name: akamai_botman_custom_bot_category Resource - terraform-provider-akamai
+        title: akamai_botman_custom_bot_category Resource - terraform-provider-akamai
         argumentDocs:
             category_id: (String)
             config_id: (Number)
             custom_bot_category: (String)
             id: (String) The ID of this resource.
         importStatements: []
-    akamai_botman_custom_bot_category_action Resource - akamai:
+    akamai_botman_custom_bot_category_action Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_custom_bot_category_action Resource - akamai
-        title: akamai_botman_custom_bot_category_action Resource - akamai
+        name: akamai_botman_custom_bot_category_action Resource - terraform-provider-akamai
+        title: akamai_botman_custom_bot_category_action Resource - terraform-provider-akamai
         argumentDocs:
             category_id: (String)
             config_id: (Number)
@@ -752,107 +752,107 @@ resources:
             id: (String) The ID of this resource.
             security_policy_id: (String)
         importStatements: []
-    akamai_botman_custom_bot_category_item_sequence Resource - akamai:
+    akamai_botman_custom_bot_category_item_sequence Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_custom_bot_category_item_sequence Resource - akamai
-        title: akamai_botman_custom_bot_category_item_sequence Resource - akamai
+        name: akamai_botman_custom_bot_category_item_sequence Resource - terraform-provider-akamai
+        title: akamai_botman_custom_bot_category_item_sequence Resource - terraform-provider-akamai
         argumentDocs:
             bot_ids: (List of String) Unique identifiers of bots in this category, sorted in preferred order
             category_id: (String) Unique identifier of the bot category
             config_id: (Number) Unique identifier of the security configuration
             id: (String) The ID of this resource.
         importStatements: []
-    akamai_botman_custom_bot_category_sequence Resource - akamai:
+    akamai_botman_custom_bot_category_sequence Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_custom_bot_category_sequence Resource - akamai
-        title: akamai_botman_custom_bot_category_sequence Resource - akamai
+        name: akamai_botman_custom_bot_category_sequence Resource - terraform-provider-akamai
+        title: akamai_botman_custom_bot_category_sequence Resource - terraform-provider-akamai
         argumentDocs:
             category_ids: (List of String)
             config_id: (Number)
             id: (String) The ID of this resource.
         importStatements: []
-    akamai_botman_custom_client Resource - akamai:
+    akamai_botman_custom_client Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_custom_client Resource - akamai
-        title: akamai_botman_custom_client Resource - akamai
+        name: akamai_botman_custom_client Resource - terraform-provider-akamai
+        title: akamai_botman_custom_client Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number)
             custom_client: (String)
             custom_client_id: (String)
             id: (String) The ID of this resource.
         importStatements: []
-    akamai_botman_custom_client_sequence Resource - akamai:
+    akamai_botman_custom_client_sequence Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_custom_client_sequence Resource - akamai
-        title: akamai_botman_custom_client_sequence Resource - akamai
+        name: akamai_botman_custom_client_sequence Resource - terraform-provider-akamai
+        title: akamai_botman_custom_client_sequence Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number)
             custom_client_ids: (List of String)
             id: (String) The ID of this resource.
         importStatements: []
-    akamai_botman_custom_code Resource - akamai:
+    akamai_botman_custom_code Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_custom_code Resource - akamai
-        title: akamai_botman_custom_code Resource - akamai
+        name: akamai_botman_custom_code Resource - terraform-provider-akamai
+        title: akamai_botman_custom_code Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number)
             custom_code: (String)
             id: (String) The ID of this resource.
         importStatements: []
-    akamai_botman_custom_defined_bot Resource - akamai:
+    akamai_botman_custom_defined_bot Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_custom_defined_bot Resource - akamai
-        title: akamai_botman_custom_defined_bot Resource - akamai
+        name: akamai_botman_custom_defined_bot Resource - terraform-provider-akamai
+        title: akamai_botman_custom_defined_bot Resource - terraform-provider-akamai
         argumentDocs:
             bot_id: (String)
             config_id: (Number)
             custom_defined_bot: (String)
             id: (String) The ID of this resource.
         importStatements: []
-    akamai_botman_custom_deny_action Resource - akamai:
+    akamai_botman_custom_deny_action Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_custom_deny_action Resource - akamai
-        title: akamai_botman_custom_deny_action Resource - akamai
+        name: akamai_botman_custom_deny_action Resource - terraform-provider-akamai
+        title: akamai_botman_custom_deny_action Resource - terraform-provider-akamai
         argumentDocs:
             action_id: (String)
             config_id: (Number)
             custom_deny_action: (String)
             id: (String) The ID of this resource.
         importStatements: []
-    akamai_botman_javascript_injection Resource - akamai:
+    akamai_botman_javascript_injection Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_javascript_injection Resource - akamai
-        title: akamai_botman_javascript_injection Resource - akamai
+        name: akamai_botman_javascript_injection Resource - terraform-provider-akamai
+        title: akamai_botman_javascript_injection Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number)
             id: (String) The ID of this resource.
             javascript_injection: (String)
             security_policy_id: (String)
         importStatements: []
-    akamai_botman_recategorized_akamai_defined_bot Resource - akamai:
+    akamai_botman_recategorized_akamai_defined_bot Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_recategorized_akamai_defined_bot Resource - akamai
-        title: akamai_botman_recategorized_akamai_defined_bot Resource - akamai
+        name: akamai_botman_recategorized_akamai_defined_bot Resource - terraform-provider-akamai
+        title: akamai_botman_recategorized_akamai_defined_bot Resource - terraform-provider-akamai
         argumentDocs:
             bot_id: (String)
             category_id: (String)
             config_id: (Number)
             id: (String) The ID of this resource.
         importStatements: []
-    akamai_botman_serve_alternate_action Resource - akamai:
+    akamai_botman_serve_alternate_action Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_serve_alternate_action Resource - akamai
-        title: akamai_botman_serve_alternate_action Resource - akamai
+        name: akamai_botman_serve_alternate_action Resource - terraform-provider-akamai
+        title: akamai_botman_serve_alternate_action Resource - terraform-provider-akamai
         argumentDocs:
             action_id: (String)
             config_id: (Number)
             id: (String) The ID of this resource.
             serve_alternate_action: (String)
         importStatements: []
-    akamai_botman_transactional_endpoint Resource - akamai:
+    akamai_botman_transactional_endpoint Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_transactional_endpoint Resource - akamai
-        title: akamai_botman_transactional_endpoint Resource - akamai
+        name: akamai_botman_transactional_endpoint Resource - terraform-provider-akamai
+        title: akamai_botman_transactional_endpoint Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number)
             id: (String) The ID of this resource.
@@ -860,19 +860,19 @@ resources:
             security_policy_id: (String)
             transactional_endpoint: (String)
         importStatements: []
-    akamai_botman_transactional_endpoint_protection Resource - akamai:
+    akamai_botman_transactional_endpoint_protection Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_botman_transactional_endpoint_protection Resource - akamai
-        title: akamai_botman_transactional_endpoint_protection Resource - akamai
+        name: akamai_botman_transactional_endpoint_protection Resource - terraform-provider-akamai
+        title: akamai_botman_transactional_endpoint_protection Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number)
             id: (String) The ID of this resource.
             transactional_endpoint_protection: (String)
         importStatements: []
-    akamai_clientlist_activation Resource - akamai:
+    akamai_clientlist_activation Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_clientlist_activation Resource - akamai
-        title: akamai_clientlist_activation Resource - akamai
+        name: akamai_clientlist_activation Resource - terraform-provider-akamai
+        title: akamai_clientlist_activation Resource - terraform-provider-akamai
         argumentDocs:
             comments: (String) A brief description for the activation.
             id: (String) The ID of this resource.
@@ -883,10 +883,10 @@ resources:
             status: (String) The current activation status, either ACTIVE, INACTIVE, MODIFIED, PENDING_ACTIVATION, PENDING_DEACTIVATION, or FAILED.
             version: (Number) The client list version.
         importStatements: []
-    akamai_clientlist_list Resource - akamai:
+    akamai_clientlist_list Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_clientlist_list Resource - akamai
-        title: akamai_clientlist_list Resource - akamai
+        name: akamai_clientlist_list Resource - terraform-provider-akamai
+        title: akamai_clientlist_list Resource - terraform-provider-akamai
         argumentDocs:
             contract_id: (String) Contract ID for which client list is assigned.
             description: (String) A description of the item.
@@ -903,10 +903,10 @@ resources:
             value: (String) Value of the item. (i.e. IP address, AS Number, GEO, ...etc)
             version: (Number) The current version of the client list.
         importStatements: []
-    akamai_cloudaccess_key Resource - akamai:
+    akamai_cloudaccess_key Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_cloudaccess_key Resource - akamai
-        title: akamai_cloudaccess_key Resource - akamai
+        name: akamai_cloudaccess_key Resource - terraform-provider-akamai
+        title: akamai_cloudaccess_key Resource - terraform-provider-akamai
         argumentDocs:
             access_key_name: (String) Name of the access key.
             access_key_uid: (Number) The unique identifier Akamai assigns to an access key.
@@ -929,10 +929,10 @@ resources:
             version: (Number) Numeric access key version associated with specific pair of cloud access credentials used to sign API requests
             version_guid: (String) The unique identifier assigned to specific access key version
         importStatements: []
-    akamai_cloudlets_application_load_balancer Resource - akamai:
+    akamai_cloudlets_application_load_balancer Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_cloudlets_application_load_balancer Resource - akamai
-        title: akamai_cloudlets_application_load_balancer Resource - akamai
+        name: akamai_cloudlets_application_load_balancer Resource - terraform-provider-akamai
+        title: akamai_cloudlets_application_load_balancer Resource - terraform-provider-akamai
         argumentDocs:
             additional_headers: (Map of String) Maps additional case-insensitive HTTP header names included to the liveness testing requests
             balancing_type: (String) The type of load balancing being performed. Options include WEIGHTED and PERFORMANCE
@@ -968,10 +968,10 @@ resources:
             version: (Number) The load balancer configuration version
             warnings: (String) Describes warnings during activation of load balancer configuration
         importStatements: []
-    akamai_cloudlets_application_load_balancer_activation Resource - akamai:
+    akamai_cloudlets_application_load_balancer_activation Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_cloudlets_application_load_balancer_activation Resource - akamai
-        title: akamai_cloudlets_application_load_balancer_activation Resource - akamai
+        name: akamai_cloudlets_application_load_balancer_activation Resource - terraform-provider-akamai
+        title: akamai_cloudlets_application_load_balancer_activation Resource - terraform-provider-akamai
         argumentDocs:
             default: (String)
             id: (String) The ID of this resource.
@@ -981,10 +981,10 @@ resources:
             timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
             version: (Number) Cloudlets application load balancer version you want to activate
         importStatements: []
-    akamai_cloudlets_policy Resource - akamai:
+    akamai_cloudlets_policy Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_cloudlets_policy Resource - akamai
-        title: akamai_cloudlets_policy Resource - akamai
+        name: akamai_cloudlets_policy Resource - terraform-provider-akamai
+        title: akamai_cloudlets_policy Resource - terraform-provider-akamai
         argumentDocs:
             cloudlet_code: (String) Code for the type of Cloudlet (ALB, AP, AS, CD, ER, FR, IG, or VP)
             cloudlet_id: (Number) An integer that corresponds to a non-shared Cloudlets policy type (0 to 9). Not used for shared policies
@@ -1000,10 +1000,10 @@ resources:
             version: (Number) The version number of the policy
             warnings: (String) A JSON encoded list of warnings
         importStatements: []
-    akamai_cloudlets_policy_activation Resource - akamai:
+    akamai_cloudlets_policy_activation Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_cloudlets_policy_activation Resource - akamai
-        title: akamai_cloudlets_policy_activation Resource - akamai
+        name: akamai_cloudlets_policy_activation Resource - terraform-provider-akamai
+        title: akamai_cloudlets_policy_activation Resource - terraform-provider-akamai
         argumentDocs:
             associated_properties: (Set of String) Set of property IDs to link to this Cloudlets policy. It is required for non-shared policies
             default: (String)
@@ -1015,10 +1015,10 @@ resources:
             timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
             version: (Number) Cloudlets policy version you want to activate
         importStatements: []
-    akamai_cloudwrapper_activation Resource - akamai:
+    akamai_cloudwrapper_activation Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_cloudwrapper_activation Resource - akamai
-        title: akamai_cloudwrapper_activation Resource - akamai
+        name: akamai_cloudwrapper_activation Resource - terraform-provider-akamai
+        title: akamai_cloudwrapper_activation Resource - terraform-provider-akamai
         argumentDocs:
             config_id: (Number) The configuration you want to activate.
             create: (String) Optional configurable activation timeout to be used on resource create. By default it's 4h with 1m pooling interval.
@@ -1027,10 +1027,10 @@ resources:
             timeouts: (Block, Optional) (see below for nested schema)
             update: (String) Optional configurable activation timeout to be used on resource update. By default it's 4h with 1m pooling interval.
         importStatements: []
-    akamai_cloudwrapper_configuration Resource - akamai:
+    akamai_cloudwrapper_configuration Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_cloudwrapper_configuration Resource - akamai
-        title: akamai_cloudwrapper_configuration Resource - akamai
+        name: akamai_cloudwrapper_configuration Resource - terraform-provider-akamai
+        title: akamai_cloudwrapper_configuration Resource - terraform-provider-akamai
         argumentDocs:
             capacity: (Block, Optional) The capacity assigned to this configuration's location (see below for nested schema)
             capacity_alerts_threshold: (Number) Capacity Alerts enablement information for the configuration. The Alert Threshold should be between 50 and 100.
@@ -1049,10 +1049,19 @@ resources:
             unit: (String) Unit of capacity. Can be either 'GB' or 'TB'.
             value: (Number) Value of capacity.
         importStatements: []
-    akamai_cp_code Resource - akamai:
+    akamai_cp_code:
         subCategory: ""
-        name: akamai_cp_code Resource - akamai
-        title: akamai_cp_code Resource - akamai
+        name: akamai_cp_code
+        title: akamai_cp_code Resource - terraform-provider-akamai
+        examples:
+            - name: example
+              manifest: |-
+                {
+                  "contract_id": "ctr_XXX",
+                  "group_id": "grp_XXX",
+                  "name": "example-XXX",
+                  "product_id": "prd_XXX"
+                }
         argumentDocs:
             contract_id: (String)
             group_id: (String)
@@ -1062,10 +1071,10 @@ resources:
             timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
             update: (String)
         importStatements: []
-    akamai_cps_dv_enrollment Resource - akamai:
+    akamai_cps_dv_enrollment Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_cps_dv_enrollment Resource - akamai
-        title: akamai_cps_dv_enrollment Resource - akamai
+        name: akamai_cps_dv_enrollment Resource - terraform-provider-akamai
+        title: akamai_cps_dv_enrollment Resource - terraform-provider-akamai
         argumentDocs:
             acknowledge_pre_verification_warnings: (Boolean) Whether acknowledge warnings before certificate verification
             address_line_one: (String) The address of the contact
@@ -1119,10 +1128,10 @@ resources:
             title: (String) Title of the the contact
             validation_type: (String) Enrolment validation type
         importStatements: []
-    akamai_cps_dv_validation Resource - akamai:
+    akamai_cps_dv_validation Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_cps_dv_validation Resource - akamai
-        title: akamai_cps_dv_validation Resource - akamai
+        name: akamai_cps_dv_validation Resource - terraform-provider-akamai
+        title: akamai_cps_dv_validation Resource - terraform-provider-akamai
         argumentDocs:
             acknowledge_post_verification_warnings: (Boolean) Whether to acknowledge all post-verification warnings
             default: (String)
@@ -1132,10 +1141,10 @@ resources:
             status: (String) Status of validation
             timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
         importStatements: []
-    akamai_cps_third_party_enrollment Resource - akamai:
+    akamai_cps_third_party_enrollment Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_cps_third_party_enrollment Resource - akamai
-        title: akamai_cps_third_party_enrollment Resource - akamai
+        name: akamai_cps_third_party_enrollment Resource - terraform-provider-akamai
+        title: akamai_cps_third_party_enrollment Resource - terraform-provider-akamai
         argumentDocs:
             acknowledge_pre_verification_warnings: (Boolean) Whether acknowledge warnings before certificate verification
             address_line_one: (String) The address of the contact
@@ -1184,11 +1193,11 @@ resources:
             timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
             title: (String) Title of the the contact
         importStatements: []
-    akamai_cps_upload_certificate Resource - akamai:
+    akamai_cps_upload_certificate Resource - terraform-provider-akamai:
         subCategory: ""
         description: Enables to upload a certificates and trust-chains for third-party enrollment
-        name: akamai_cps_upload_certificate Resource - akamai
-        title: akamai_cps_upload_certificate Resource - akamai
+        name: akamai_cps_upload_certificate Resource - terraform-provider-akamai
+        title: akamai_cps_upload_certificate Resource - terraform-provider-akamai
         argumentDocs:
             acknowledge_change_management: (Boolean) Whether to acknowledge change management
             acknowledge_post_verification_warnings: (Boolean) Whether to acknowledge post-verification warnings
@@ -1203,10 +1212,10 @@ resources:
             trust_chain_rsa_pem: (String) Trust chain in pem format for provided RSA certificate
             wait_for_deployment: (Boolean) Whether to wait for certificate to be deployed
         importStatements: []
-    akamai_datastream Resource - akamai:
+    akamai_datastream Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_datastream Resource - akamai
-        title: akamai_datastream Resource - akamai
+        name: akamai_datastream Resource - terraform-provider-akamai
+        title: akamai_datastream Resource - terraform-provider-akamai
         argumentDocs:
             access_key: (String, Sensitive) Access keys associated with Azure Storage account
             account_name: (String) Specifies the Azure Storage account name
@@ -1278,10 +1287,113 @@ resources:
             upload_file_suffix: (String) The suffix of the log file that will be send to a destination
             user_name: (String, Sensitive) The Elasticsearch basic access authentication username.
         importStatements: []
-    akamai_dns_record Resource - akamai:
+    akamai_dns_record:
         subCategory: ""
-        name: akamai_dns_record Resource - akamai
-        title: akamai_dns_record Resource - akamai
+        name: akamai_dns_record
+        title: akamai_dns_record Resource - terraform-provider-akamai
+        examples:
+            - name: soa_record
+              manifest: |-
+                {
+                  "depends_on": [
+                    "${akamai_dns_zone.test_zone}"
+                  ],
+                  "email_address": "hostmaster.${local.zone}",
+                  "expiry": 604800,
+                  "name": "${local.zone}",
+                  "name_server": "a1-98.akam.net.",
+                  "nxdomain_ttl": 300,
+                  "recordtype": "SOA",
+                  "refresh": 3600,
+                  "retry": 600,
+                  "ttl": 86400,
+                  "zone": "${local.zone}"
+                }
+              references:
+                name: local.zone
+                zone: local.zone
+            - name: ns_record
+              manifest: |-
+                {
+                  "depends_on": [
+                    "${akamai_dns_zone.test_zone}"
+                  ],
+                  "name": "${local.zone}",
+                  "recordtype": "NS",
+                  "target": "${data.akamai_authorities_set.ns_auths.authorities}",
+                  "ttl": 86400,
+                  "zone": "${local.zone}"
+                }
+              references:
+                name: local.zone
+                target: data.akamai_authorities_set.ns_auths.authorities
+                zone: local.zone
+            - name: a_record
+              manifest: |-
+                {
+                  "depends_on": [
+                    "${akamai_dns_zone.test_zone}"
+                  ],
+                  "name": "a_${local.zone}",
+                  "recordtype": "A",
+                  "target": [
+                    "10.0.0.2",
+                    "10.0.0.3"
+                  ],
+                  "ttl": 300,
+                  "zone": "${local.zone}"
+                }
+              references:
+                zone: local.zone
+            - name: aaaa_record
+              manifest: |-
+                {
+                  "depends_on": [
+                    "${akamai_dns_zone.test_zone}"
+                  ],
+                  "name": "ipv6record.${local.zone}",
+                  "recordtype": "AAAA",
+                  "target": [
+                    "4001:ab8:85b3:0:0:8a1e:370:7225"
+                  ],
+                  "ttl": 3600,
+                  "zone": "${local.zone}"
+                }
+              references:
+                zone: local.zone
+            - name: afsdb_record
+              manifest: |-
+                {
+                  "depends_on": [
+                    "${akamai_dns_zone.test_zone}"
+                  ],
+                  "name": "afsdb.${local.zone}",
+                  "recordtype": "AFSDB",
+                  "subtype": 4,
+                  "target": [
+                    "example.com"
+                  ],
+                  "ttl": 3600,
+                  "zone": "${local.zone}"
+                }
+              references:
+                zone: local.zone
+            - name: cname_record
+              manifest: |-
+                {
+                  "depends_on": [
+                    "${akamai_dns_zone.test_zone}"
+                  ],
+                  "name": "www.${local.zone}",
+                  "recordtype": "CNAME",
+                  "target": [
+                    "api.${local.zone}"
+                  ],
+                  "ttl": 300,
+                  "zone": "${local.zone}"
+                }
+              references:
+                zone: local.zone
         argumentDocs:
             algorithm: (Number)
             answer_type: (String)
@@ -1344,10 +1456,41 @@ resources:
             weight: (Number)
             zone: (String)
         importStatements: []
-    akamai_dns_zone Resource - akamai:
+    akamai_dns_zone:
         subCategory: ""
-        name: akamai_dns_zone Resource - akamai
-        title: akamai_dns_zone Resource - akamai
+        name: akamai_dns_zone
+        title: akamai_dns_zone Resource - terraform-provider-akamai
+        examples:
+            - name: test_primary_zone
+              manifest: |-
+                {
+                  "comment": "This is a test  primary zone",
+                  "contract": "${data.akamai_contract.contract.id}",
+                  "group": "${data.akamai_group.group.id}",
+                  "sign_and_serve": false,
+                  "type": "PRIMARY",
+                  "zone": "example_primary.net"
+                }
+              references:
+                contract: data.akamai_contract.contract.id
+                group: data.akamai_group.group.id
+            - name: test_secondary_zone
+              manifest: |-
+                {
+                  "comment": "This is a test secondary zone",
+                  "contract": "${data.akamai_contract.contract.id}",
+                  "group": "${data.akamai_group.group.id}",
+                  "masters": [
+                    "1.2.3.4",
+                    "1.2.3.5"
+                  ],
+                  "sign_and_serve": false,
+                  "type": "secondary",
+                  "zone": "example_secondary.net"
+                }
+              references:
+                contract: data.akamai_contract.contract.id
+                group: data.akamai_group.group.id
         argumentDocs:
             acl: (Set of String) The access control list, defined as IPv4 and IPv6 CIDR blocks.
             activation_state: (String)
@@ -1372,10 +1515,10 @@ resources:
             version_id: (String)
             zone: (String)
         importStatements: []
-    akamai_edge_hostname Resource - akamai:
+    akamai_edge_hostname Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_edge_hostname Resource - akamai
-        title: akamai_edge_hostname Resource - akamai
+        name: akamai_edge_hostname Resource - terraform-provider-akamai
+        title: akamai_edge_hostname Resource - terraform-provider-akamai
         argumentDocs:
             certificate: (Number)
             contract_id: (String)
@@ -1390,10 +1533,10 @@ resources:
             ttl: (Number) The time to live, or number of seconds to keep an edge hostname assigned to a map or target. If not provided default value for product is used.
             use_cases: (String) A JSON encoded list of use cases
         importStatements: []
-    akamai_edgekv Resource - akamai:
+    akamai_edgekv Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_edgekv Resource - akamai
-        title: akamai_edgekv Resource - akamai
+        name: akamai_edgekv Resource - terraform-provider-akamai
+        title: akamai_edgekv Resource - terraform-provider-akamai
         argumentDocs:
             geo_location: (String) Storage location for data
             group_id: (Number) Namespace ACC group ID. It will be used in EdgeKV API v2. Not updatable.
@@ -1402,10 +1545,10 @@ resources:
             network: (String) The network on which the namespace will be activated
             retention_in_seconds: (Number) Retention period for data in this namespace. An update of this value will just affect new EKV items.
         importStatements: []
-    akamai_edgekv_group_items Resource - akamai:
+    akamai_edgekv_group_items Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_edgekv_group_items Resource - akamai
-        title: akamai_edgekv_group_items Resource - akamai
+        name: akamai_edgekv_group_items Resource - terraform-provider-akamai
+        title: akamai_edgekv_group_items Resource - terraform-provider-akamai
         argumentDocs:
             default: (String)
             group_name: (String) The name of the EdgeKV group.
@@ -1415,10 +1558,10 @@ resources:
             network: (String) The network against which to execute the API request.
             timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
         importStatements: []
-    akamai_edgeworker Resource - akamai:
+    akamai_edgeworker Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_edgeworker Resource - akamai
-        title: akamai_edgeworker Resource - akamai
+        name: akamai_edgeworker Resource - terraform-provider-akamai
+        title: akamai_edgeworker Resource - terraform-provider-akamai
         argumentDocs:
             default: (String)
             edgeworker_id: (Number) The unique identifier of the EdgeWorker
@@ -1432,10 +1575,10 @@ resources:
             version: (String) The bundle version
             warnings: (List of String) The list of warnings returned by EdgeWorker validation
         importStatements: []
-    akamai_edgeworkers_activation Resource - akamai:
+    akamai_edgeworkers_activation Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_edgeworkers_activation Resource - akamai
-        title: akamai_edgeworkers_activation Resource - akamai
+        name: akamai_edgeworkers_activation Resource - terraform-provider-akamai
+        title: akamai_edgeworkers_activation Resource - terraform-provider-akamai
         argumentDocs:
             activation_id: (Number) A unique identifier of the activation
             default: (String)
@@ -1447,10 +1590,10 @@ resources:
             timeouts: '(Block List, Max: 1) Enables to set timeout for processing (see below for nested schema)'
             version: (String) The version of EdgeWorker to activate
         importStatements: []
-    akamai_gtm_asmap Resource - akamai:
+    akamai_gtm_asmap Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_gtm_asmap Resource - akamai
-        title: akamai_gtm_asmap Resource - akamai
+        name: akamai_gtm_asmap Resource - terraform-provider-akamai
+        title: akamai_gtm_asmap Resource - terraform-provider-akamai
         argumentDocs:
             as_numbers: (Set of Number)
             assignment: (Block List) (see below for nested schema)
@@ -1462,10 +1605,10 @@ resources:
             nickname: (String)
             wait_on_complete: (Boolean)
         importStatements: []
-    akamai_gtm_cidrmap Resource - akamai:
+    akamai_gtm_cidrmap Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_gtm_cidrmap Resource - akamai
-        title: akamai_gtm_cidrmap Resource - akamai
+        name: akamai_gtm_cidrmap Resource - terraform-provider-akamai
+        title: akamai_gtm_cidrmap Resource - terraform-provider-akamai
         argumentDocs:
             assignment: (Block List) (see below for nested schema)
             blocks: (Set of String)
@@ -1477,10 +1620,10 @@ resources:
             nickname: (String)
             wait_on_complete: (Boolean)
         importStatements: []
-    akamai_gtm_datacenter Resource - akamai:
+    akamai_gtm_datacenter Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_gtm_datacenter Resource - akamai
-        title: akamai_gtm_datacenter Resource - akamai
+        name: akamai_gtm_datacenter Resource - terraform-provider-akamai
+        title: akamai_gtm_datacenter Resource - terraform-provider-akamai
         argumentDocs:
             city: (String)
             clone_of: (Number)
@@ -1508,10 +1651,10 @@ resources:
             virtual: (Boolean)
             wait_on_complete: (Boolean)
         importStatements: []
-    akamai_gtm_domain Resource - akamai:
+    akamai_gtm_domain Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_gtm_domain Resource - akamai
-        title: akamai_gtm_domain Resource - akamai
+        name: akamai_gtm_domain Resource - terraform-provider-akamai
+        title: akamai_gtm_domain Resource - terraform-provider-akamai
         argumentDocs:
             cname_coalescing_enabled: (Boolean)
             comment: (String)
@@ -1551,10 +1694,10 @@ resources:
             type: (String)
             wait_on_complete: (Boolean)
         importStatements: []
-    akamai_gtm_geomap Resource - akamai:
+    akamai_gtm_geomap Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_gtm_geomap Resource - akamai
-        title: akamai_gtm_geomap Resource - akamai
+        name: akamai_gtm_geomap Resource - terraform-provider-akamai
+        title: akamai_gtm_geomap Resource - terraform-provider-akamai
         argumentDocs:
             assignment: (Block List) (see below for nested schema)
             countries: (Set of String)
@@ -1566,10 +1709,10 @@ resources:
             nickname: (String)
             wait_on_complete: (Boolean)
         importStatements: []
-    akamai_gtm_property Resource - akamai:
+    akamai_gtm_property Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_gtm_property Resource - akamai
-        title: akamai_gtm_property Resource - akamai
+        name: akamai_gtm_property Resource - terraform-provider-akamai
+        title: akamai_gtm_property Resource - terraform-provider-akamai
         argumentDocs:
             alternate_ca_certificates: (List of String)
             answers_required: (Boolean)
@@ -1642,10 +1785,10 @@ resources:
             weighted_hash_bits_for_ipv4: (Number)
             weighted_hash_bits_for_ipv6: (Number)
         importStatements: []
-    akamai_gtm_resource Resource - akamai:
+    akamai_gtm_resource Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_gtm_resource Resource - akamai
-        title: akamai_gtm_resource Resource - akamai
+        name: akamai_gtm_resource Resource - terraform-provider-akamai
+        title: akamai_gtm_resource Resource - terraform-provider-akamai
         argumentDocs:
             aggregation_type: (String)
             constrained_property: (String)
@@ -1669,21 +1812,21 @@ resources:
             use_default_load_object: (Boolean)
             wait_on_complete: (Boolean)
         importStatements: []
-    akamai_iam_blocked_user_properties Resource - akamai:
+    akamai_iam_blocked_user_properties Resource - terraform-provider-akamai:
         subCategory: ""
         description: Manage a user in your account.
-        name: akamai_iam_blocked_user_properties Resource - akamai
-        title: akamai_iam_blocked_user_properties Resource - akamai
+        name: akamai_iam_blocked_user_properties Resource - terraform-provider-akamai
+        title: akamai_iam_blocked_user_properties Resource - terraform-provider-akamai
         argumentDocs:
             blocked_properties: (List of Number) List of properties to block for a user.
             group_id: (Number) A unique identifier for a group.
             id: (String) The ID of this resource.
             identity_id: (String) A unique identifier for a user's profile, which corresponds to a user's actual profile or client ID.
         importStatements: []
-    akamai_iam_cidr_block Resource - akamai:
+    akamai_iam_cidr_block Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_iam_cidr_block Resource - akamai
-        title: akamai_iam_cidr_block Resource - akamai
+        name: akamai_iam_cidr_block Resource - terraform-provider-akamai
+        title: akamai_iam_cidr_block Resource - terraform-provider-akamai
         argumentDocs:
             actions: (Attributes) Specifies activities available for the CIDR block. (see below for nested schema)
             cidr_block: (String) The value of an IP address or IP address range.
@@ -1697,28 +1840,28 @@ resources:
             modified_by: (String) The user who last edited the CIDR block.
             modified_date: (String) ISO 8601 timestamp indicating when the CIDR block was last modified.
         importStatements: []
-    akamai_iam_group Resource - akamai:
+    akamai_iam_group Resource - terraform-provider-akamai:
         subCategory: ""
         description: Manage a group in your account.
-        name: akamai_iam_group Resource - akamai
-        title: akamai_iam_group Resource - akamai
+        name: akamai_iam_group Resource - terraform-provider-akamai
+        title: akamai_iam_group Resource - terraform-provider-akamai
         argumentDocs:
             id: (String) The ID of this resource.
             name: (String) Human readable name for a group.
             parent_group_id: (Number) Unique identifier for the parent group.
             sub_groups: (Set of Number) Subgroups IDs.
         importStatements: []
-    akamai_iam_ip_allowlist Resource - akamai:
+    akamai_iam_ip_allowlist Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_iam_ip_allowlist Resource - akamai
-        title: akamai_iam_ip_allowlist Resource - akamai
+        name: akamai_iam_ip_allowlist Resource - terraform-provider-akamai
+        title: akamai_iam_ip_allowlist Resource - terraform-provider-akamai
         argumentDocs:
             enable: (Boolean) Whether to enable or disable the allowlist.
         importStatements: []
-    akamai_iam_role Resource - akamai:
+    akamai_iam_role Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_iam_role Resource - akamai
-        title: akamai_iam_role Resource - akamai
+        name: akamai_iam_role Resource - terraform-provider-akamai
+        title: akamai_iam_role Resource - terraform-provider-akamai
         argumentDocs:
             description: (String) The description for a role.
             granted_roles: (Set of Number) The list of existing unique identifiers for the granted roles.
@@ -1726,11 +1869,11 @@ resources:
             name: (String) The name you supply for a role.
             type: (String) The role type which indicates whether it's a standard role provided by Akamai or a custom role for the account.
         importStatements: []
-    akamai_iam_user Resource - akamai:
+    akamai_iam_user Resource - terraform-provider-akamai:
         subCategory: ""
         description: Manage a user in your account.
-        name: akamai_iam_user Resource - akamai
-        title: akamai_iam_user Resource - akamai
+        name: akamai_iam_user Resource - terraform-provider-akamai
+        title: akamai_iam_user Resource - terraform-provider-akamai
         argumentDocs:
             address: (String) The user's street address.
             api_client_credential_expiry_notification: (Boolean) Enables notifications for expiring API client credentials.
@@ -1767,10 +1910,10 @@ resources:
             user_notifications: '(Block List, Max: 1) Specifies email notifications the user receives for products. (see below for nested schema)'
             zip_code: (String) The user's five-digit ZIP code.
         importStatements: []
-    akamai_imaging_policy_image Resource - akamai:
+    akamai_imaging_policy_image Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_imaging_policy_image Resource - akamai
-        title: akamai_imaging_policy_image Resource - akamai
+        name: akamai_imaging_policy_image Resource - terraform-provider-akamai
+        title: akamai_imaging_policy_image Resource - terraform-provider-akamai
         argumentDocs:
             activate_on_production: (Boolean) With this flag set to false, the user can perform modifications on staging without affecting the version already saved to production. With this flag set to true, the policy will be saved on the production network. It is possible to change it back to false only when there are any changes to the policy qualifying it for the new version.
             contract_id: (String) Unique identifier for the Akamai Contract containing the Policy Set(s)
@@ -1780,10 +1923,10 @@ resources:
             policyset_id: (String) Unique identifier for the Image & Video Manager Policy Set.
             version: (Number) The version number of this policy version
         importStatements: []
-    akamai_imaging_policy_set Resource - akamai:
+    akamai_imaging_policy_set Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_imaging_policy_set Resource - akamai
-        title: akamai_imaging_policy_set Resource - akamai
+        name: akamai_imaging_policy_set Resource - terraform-provider-akamai
+        title: akamai_imaging_policy_set Resource - terraform-provider-akamai
         argumentDocs:
             contract_id: (String) The unique identifier for the Akamai Contract containing the Policy Set(s)
             id: (String) The ID of this resource.
@@ -1791,10 +1934,10 @@ resources:
             region: (String) The geographic region which media using this Policy Set is optimized for
             type: (String) The type of media this Policy Set manages
         importStatements: []
-    akamai_imaging_policy_video Resource - akamai:
+    akamai_imaging_policy_video Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_imaging_policy_video Resource - akamai
-        title: akamai_imaging_policy_video Resource - akamai
+        name: akamai_imaging_policy_video Resource - terraform-provider-akamai
+        title: akamai_imaging_policy_video Resource - terraform-provider-akamai
         argumentDocs:
             activate_on_production: (Boolean) With this flag set to false, the user can perform modifications on staging without affecting the version already saved to production. With this flag set to true, the policy will be saved on the production network. It is possible to change it back to false only when there are any changes to the policy qualifying it for the new version.
             contract_id: (String) Unique identifier for the Akamai Contract containing the Policy Set(s)
@@ -1804,10 +1947,10 @@ resources:
             policyset_id: (String) Unique identifier for the Image & Video Manager Policy Set.
             version: (Number) The version number of this policy version
         importStatements: []
-    akamai_networklist_activations Resource - akamai:
+    akamai_networklist_activations Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_networklist_activations Resource - akamai
-        title: akamai_networklist_activations Resource - akamai
+        name: akamai_networklist_activations Resource - terraform-provider-akamai
+        title: akamai_networklist_activations Resource - terraform-provider-akamai
         argumentDocs:
             id: (String) The ID of this resource.
             network: '(String) The Akamai network on which the list is activated: STAGING or PRODUCTION'
@@ -1817,20 +1960,20 @@ resources:
             status: (String) This network list's current activation status in the environment specified by the "network" attribute
             sync_point: (Number) Identifies the sync point of the network list to be activated
         importStatements: []
-    akamai_networklist_description Resource - akamai:
+    akamai_networklist_description Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_networklist_description Resource - akamai
-        title: akamai_networklist_description Resource - akamai
+        name: akamai_networklist_description Resource - terraform-provider-akamai
+        title: akamai_networklist_description Resource - terraform-provider-akamai
         argumentDocs:
             description: (String)
             id: (String) The ID of this resource.
             name: (String)
             network_list_id: (String)
         importStatements: []
-    akamai_networklist_network_list Resource - akamai:
+    akamai_networklist_network_list Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_networklist_network_list Resource - akamai
-        title: akamai_networklist_network_list Resource - akamai
+        name: akamai_networklist_network_list Resource - terraform-provider-akamai
+        title: akamai_networklist_network_list Resource - terraform-provider-akamai
         argumentDocs:
             contract_id: (String) contract ID
             description: (String) A description of the network list
@@ -1844,19 +1987,42 @@ resources:
             type: (String) The type of the network list; must be either 'IP' or 'GEO'
             uniqueid: (String) unique ID
         importStatements: []
-    akamai_networklist_subscription Resource - akamai:
+    akamai_networklist_subscription Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_networklist_subscription Resource - akamai
-        title: akamai_networklist_subscription Resource - akamai
+        name: akamai_networklist_subscription Resource - terraform-provider-akamai
+        title: akamai_networklist_subscription Resource - terraform-provider-akamai
         argumentDocs:
             id: (String) The ID of this resource.
             network_list: (List of String)
             recipients: (List of String)
         importStatements: []
-    akamai_property Resource - akamai:
+    akamai_property:
         subCategory: ""
-        name: akamai_property Resource - akamai
-        title: akamai_property Resource - akamai
+        name: akamai_property
+        title: akamai_property Resource - terraform-provider-akamai
+        examples:
+            - name: property
+              manifest: |-
+                {
+                  "contract_id": "${data.akamai_contract.contract.id}",
+                  "group_id": "${data.akamai_group.group.id}",
+                  "hostnames": [
+                    {
+                      "cert_provisioning_type": "CPS_MANAGED",
+                      "cname_from": "terraform.example.org",
+                      "cname_to": "${akamai_edge_hostname.test.edge_hostname}"
+                    }
+                  ],
+                  "name": "akavadeveloper",
+                  "product_id": "prd_SPM",
+                  "rule_format": "v2019-07-25",
+                  "rules": "${data.akamai_property_rules.rules.rules}"
+                }
+              references:
+                contract_id: data.akamai_contract.contract.id
+                group_id: data.akamai_group.group.id
+                hostnames.cname_to: akamai_edge_hostname.test.edge_hostname
+                rules: data.akamai_property_rules.rules.rules
         argumentDocs:
             asset_id: (String) ID of the property in the Identity and Access Management API.
             behavior_name: (String)
@@ -1893,10 +2059,10 @@ resources:
             type: (String)
             version_notes: (String) Property version notes
         importStatements: []
-    akamai_property_activation Resource - akamai:
+    akamai_property_activation Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_property_activation Resource - akamai
-        title: akamai_property_activation Resource - akamai
+        name: akamai_property_activation Resource - terraform-provider-akamai
+        title: akamai_property_activation Resource - terraform-provider-akamai
         argumentDocs:
             activation_id: (String)
             auto_acknowledge_rule_warnings: (Boolean) Automatically acknowledge all rule warnings for activation to continue. Default is false
@@ -1930,10 +2096,10 @@ resources:
             version: (Number)
             warnings: (String)
         importStatements: []
-    akamai_property_bootstrap Resource - akamai:
+    akamai_property_bootstrap Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_property_bootstrap Resource - akamai
-        title: akamai_property_bootstrap Resource - akamai
+        name: akamai_property_bootstrap Resource - terraform-provider-akamai
+        title: akamai_property_bootstrap Resource - terraform-provider-akamai
         argumentDocs:
             asset_id: (String) ID of the property in the Identity and Access Management API.
             contract_id: (String) Contract ID to be assigned to the Property
@@ -1942,10 +2108,10 @@ resources:
             name: (String) Name to give to the Property (must be unique)
             product_id: (String) Product ID to be assigned to the Property
         importStatements: []
-    akamai_property_include Resource - akamai:
+    akamai_property_include Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_property_include Resource - akamai
-        title: akamai_property_include Resource - akamai
+        name: akamai_property_include Resource - terraform-provider-akamai
+        title: akamai_property_include Resource - terraform-provider-akamai
         argumentDocs:
             asset_id: (String) ID of the include in the Identity and Access Management API.
             contract_id: (String) Identifies the contract to which the include is assigned
@@ -1962,10 +2128,10 @@ resources:
             staging_version: (String) The most recent version to be activated to the staging network
             type: (String) Specifies the type of the include, either 'MICROSERVICES' or 'COMMON_SETTINGS'
         importStatements: []
-    akamai_property_include_activation Resource - akamai:
+    akamai_property_include_activation Resource - terraform-provider-akamai:
         subCategory: ""
-        name: akamai_property_include_activation Resource - akamai
-        title: akamai_property_include_activation Resource - akamai
+        name: akamai_property_include_activation Resource - terraform-provider-akamai
+        title: akamai_property_include_activation Resource - terraform-provider-akamai
         argumentDocs:
             auto_acknowledge_rule_warnings: (Boolean) Automatically acknowledge all rule warnings for activation and continue
             compliance_record: '(Block List, Max: 1) Provides an audit record when activating on a production network (see below for nested schema)'

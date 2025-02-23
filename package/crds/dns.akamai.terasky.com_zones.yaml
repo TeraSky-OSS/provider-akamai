@@ -34,7 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: Zone is the Schema for the Zones API. <no value>
+        description: Zone is the Schema for the Zones API.
         properties:
           apiVersion:
             description: |-
@@ -73,84 +73,108 @@ spec:
               forProvider:
                 properties:
                   comment:
+                    description: (String)
                     type: string
                   contract:
+                    description: (String)
                     type: string
                   endCustomerId:
+                    description: (String)
                     type: string
                   group:
+                    description: (String)
                     type: string
                   masters:
+                    description: (Set of String)
                     items:
                       type: string
                     type: array
                     x-kubernetes-list-type: set
                   outboundZoneTransfer:
-                    description: Outbound zone transfer properties.
+                    description: |-
+                      (Block List, Max: 1) Outbound zone transfer properties. (see below for nested schema)
+                      Outbound zone transfer properties.
                     items:
                       properties:
                         acl:
-                          description: The access control list, defined as IPv4 and
-                            IPv6 CIDR blocks.
+                          description: |-
+                            (Set of String) The access control list, defined as IPv4 and IPv6 CIDR blocks.
+                            The access control list, defined as IPv4 and IPv6 CIDR blocks.
                           items:
                             type: string
                           type: array
                           x-kubernetes-list-type: set
                         enabled:
-                          description: Enables outbound zone transfer.
+                          description: |-
+                            (Boolean) Enables outbound zone transfer.
+                            Enables outbound zone transfer.
                           type: boolean
                         notifyTargets:
-                          description: Customer secondary nameservers to notify, if
-                            NOTIFY requests are desired. Up to 64 IPv4 or IPv6 addresses.
-                            If no targets are specified, you can manually request
-                            zone transfer updates as needed.
+                          description: |-
+                            (Set of String) Customer secondary nameservers to notify, if NOTIFY requests are desired. Up to 64 IPv4 or IPv6 addresses. If no targets are specified, you can manually request zone transfer updates as needed.
+                            Customer secondary nameservers to notify, if NOTIFY requests are desired. Up to 64 IPv4 or IPv6 addresses. If no targets are specified, you can manually request zone transfer updates as needed.
                           items:
                             type: string
                           type: array
                           x-kubernetes-list-type: set
                         tsigKey:
-                          description: The TSIG key used for outbound zone transfers.
+                          description: |-
+                            (Block List, Max: 1) (see below for nested schema)
+                            The TSIG key used for outbound zone transfers.
                           items:
                             properties:
                               algorithm:
-                                description: 'The algorithm used to encode the TSIG
-                                  key''s secret data. Possible values are: hmac-md5,
-                                  hmac-sha1, hmac-sha224, hmac-sha256, hmac-sha384,
-                                  hmac-sha512, or HMAC-MD5.SIG-ALG.REG.INT.'
+                                description: |-
+                                  md5, hmac-sha1, hmac-sha224, hmac-sha256, hmac-sha384, hmac-sha512, or HMAC-MD5.SIG-ALG.REG.INT.
+                                  The algorithm used to encode the TSIG key's secret data. Possible values are: hmac-md5, hmac-sha1, hmac-sha224, hmac-sha256, hmac-sha384, hmac-sha512, or HMAC-MD5.SIG-ALG.REG.INT.
                                 type: string
                               name:
-                                description: The zone name.
+                                description: |-
+                                  (String) The zone name.
+                                  The zone name.
                                 type: string
                               secret:
-                                description: A Base64-encoded string of data. When
-                                  decoded, it needs to contain the correct number
-                                  of bits for the chosen algorithm. If the input isn't
-                                  correctly padded, the server applies the padding.
+                                description: |-
+                                  encoded string of data. When decoded, it needs to contain the correct number of bits for the chosen algorithm. If the input isn't correctly padded, the server applies the padding.
+                                  A Base64-encoded string of data. When decoded, it needs to contain the correct number of bits for the chosen algorithm. If the input isn't correctly padded, the server applies the padding.
                                 type: string
                             type: object
                           type: array
                       type: object
                     type: array
                   signAndServe:
+                    description: (Boolean)
                     type: boolean
                   signAndServeAlgorithm:
+                    description: (String)
                     type: string
                   target:
+                    description: (String)
                     type: string
                   tsigKey:
+                    description: '(Block List, Max: 1) (see below for nested schema)'
                     items:
                       properties:
                         algorithm:
+                          description: md5, hmac-sha1, hmac-sha224, hmac-sha256, hmac-sha384,
+                            hmac-sha512, or HMAC-MD5.SIG-ALG.REG.INT.
                           type: string
                         name:
+                          description: (String) The zone name.
                           type: string
                         secret:
+                          description: encoded string of data. When decoded, it needs
+                            to contain the correct number of bits for the chosen algorithm.
+                            If the input isn't correctly padded, the server applies
+                            the padding.
                           type: string
                       type: object
                     type: array
                   type:
+                    description: (String)
                     type: string
                   zone:
+                    description: (String)
                     type: string
                 type: object
               initProvider:
@@ -167,84 +191,108 @@ spec:
                   autoscaler.
                 properties:
                   comment:
+                    description: (String)
                     type: string
                   contract:
+                    description: (String)
                     type: string
                   endCustomerId:
+                    description: (String)
                     type: string
                   group:
+                    description: (String)
                     type: string
                   masters:
+                    description: (Set of String)
                     items:
                       type: string
                     type: array
                     x-kubernetes-list-type: set
                   outboundZoneTransfer:
-                    description: Outbound zone transfer properties.
+                    description: |-
+                      (Block List, Max: 1) Outbound zone transfer properties. (see below for nested schema)
+                      Outbound zone transfer properties.
                     items:
                       properties:
                         acl:
-                          description: The access control list, defined as IPv4 and
-                            IPv6 CIDR blocks.
+                          description: |-
+                            (Set of String) The access control list, defined as IPv4 and IPv6 CIDR blocks.
+                            The access control list, defined as IPv4 and IPv6 CIDR blocks.
                           items:
                             type: string
                           type: array
                           x-kubernetes-list-type: set
                         enabled:
-                          description: Enables outbound zone transfer.
+                          description: |-
+                            (Boolean) Enables outbound zone transfer.
+                            Enables outbound zone transfer.
                           type: boolean
                         notifyTargets:
-                          description: Customer secondary nameservers to notify, if
-                            NOTIFY requests are desired. Up to 64 IPv4 or IPv6 addresses.
-                            If no targets are specified, you can manually request
-                            zone transfer updates as needed.
+                          description: |-
+                            (Set of String) Customer secondary nameservers to notify, if NOTIFY requests are desired. Up to 64 IPv4 or IPv6 addresses. If no targets are specified, you can manually request zone transfer updates as needed.
+                            Customer secondary nameservers to notify, if NOTIFY requests are desired. Up to 64 IPv4 or IPv6 addresses. If no targets are specified, you can manually request zone transfer updates as needed.
                           items:
                             type: string
                           type: array
                           x-kubernetes-list-type: set
                         tsigKey:
-                          description: The TSIG key used for outbound zone transfers.
+                          description: |-
+                            (Block List, Max: 1) (see below for nested schema)
+                            The TSIG key used for outbound zone transfers.
                           items:
                             properties:
                               algorithm:
-                                description: 'The algorithm used to encode the TSIG
-                                  key''s secret data. Possible values are: hmac-md5,
-                                  hmac-sha1, hmac-sha224, hmac-sha256, hmac-sha384,
-                                  hmac-sha512, or HMAC-MD5.SIG-ALG.REG.INT.'
+                                description: |-
+                                  md5, hmac-sha1, hmac-sha224, hmac-sha256, hmac-sha384, hmac-sha512, or HMAC-MD5.SIG-ALG.REG.INT.
+                                  The algorithm used to encode the TSIG key's secret data. Possible values are: hmac-md5, hmac-sha1, hmac-sha224, hmac-sha256, hmac-sha384, hmac-sha512, or HMAC-MD5.SIG-ALG.REG.INT.
                                 type: string
                               name:
-                                description: The zone name.
+                                description: |-
+                                  (String) The zone name.
+                                  The zone name.
                                 type: string
                               secret:
-                                description: A Base64-encoded string of data. When
-                                  decoded, it needs to contain the correct number
-                                  of bits for the chosen algorithm. If the input isn't
-                                  correctly padded, the server applies the padding.
+                                description: |-
+                                  encoded string of data. When decoded, it needs to contain the correct number of bits for the chosen algorithm. If the input isn't correctly padded, the server applies the padding.
+                                  A Base64-encoded string of data. When decoded, it needs to contain the correct number of bits for the chosen algorithm. If the input isn't correctly padded, the server applies the padding.
                                 type: string
                             type: object
                           type: array
                       type: object
                     type: array
                   signAndServe:
+                    description: (Boolean)
                     type: boolean
                   signAndServeAlgorithm:
+                    description: (String)
                     type: string
                   target:
+                    description: (String)
                     type: string
                   tsigKey:
+                    description: '(Block List, Max: 1) (see below for nested schema)'
                     items:
                       properties:
                         algorithm:
+                          description: md5, hmac-sha1, hmac-sha224, hmac-sha256, hmac-sha384,
+                            hmac-sha512, or HMAC-MD5.SIG-ALG.REG.INT.
                           type: string
                         name:
+                          description: (String) The zone name.
                           type: string
                         secret:
+                          description: encoded string of data. When decoded, it needs
+                            to contain the correct number of bits for the chosen algorithm.
+                            If the input isn't correctly padded, the server applies
+                            the padding.
                           type: string
                       type: object
                     type: array
                   type:
+                    description: (String)
                     type: string
                   zone:
+                    description: (String)
                     type: string
                 type: object
               managementPolicies:
@@ -433,92 +481,120 @@ spec:
               atProvider:
                 properties:
                   activationState:
+                    description: (String)
                     type: string
                   aliasCount:
+                    description: (Number)
                     type: number
                   comment:
+                    description: (String)
                     type: string
                   contract:
+                    description: (String)
                     type: string
                   endCustomerId:
+                    description: (String)
                     type: string
                   group:
+                    description: (String)
                     type: string
                   id:
+                    description: (String) The ID of this resource.
                     type: string
                   masters:
+                    description: (Set of String)
                     items:
                       type: string
                     type: array
                     x-kubernetes-list-type: set
                   outboundZoneTransfer:
-                    description: Outbound zone transfer properties.
+                    description: |-
+                      (Block List, Max: 1) Outbound zone transfer properties. (see below for nested schema)
+                      Outbound zone transfer properties.
                     items:
                       properties:
                         acl:
-                          description: The access control list, defined as IPv4 and
-                            IPv6 CIDR blocks.
+                          description: |-
+                            (Set of String) The access control list, defined as IPv4 and IPv6 CIDR blocks.
+                            The access control list, defined as IPv4 and IPv6 CIDR blocks.
                           items:
                             type: string
                           type: array
                           x-kubernetes-list-type: set
                         enabled:
-                          description: Enables outbound zone transfer.
+                          description: |-
+                            (Boolean) Enables outbound zone transfer.
+                            Enables outbound zone transfer.
                           type: boolean
                         notifyTargets:
-                          description: Customer secondary nameservers to notify, if
-                            NOTIFY requests are desired. Up to 64 IPv4 or IPv6 addresses.
-                            If no targets are specified, you can manually request
-                            zone transfer updates as needed.
+                          description: |-
+                            (Set of String) Customer secondary nameservers to notify, if NOTIFY requests are desired. Up to 64 IPv4 or IPv6 addresses. If no targets are specified, you can manually request zone transfer updates as needed.
+                            Customer secondary nameservers to notify, if NOTIFY requests are desired. Up to 64 IPv4 or IPv6 addresses. If no targets are specified, you can manually request zone transfer updates as needed.
                           items:
                             type: string
                           type: array
                           x-kubernetes-list-type: set
                         tsigKey:
-                          description: The TSIG key used for outbound zone transfers.
+                          description: |-
+                            (Block List, Max: 1) (see below for nested schema)
+                            The TSIG key used for outbound zone transfers.
                           items:
                             properties:
                               algorithm:
-                                description: 'The algorithm used to encode the TSIG
-                                  key''s secret data. Possible values are: hmac-md5,
-                                  hmac-sha1, hmac-sha224, hmac-sha256, hmac-sha384,
-                                  hmac-sha512, or HMAC-MD5.SIG-ALG.REG.INT.'
+                                description: |-
+                                  md5, hmac-sha1, hmac-sha224, hmac-sha256, hmac-sha384, hmac-sha512, or HMAC-MD5.SIG-ALG.REG.INT.
+                                  The algorithm used to encode the TSIG key's secret data. Possible values are: hmac-md5, hmac-sha1, hmac-sha224, hmac-sha256, hmac-sha384, hmac-sha512, or HMAC-MD5.SIG-ALG.REG.INT.
                                 type: string
                               name:
-                                description: The zone name.
+                                description: |-
+                                  (String) The zone name.
+                                  The zone name.
                                 type: string
                               secret:
-                                description: A Base64-encoded string of data. When
-                                  decoded, it needs to contain the correct number
-                                  of bits for the chosen algorithm. If the input isn't
-                                  correctly padded, the server applies the padding.
+                                description: |-
+                                  encoded string of data. When decoded, it needs to contain the correct number of bits for the chosen algorithm. If the input isn't correctly padded, the server applies the padding.
+                                  A Base64-encoded string of data. When decoded, it needs to contain the correct number of bits for the chosen algorithm. If the input isn't correctly padded, the server applies the padding.
                                 type: string
                             type: object
                           type: array
                       type: object
                     type: array
                   signAndServe:
+                    description: (Boolean)
                     type: boolean
                   signAndServeAlgorithm:
+                    description: (String)
                     type: string
                   target:
+                    description: (String)
                     type: string
                   tsigKey:
+                    description: '(Block List, Max: 1) (see below for nested schema)'
                     items:
                       properties:
                         algorithm:
+                          description: md5, hmac-sha1, hmac-sha224, hmac-sha256, hmac-sha384,
+                            hmac-sha512, or HMAC-MD5.SIG-ALG.REG.INT.
                           type: string
                         name:
+                          description: (String) The zone name.
                           type: string
                         secret:
+                          description: encoded string of data. When decoded, it needs
+                            to contain the correct number of bits for the chosen algorithm.
+                            If the input isn't correctly padded, the server applies
+                            the padding.
                           type: string
                       type: object
                     type: array
                   type:
+                    description: (String)
                     type: string
                   versionId:
+                    description: (String)
                     type: string
                   zone:
+                    description: (String)
                     type: string
                 type: object
               conditions:

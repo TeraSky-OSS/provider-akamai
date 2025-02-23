@@ -17,12 +17,17 @@ type CertStatusInitParameters struct {
 }
 
 type CertStatusObservation struct {
+
+	// (String)
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String)
 	ProductionStatus *string `json:"productionStatus,omitempty" tf:"production_status,omitempty"`
 
+	// (String)
 	StagingStatus *string `json:"stagingStatus,omitempty" tf:"staging_status,omitempty"`
 
+	// (String)
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
 }
 
@@ -30,162 +35,215 @@ type CertStatusParameters struct {
 }
 
 type HostnamesInitParameters struct {
+
+	// (String)
 	CertProvisioningType *string `json:"certProvisioningType,omitempty" tf:"cert_provisioning_type,omitempty"`
 
+	// (Block List) (see below for nested schema)
 	CertStatus []CertStatusInitParameters `json:"certStatus,omitempty" tf:"cert_status,omitempty"`
 
+	// (String)
 	CnameFrom *string `json:"cnameFrom,omitempty" tf:"cname_from,omitempty"`
 
+	// (String)
 	CnameTo *string `json:"cnameTo,omitempty" tf:"cname_to,omitempty"`
 
+	// (String)
 	CnameType *string `json:"cnameType,omitempty" tf:"cname_type,omitempty"`
 }
 
 type HostnamesObservation struct {
+
+	// (String)
 	CertProvisioningType *string `json:"certProvisioningType,omitempty" tf:"cert_provisioning_type,omitempty"`
 
+	// (Block List) (see below for nested schema)
 	CertStatus []CertStatusObservation `json:"certStatus,omitempty" tf:"cert_status,omitempty"`
 
+	// (String)
 	CnameFrom *string `json:"cnameFrom,omitempty" tf:"cname_from,omitempty"`
 
+	// (String)
 	CnameTo *string `json:"cnameTo,omitempty" tf:"cname_to,omitempty"`
 
+	// (String)
 	CnameType *string `json:"cnameType,omitempty" tf:"cname_type,omitempty"`
 
+	// (String)
 	EdgeHostnameID *string `json:"edgeHostnameId,omitempty" tf:"edge_hostname_id,omitempty"`
 }
 
 type HostnamesParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	CertProvisioningType *string `json:"certProvisioningType" tf:"cert_provisioning_type,omitempty"`
 
+	// (Block List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	CertStatus []CertStatusParameters `json:"certStatus,omitempty" tf:"cert_status,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	CnameFrom *string `json:"cnameFrom" tf:"cname_from,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	CnameTo *string `json:"cnameTo" tf:"cname_to,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	CnameType *string `json:"cnameType,omitempty" tf:"cname_type,omitempty"`
 }
 
 type PropertyInitParameters struct {
 
+	// (String) Contract ID to be assigned to the Property
 	// Contract ID to be assigned to the Property
 	ContractID *string `json:"contractId,omitempty" tf:"contract_id,omitempty"`
 
+	// (String) Group ID to be assigned to the Property
 	// Group ID to be assigned to the Property
 	GroupID *string `json:"groupId,omitempty" tf:"group_id,omitempty"`
 
+	// (Block Set) (see below for nested schema)
 	Hostnames []HostnamesInitParameters `json:"hostnames,omitempty" tf:"hostnames,omitempty"`
 
+	// (String) Name to give to the Property (must be unique)
 	// Name to give to the Property (must be unique)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Product ID to be assigned to the Property
 	// Product ID to be assigned to the Property
 	ProductID *string `json:"productId,omitempty" tf:"product_id,omitempty"`
 
+	// (String) Property ID
 	// Property ID
 	PropertyID *string `json:"propertyId,omitempty" tf:"property_id,omitempty"`
 
+	// (String) Specify the rule format version (defaults to latest version available when created)
 	// Specify the rule format version (defaults to latest version available when created)
 	RuleFormat *string `json:"ruleFormat,omitempty" tf:"rule_format,omitempty"`
 
+	// (String) Property Rules as JSON
 	// Property Rules as JSON
 	Rules *string `json:"rules,omitempty" tf:"rules,omitempty"`
 
+	// (String) Property version notes
 	// Property version notes
 	VersionNotes *string `json:"versionNotes,omitempty" tf:"version_notes,omitempty"`
 }
 
 type PropertyObservation struct {
 
+	// (String) ID of the property in the Identity and Access Management API.
 	// ID of the property in the Identity and Access Management API.
 	AssetID *string `json:"assetId,omitempty" tf:"asset_id,omitempty"`
 
+	// (String) Contract ID to be assigned to the Property
 	// Contract ID to be assigned to the Property
 	ContractID *string `json:"contractId,omitempty" tf:"contract_id,omitempty"`
 
+	// (String) Group ID to be assigned to the Property
 	// Group ID to be assigned to the Property
 	GroupID *string `json:"groupId,omitempty" tf:"group_id,omitempty"`
 
+	// (Block Set) (see below for nested schema)
 	Hostnames []HostnamesObservation `json:"hostnames,omitempty" tf:"hostnames,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Number) Property's current latest version number
 	// Property's current latest version number
 	LatestVersion *float64 `json:"latestVersion,omitempty" tf:"latest_version,omitempty"`
 
+	// (String) Name to give to the Property (must be unique)
 	// Name to give to the Property (must be unique)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Product ID to be assigned to the Property
 	// Product ID to be assigned to the Property
 	ProductID *string `json:"productId,omitempty" tf:"product_id,omitempty"`
 
+	// (Number) Property's version currently activated in production (zero when not active in production)
 	// Property's version currently activated in production (zero when not active in production)
 	ProductionVersion *float64 `json:"productionVersion,omitempty" tf:"production_version,omitempty"`
 
+	// (String) Property ID
 	// Property ID
 	PropertyID *string `json:"propertyId,omitempty" tf:"property_id,omitempty"`
 
+	// (Number) Required property's version to be read
 	// Required property's version to be read
 	ReadVersion *float64 `json:"readVersion,omitempty" tf:"read_version,omitempty"`
 
+	// (List of Object) (see below for nested schema)
 	RuleErrors []RuleErrorsObservation `json:"ruleErrors,omitempty" tf:"rule_errors,omitempty"`
 
+	// (String) Specify the rule format version (defaults to latest version available when created)
 	// Specify the rule format version (defaults to latest version available when created)
 	RuleFormat *string `json:"ruleFormat,omitempty" tf:"rule_format,omitempty"`
 
+	// (List of Object) Rule validation warnings (see below for nested schema)
 	// Rule validation warnings
 	RuleWarnings []RuleWarningsObservation `json:"ruleWarnings,omitempty" tf:"rule_warnings,omitempty"`
 
+	// (String) Property Rules as JSON
 	// Property Rules as JSON
 	Rules *string `json:"rules,omitempty" tf:"rules,omitempty"`
 
+	// (Number) Property's version currently activated in staging (zero when not active in staging)
 	// Property's version currently activated in staging (zero when not active in staging)
 	StagingVersion *float64 `json:"stagingVersion,omitempty" tf:"staging_version,omitempty"`
 
+	// (String) Property version notes
 	// Property version notes
 	VersionNotes *string `json:"versionNotes,omitempty" tf:"version_notes,omitempty"`
 }
 
 type PropertyParameters struct {
 
+	// (String) Contract ID to be assigned to the Property
 	// Contract ID to be assigned to the Property
 	// +kubebuilder:validation:Optional
 	ContractID *string `json:"contractId,omitempty" tf:"contract_id,omitempty"`
 
+	// (String) Group ID to be assigned to the Property
 	// Group ID to be assigned to the Property
 	// +kubebuilder:validation:Optional
 	GroupID *string `json:"groupId,omitempty" tf:"group_id,omitempty"`
 
+	// (Block Set) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Hostnames []HostnamesParameters `json:"hostnames,omitempty" tf:"hostnames,omitempty"`
 
+	// (String) Name to give to the Property (must be unique)
 	// Name to give to the Property (must be unique)
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Product ID to be assigned to the Property
 	// Product ID to be assigned to the Property
 	// +kubebuilder:validation:Optional
 	ProductID *string `json:"productId,omitempty" tf:"product_id,omitempty"`
 
+	// (String) Property ID
 	// Property ID
 	// +kubebuilder:validation:Optional
 	PropertyID *string `json:"propertyId,omitempty" tf:"property_id,omitempty"`
 
+	// (String) Specify the rule format version (defaults to latest version available when created)
 	// Specify the rule format version (defaults to latest version available when created)
 	// +kubebuilder:validation:Optional
 	RuleFormat *string `json:"ruleFormat,omitempty" tf:"rule_format,omitempty"`
 
+	// (String) Property Rules as JSON
 	// Property Rules as JSON
 	// +kubebuilder:validation:Optional
 	Rules *string `json:"rules,omitempty" tf:"rules,omitempty"`
 
+	// (String) Property version notes
 	// Property version notes
 	// +kubebuilder:validation:Optional
 	VersionNotes *string `json:"versionNotes,omitempty" tf:"version_notes,omitempty"`
@@ -195,18 +253,26 @@ type RuleErrorsInitParameters struct {
 }
 
 type RuleErrorsObservation struct {
+
+	// (String)
 	BehaviorName *string `json:"behaviorName,omitempty" tf:"behavior_name,omitempty"`
 
+	// (String)
 	Detail *string `json:"detail,omitempty" tf:"detail,omitempty"`
 
+	// (String)
 	ErrorLocation *string `json:"errorLocation,omitempty" tf:"error_location,omitempty"`
 
+	// (String)
 	Instance *string `json:"instance,omitempty" tf:"instance,omitempty"`
 
+	// (Number)
 	StatusCode *float64 `json:"statusCode,omitempty" tf:"status_code,omitempty"`
 
+	// (String)
 	Title *string `json:"title,omitempty" tf:"title,omitempty"`
 
+	// (String)
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
@@ -217,18 +283,26 @@ type RuleWarningsInitParameters struct {
 }
 
 type RuleWarningsObservation struct {
+
+	// (String)
 	BehaviorName *string `json:"behaviorName,omitempty" tf:"behavior_name,omitempty"`
 
+	// (String)
 	Detail *string `json:"detail,omitempty" tf:"detail,omitempty"`
 
+	// (String)
 	ErrorLocation *string `json:"errorLocation,omitempty" tf:"error_location,omitempty"`
 
+	// (String)
 	Instance *string `json:"instance,omitempty" tf:"instance,omitempty"`
 
+	// (Number)
 	StatusCode *float64 `json:"statusCode,omitempty" tf:"status_code,omitempty"`
 
+	// (String)
 	Title *string `json:"title,omitempty" tf:"title,omitempty"`
 
+	// (String)
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
@@ -262,7 +336,7 @@ type PropertyStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Property is the Schema for the Propertys API. <no value>
+// Property is the Schema for the Propertys API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -1,0 +1,20 @@
+apiVersion: property.akamai.terasky.com/v1alpha1
+kind: Property
+metadata:
+  annotations:
+    meta.upbound.io/example-id: property/v1alpha1/property
+  labels:
+    testing.upbound.io/example-name: property
+  name: property
+spec:
+  forProvider:
+    contractId: ${data.akamai_contract.contract.id}
+    groupId: ${data.akamai_group.group.id}
+    hostnames:
+    - certProvisioningType: CPS_MANAGED
+      cnameFrom: terraform.example.org
+      cnameTo: ${akamai_edge_hostname.test.edge_hostname}
+    name: akavadeveloper
+    productId: prd_SPM
+    ruleFormat: v2019-07-25
+    rules: ${data.akamai_property_rules.rules.rules}
